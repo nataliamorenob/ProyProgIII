@@ -68,10 +68,14 @@ public class VentanaMenu extends JFrame {
 		JPanel panelAbajo = new JPanel();
 		
 		JMenuBar menuBar = new JMenuBar();
-		JButton btnReserva = new JButton("Reservar");
+		JButton btnReserva = new JButton("Reservas");
 		btnReserva.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
+		JButton btnCarrito = new JButton("Cesta");
+		btnCarrito.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		JButton btnComprar = new JButton("Comprar");
 		btnComprar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
+		JButton btnReservar = new JButton("Reservar");
+		btnReservar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		
 		JMenu mnAnimales = new JMenu("Animales");
 		mnAnimales.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
@@ -94,20 +98,8 @@ public class VentanaMenu extends JFrame {
 		JMenu mnLocalizacion = new JMenu("Localizaci\u00F3n");
 		mnLocalizacion.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
-		JMenu mnQS = new JMenu("Qui\u00E9nes Somos");
+		JMenu mnQS = new JMenu("Qui�nes Somos");
 		mnQS.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
-		
-		JMenuItem mntmCorrea = new JMenuItem("Correas");
-		mntmCorrea.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		
-		JMenuItem mntmHigiene = new JMenuItem("Higiene");
-		mntmHigiene.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		
-		JMenuItem mntmPienso = new JMenuItem("Piensos");
-		mntmPienso.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		
-		JMenuItem mntmAlpiste = new JMenuItem("Alpistes");
-		mntmAlpiste.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		
 		//A�ADIR LOS COMPONENTES A LOS PANELES
 		contentPane.add(panelMenu, BorderLayout.NORTH);
@@ -123,15 +115,17 @@ public class VentanaMenu extends JFrame {
 		mnAnimales.add(mntmPerro);
 		mnAnimales.add(mntmGato);
 		mnAnimales.add(mntmOtro);
-		mnAccesorios.add(mntmCorrea);
-		mnAccesorios.add(mntmHigiene);
-		mnAlimentos.add(mntmPienso);
-		mnAlimentos.add(mntmAlpiste);
 		
 		panelAbajo.add(btnReserva);
+		panelAbajo.add(btnCarrito); 
+		panelAbajo.add(btnReservar);
 		panelAbajo.add(btnComprar);
 		btnReserva.setVisible(false);  
 		btnComprar.setVisible(false); 
+
+
+		btnReservar.setVisible(false);
+		btnComprar.setVisible(false);
 
 		 
 		
@@ -142,7 +136,8 @@ public class VentanaMenu extends JFrame {
 				panelCentro.removeAll(); //Para eliminar todos los componentes que haya en el panelCentro y no se solapen
 				panelCentro.add(new PanelPerros());
 				panelCentro.updateUI();
-				btnReserva.setVisible(true);
+				btnReservar.setVisible(true);
+				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -152,8 +147,8 @@ public class VentanaMenu extends JFrame {
 				panelCentro.removeAll(); 
 				panelCentro.add(new PanelGatos());
 				panelCentro.updateUI();
-				btnReserva.setVisible(true);
-				
+				btnReservar.setVisible(true);
+				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -163,29 +158,8 @@ public class VentanaMenu extends JFrame {
 				panelCentro.removeAll(); 
 				panelCentro.add(new PanelOtros());
 				panelCentro.updateUI();
-				btnReserva.setVisible(false);
-			}
-		});
-		
-		mntmPienso.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				panelCentro.removeAll();
-				panelCentro.add(new PanelPiensos());
-				panelCentro.updateUI();
-				btnReserva.setVisible(false);
-				btnComprar.setVisible(true);
-			}
-		});
-		
-		mntmAlpiste.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				panelCentro.removeAll();
-				panelCentro.add(new PanelAlpistes());
-				panelCentro.updateUI();
-				btnReserva.setVisible(false);
-				btnComprar.setVisible(true);
+				btnReservar.setVisible(false);
+				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -195,7 +169,7 @@ public class VentanaMenu extends JFrame {
 				panelCentro.removeAll(); 
 				panelCentro.add(new PanelLocalizacion());
 				panelCentro.updateUI();
-				btnReserva.setVisible(false);
+				btnReservar.setVisible(false);
 				btnComprar.setVisible(false);
 			}
 		});
@@ -206,7 +180,27 @@ public class VentanaMenu extends JFrame {
 				panelCentro.removeAll(); 
 				panelCentro.add(new PanelQuienesSomos());
 				panelCentro.updateUI();
-				btnReserva.setVisible(false);
+				btnReservar.setVisible(false);
+				btnComprar.setVisible(false);
+			}
+		});
+		
+		mnAccesorios.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				panelCentro.removeAll(); 
+				panelCentro.add(new PanelAccesorios());
+				panelCentro.updateUI();
+				btnReservar.setVisible(false);
+				btnComprar.setVisible(false);
+			}
+		});
+		
+		mnAlimentos.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				panelCentro.removeAll(); 
+				panelCentro.add(new PanelAlimentos());
+				panelCentro.updateUI();
+				btnReservar.setVisible(false);
 				btnComprar.setVisible(false);
 			}
 		});
@@ -215,14 +209,38 @@ public class VentanaMenu extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Desde aqui accederemos a la VentanaReserva
+				// Desde aqui accederemos a la ventana de animales reservados
 				
 			}
 		});
 		
+		btnReservar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Reservamos los animales
+				
+			}
+		});
+		
+		btnComprar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Desde aqu� accederemos a la ventana comprar
+				
+			}
+		});
+		
+		btnCarrito.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Accedemos a la ventana de las compras que deseamos hacer
+				
+			}
+		});
 		
 		setVisible(true);
 	}
-
 }
-

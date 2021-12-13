@@ -25,5 +25,4 @@ public class PanelGatos extends JPanel {
 		add(lblNewLabel);
 
 	}
-
 }

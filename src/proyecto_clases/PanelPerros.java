@@ -27,6 +27,5 @@ public class PanelPerros extends JPanel {
 		BD.obtenerPerros(con);
 
 	}
-
 }
 
