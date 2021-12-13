@@ -5,12 +5,12 @@ public class Gatos extends Animales implements Adoptable{
 	private String localizacion;
 	private String colores;
 
-	private Gatos() {
+	public Gatos() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	private Gatos(String nombre, int edad, String sexo, int peso, int altura, String caracteristicas,int tiempoEnAdopcion, String localizacion, String colores,String rutaFoto){
+	public Gatos(String nombre, int edad, String sexo, int peso, String caracteristicas,int tiempoEnAdopcion, String localizacion, String colores,String rutaFoto){
 		super(nombre, edad, sexo, peso, caracteristicas,rutaFoto);
 		// TODO Auto-generated constructor stub
 		this.tiempoEnAdopcion=tiempoEnAdopcion;

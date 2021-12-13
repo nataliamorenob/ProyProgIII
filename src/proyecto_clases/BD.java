@@ -139,7 +139,7 @@ public class BD {
 	
 	public static ArrayList<Perros> obtenerPerros(Connection con) {
 		ArrayList<Perros> ALPerros=new ArrayList<>();
-		Perros p=null;
+		Perros p = null;
 		String sent = "SELECT * FROM PERROS";
 		Statement st = null;
 		
@@ -175,6 +175,34 @@ public class BD {
 		}
 		
 		return ALPerros;
+	}
+	
+	public static ArrayList<Gatos> obtenerGatos(Connection con){
+		ArrayList<Gatos> ALGatos=new ArrayList<>();
+		Gatos g = null;
+		String sent = "SELECT * FROM GATOS";
+		Statement st = null;
+		
+		try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(sent);
+			if(rs.next()) {
+				String nombre = rs.getString("NOMBRE");
+				Integer edad = rs.getInt("EDAD");
+				String sexo = rs.getString("SEXO");
+				Integer peso =rs.getInt("PESO");
+				String caracteristicas = rs.getString("CARACTERISTICAS");
+				Integer tiempoEnAdopcion = rs.getInt("TIEMPOENADOPCION");
+				String localizacion = rs.getString("LOCALIZACION");
+				String colores = rs.getString("COLORES");
+				String rutaFoto = rs.getString("rutaFoto");
+				g = new Gatos(nombre, edad, sexo, peso, caracteristicas, tiempoEnAdopcion, localizacion, colores, rutaFoto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ALGatos;
 	}
 }
 
