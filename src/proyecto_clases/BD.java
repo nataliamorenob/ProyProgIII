@@ -55,7 +55,7 @@ public class BD {
 			st.executeUpdate(sent3);
 			st.executeUpdate(sent4);
 			st.executeUpdate(sent5);
-		//	st.executeUpdate(sent6);
+			st.executeUpdate(sent6);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -75,14 +75,14 @@ public class BD {
 	
 	//xq es int? X LO QUE DEVUELVE--->0 SI NO EXISTE, 1 SI EXISTE PERO CONTRA NO CORRECTO, 2 SI CONTRA Y USUARIO CORRECTOS
 	public static int cogerUsuario(String usuario, String contrasenia){
-		String resolucion="SELECT password FROM Usuario WHERE usuario ='"+usuario+"'";
+		String resolucion="SELECT contrasenia FROM Usuario WHERE usuario ='"+usuario+"'";
 		java.sql.Statement stat=null;
 		int resultado=0;
 		try {
 			stat=con.createStatement();
 			ResultSet resuls= stat.executeQuery(resolucion);
 			if(resuls.next()) {
-				if(resuls.getString("password").equals(contrasenia)) {
+				if(resuls.getString("contrasenia").equals(contrasenia)) {
 					resultado=2;
 				}else {
 					resultado=1;
