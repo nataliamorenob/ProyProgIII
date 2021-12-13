@@ -146,7 +146,7 @@ public class BD {
 		try {
 			st = con.createStatement();
 			ResultSet rs = st.executeQuery(sent);
-			if(rs.next()) { 
+			while(rs.next()) { 
 				String nombre = rs.getString("NOMBRE");
 				Integer edad = rs.getInt("EDAD");
 				String sexo = rs.getString("SEXO");
@@ -186,7 +186,7 @@ public class BD {
 		try {
 			st = con.createStatement();
 			ResultSet rs = st.executeQuery(sent);
-			if(rs.next()) {
+			while(rs.next()) {
 				String nombre = rs.getString("NOMBRE");
 				Integer edad = rs.getInt("EDAD");
 				String sexo = rs.getString("SEXO");
