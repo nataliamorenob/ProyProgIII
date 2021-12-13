@@ -253,7 +253,7 @@ public class BD {
 	public static ArrayList<Accesorios> obtenerAccesorios(Connection con){
 		ArrayList<Accesorios> alAccesorios = new ArrayList<>();
 		Accesorios acs = null;
-		String sent = "SELECT * FROM ALIMENTOS";
+		String sent = "SELECT * FROM ACCESORIOS";
 		Statement st = null;
 		try {
 			st = con.createStatement();
