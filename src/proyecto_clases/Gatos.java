@@ -5,7 +5,7 @@ public class Gatos extends Animales implements Adoptable{
 	private String localizacion;
 	private String colores;
 
-	public Gatos() {
+	private Gatos() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

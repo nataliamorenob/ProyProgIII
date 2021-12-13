@@ -12,7 +12,7 @@ public class Otros extends Animales implements Visitables {
 
 
 
-	private Otros(String nombre, int edad, String sexo, int peso, int altura, String caracteristicas, int estimacionAnyo, boolean peligroExtincion,String rutaFoto) {
+	public Otros(String nombre, int edad, String sexo, int peso, String caracteristicas, int estimacionAnyo, boolean peligroExtincion,String rutaFoto) {
 		super(nombre, edad, sexo, peso, caracteristicas,rutaFoto);
 		this.estimacionAnyo = estimacionAnyo;
 		this.peligroExtincion = peligroExtincion;
