@@ -20,9 +20,6 @@ import javax.swing.JPasswordField;
 
 public class VentanaInicioSesion extends JFrame {
 	
-	//Connection con = BDUsuario.initBD("BDUsuario.db");
-	//BDUsuario.crearTablasSiNoExisten(con)
-	//BDUsuario.closeBD(con);
 	
 
 	private JPanel contentPane, panelCentro, panelSur;
@@ -51,7 +48,7 @@ public class VentanaInicioSesion extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaInicioSesion() {
-		BD.initBD("BaseDatos");
+		BD.initBD("BaseDatos.db");
 		BD.closeBD();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -106,7 +103,7 @@ public class VentanaInicioSesion extends JFrame {
 				String contrasenia=passwordFieldContrasenia.getText();
 				
 				if(!usuario.equals("") & !contrasenia.equals("")) {
-					BD.initBD("BDUsuario.db"); 
+					BD.initBD("BaseDatos.db"); 
 					int result=BD.cogerUsuario(usuario, contrasenia);
 					if(result==0) {
 						JOptionPane.showMessageDialog(null, "Aún no te has registrado");
@@ -139,7 +136,7 @@ public class VentanaInicioSesion extends JFrame {
 				String usuario=textFieldUsuario.getText();
 				String contrasenia=passwordFieldContrasenia.getText();
 				if(!usuario.equals("") & !contrasenia.equals("")) {
-					BD.initBD("BDUsuario.db");   
+					BD.initBD("BaseDatos.db");   
 					int result=BD.cogerUsuario(usuario, contrasenia);
 					if(result==0) {
 						BD.anyadirUsuario(usuario, contrasenia);
