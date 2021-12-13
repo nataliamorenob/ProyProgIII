@@ -101,7 +101,7 @@ public class VentanaMenu extends JFrame {
 		JMenu mnLocalizacion = new JMenu("Localizaci\u00F3n");
 		mnLocalizacion.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
-		JMenu mnQS = new JMenu("Qui�nes Somos");
+		JMenu mnQS = new JMenu("Quienes Somos");
 		mnQS.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
 		//A�ADIR LOS COMPONENTES A LOS PANELES
@@ -138,7 +138,7 @@ public class VentanaMenu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				panelCentro.removeAll(); //Para eliminar todos los componentes que haya en el panelCentro y no se solapen
 				//panelCentro.add(new PanelPerros());
-				panelCentro.setLayout(new GridLayout(0, 5));
+				panelCentro.setLayout(new GridLayout(0, 3));
 				con = BD.initBD("BaseDatos.db");
 				ArrayList<Perros> al = BD.obtenerPerros(con);
 				System.out.println(al.size());
