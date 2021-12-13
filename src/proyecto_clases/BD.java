@@ -45,7 +45,7 @@ public class BD {
 		String sent3 = "CREATE TABLE IF NOT EXISTS Otros(estimacionAnyo Integer, peligroExtincion boolean)";
 		String sent4 = "CREATE TABLE IF NOT EXISTS Alimentos(nombre String, precio Integer, animal_dirigido String)";
 		String sent5 = "CREATE TABLE IF NOT EXISTS Accesorios(nombre String, precio Integer, animal_dirigido String)";
-		//String sent6 = "CREATE TABLE IF NOT EXISTS Usuario(usuario String, contrasenia String)";
+		String sent6 = "CREATE TABLE IF NOT EXISTS Usuario(usuario String, contrasenia String)";
 		Statement st = null;
 		
 		try {
@@ -71,9 +71,11 @@ public class BD {
 		}
 	}
 	
+	
+	
 	//xq es int? X LO QUE DEVUELVE--->0 SI NO EXISTE, 1 SI EXISTE PERO CONTRA NO CORRECTO, 2 SI CONTRA Y USUARIO CORRECTOS
 	public static int cogerUsuario(String usuario, String contrasenia){
-		String resolucion="SELECT password FROM LogIn WHERE usuario_ ='"+usuario+"'";
+		String resolucion="SELECT password FROM Usuario WHERE usuario_ ='"+usuario+"'";
 		java.sql.Statement stat=null;
 		int resultado=0;
 		try {
@@ -110,7 +112,7 @@ public class BD {
 		
 	}
 	public static void anyadirUsuario(String usuario, String contrasenia ) {
-		String resolucion="INSERT INTO LogIn VALUES('"+usuario+"','"+contrasenia+"')";
+		String resolucion="INSERT INTO Usuario VALUES('"+usuario+"','"+contrasenia+"')";
 		java.sql.Statement stat=null;
 		try {
 			stat=con.createStatement();

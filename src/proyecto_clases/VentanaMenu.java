@@ -26,6 +26,7 @@ import java.awt.GridLayout;
 public class VentanaMenu extends JFrame { 
 
 	private JPanel contentPane, panelCentro;
+	private Connection con;
 
 
 	/**
@@ -48,6 +49,9 @@ public class VentanaMenu extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaMenu() {
+
+		con=BD.initBD("BaseDatos.db");
+		BD.crearTablas(con);
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
 		setTitle("PROTECTORA");
@@ -128,6 +132,7 @@ public class VentanaMenu extends JFrame {
 		panelAbajo.add(btnComprar);
 		btnReserva.setVisible(false);  
 		btnComprar.setVisible(false); 
+
 		 
 		
 		//EVENTOS

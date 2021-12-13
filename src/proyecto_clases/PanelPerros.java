@@ -23,7 +23,7 @@ public class PanelPerros extends JPanel {
 		JLabel lblNewLabel = new JLabel("PERROS");
 		lblNewLabel.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		add(lblNewLabel);
-		con = BD.initBD("perros.db");
+		con = BD.initBD("BaseDatos.db");
 		BD.obtenerPerros(con);
 
 	}
