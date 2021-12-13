@@ -22,6 +22,5 @@ public class PanelQuienesSomos extends JPanel {
 		lblNewLabel.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		add(lblNewLabel);
 	}
-
 }
 
