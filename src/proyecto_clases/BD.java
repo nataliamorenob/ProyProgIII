@@ -75,7 +75,7 @@ public class BD {
 	
 	//xq es int? X LO QUE DEVUELVE--->0 SI NO EXISTE, 1 SI EXISTE PERO CONTRA NO CORRECTO, 2 SI CONTRA Y USUARIO CORRECTOS
 	public static int cogerUsuario(String usuario, String contrasenia){
-		String resolucion="SELECT password FROM Usuario WHERE usuario_ ='"+usuario+"'";
+		String resolucion="SELECT password FROM Usuario WHERE usuario ='"+usuario+"'";
 		java.sql.Statement stat=null;
 		int resultado=0;
 		try {
