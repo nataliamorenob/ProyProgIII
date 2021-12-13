@@ -140,7 +140,7 @@ public class BD {
 	public static ArrayList<Perros> obtenerPerros(Connection con) {
 		ArrayList<Perros> ALPerros=new ArrayList<>();
 		Perros p=null;
-		String sent = "SELECT * FROM T_PERROS";
+		String sent = "SELECT * FROM PERROS";
 		Statement st = null;
 		
 		try {
@@ -155,7 +155,7 @@ public class BD {
 				Integer tiempoEnAdopcion = rs.getInt("TIEMPOENADOPCION");
 				String localizacion = rs.getString("LOCALIZACION");
 				String colores = rs.getString("COLORES");
-				String rutaFoto = rs.getString("FOTO");
+				String rutaFoto = rs.getString("rutaFoto");
 				p = new Perros(nombre,edad,sexo,peso,caracteristicas,tiempoEnAdopcion,localizacion,colores,rutaFoto);
 				ALPerros.add(p);
 			}

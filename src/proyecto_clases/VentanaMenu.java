@@ -5,9 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import javax.swing.Action;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
@@ -64,7 +67,7 @@ public class VentanaMenu extends JFrame {
 		
 		//CREACI�N DE COMPONENTES
 		JPanel panelMenu = new JPanel();
-		JPanel panelCentro = new JPanel();
+		panelCentro = new JPanel();
 		JPanel panelAbajo = new JPanel();
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -134,7 +137,20 @@ public class VentanaMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelCentro.removeAll(); //Para eliminar todos los componentes que haya en el panelCentro y no se solapen
-				panelCentro.add(new PanelPerros());
+				//panelCentro.add(new PanelPerros());
+				panelCentro.setLayout(new GridLayout(0, 5));
+				con = BD.initBD("BaseDatos.db");
+				ArrayList<Perros> al = BD.obtenerPerros(con);
+				System.out.println(al.size());
+				for(Perros p: al) {
+//					System.out.println(p.getRutaFoto());
+//					ImageIcon im = new ImageIcon(p.getRutaFoto());
+//					im.setDescription(p.getRutaFoto());
+//					JLabel lbl = new JLabel(im);
+//					panelCentro.add(lbl);
+					panelCentro.add(new PanelPerros(p));
+				}
+				BD.closeBD();
 				panelCentro.updateUI();
 				btnReservar.setVisible(true);
 				btnComprar.setVisible(false);
