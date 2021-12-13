@@ -168,7 +168,6 @@ public class BD {
 				}
 			}
 		}
-		
 		return alPerros;
 	}
 	

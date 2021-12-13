@@ -19,8 +19,8 @@ public class PanelPerros extends JPanel {
 		
 		ImageIcon im = new ImageIcon(p.getRutaFoto());
 		im.setDescription(p.getRutaFoto());
-		JLabel lbl = new JLabel(im);
-		add(lbl);
+		JLabel lblim = new JLabel(im);
+		add(lblim);
 		JLabel lbl2 = new JLabel(p.getNombre());
 		add(lbl2);
 		updateUI();

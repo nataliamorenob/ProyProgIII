@@ -3,7 +3,7 @@ package proyecto_clases;
 public class Accesorios {
 	private String nombre;
 	private int precio;
-	private String animal_dirigido; //para que animal es ese alimento
+	private String animal_dirigido; //para que animal es ese accesorio
 	private String rutaFoto;
 	
 	private Accesorios(){

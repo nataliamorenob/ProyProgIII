@@ -140,9 +140,9 @@ public class VentanaMenu extends JFrame {
 				//panelCentro.add(new PanelPerros());
 				panelCentro.setLayout(new GridLayout(0, 3));
 				con = BD.initBD("BaseDatos.db");
-				ArrayList<Perros> al = BD.obtenerPerros(con);
-				System.out.println(al.size());
-				for(Perros p: al) {
+				ArrayList<Perros> alPerros = BD.obtenerPerros(con);
+				System.out.println(alPerros.size());
+				for(Perros p: alPerros) {
 //					System.out.println(p.getRutaFoto());
 //					ImageIcon im = new ImageIcon(p.getRutaFoto());
 //					im.setDescription(p.getRutaFoto());
