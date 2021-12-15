@@ -27,7 +27,7 @@ public class Accesorios {
 		this.nombre = nombre; 
 	}
 
-	public int getPrecio() {
+	public int getPrecio() { 
 		return precio;
 	}
 
