@@ -51,5 +51,5 @@ public class Accesorios {
 		this.rutaFoto = rutaFoto;
 	}
 	
-/*Hola	*/
+/*Hola*/
 }
