@@ -3,6 +3,7 @@ package proyecto_clases;
 public class Otros extends Animales implements Visitables {
 	private int estimacionAnyo;
 	private boolean peligroExtincion;
+
 	
 	
 	
