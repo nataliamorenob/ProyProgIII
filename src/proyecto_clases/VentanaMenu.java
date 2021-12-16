@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -25,6 +26,7 @@ import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import java.awt.GridLayout;
+import java.awt.Taskbar.State;
 
 public class VentanaMenu extends JFrame { 
 
@@ -57,6 +59,7 @@ public class VentanaMenu extends JFrame {
 		BD.crearTablas(con);
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
+		setExtendedState(MAXIMIZED_BOTH);
 		setTitle("PROTECTORA");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -68,6 +71,8 @@ public class VentanaMenu extends JFrame {
 		//CREACI�N DE COMPONENTES
 		JPanel panelMenu = new JPanel();
 		panelCentro = new JPanel();
+		panelCentro.setLayout(new GridLayout(0, 2));
+		JScrollPane scrollPanelCentro = new JScrollPane(panelCentro);
 		JPanel panelAbajo = new JPanel();
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -106,7 +111,9 @@ public class VentanaMenu extends JFrame {
 		
 		//A�ADIR LOS COMPONENTES A LOS PANELES
 		contentPane.add(panelMenu, BorderLayout.NORTH);
-		contentPane.add(panelCentro, BorderLayout.CENTER);
+		//contentPane.add(panelCentro, BorderLayout.CENTER);
+		contentPane.add(scrollPanelCentro, BorderLayout.CENTER);
+		//panelCentro.setLayout(new GridLayout(0, 3, 0, 0));
 		contentPane.add(panelAbajo, BorderLayout.SOUTH);
 		
 		panelMenu.add(menuBar);
@@ -138,7 +145,7 @@ public class VentanaMenu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				panelCentro.removeAll(); //Para eliminar todos los componentes que haya en el panelCentro y no se solapen
 				//panelCentro.add(new PanelPerros());
-				panelCentro.setLayout(new GridLayout(0, 3));
+				//panelCentro.setLayout(new GridLayout(0, 2));
 				con = BD.initBD("BaseDatos.db");
 				ArrayList<Perros> alPerros = BD.obtenerPerros(con);
 				System.out.println(alPerros.size());
