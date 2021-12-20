@@ -68,7 +68,7 @@ public class VentanaMenu extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		//CREACIÓN DE COMPONENTES
+		//CREACIï¿½N DE COMPONENTES
 		JPanel panelMenu = new JPanel();
 		panelCentro = new JPanel();
 		panelCentro.setLayout(new GridLayout(0, 2));
@@ -107,7 +107,7 @@ public class VentanaMenu extends JFrame {
 		JMenu mnQS = new JMenu("Quienes Somos");
 		mnQS.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
-		//AÑADIR LOS COMPONENTES A LOS PANELES
+		//Aï¿½ADIR LOS COMPONENTES A LOS PANELES
 		contentPane.add(panelMenu, BorderLayout.NORTH);
 		//contentPane.add(panelCentro, BorderLayout.CENTER);
 		contentPane.add(scrollPanelCentro, BorderLayout.CENTER);
@@ -141,14 +141,15 @@ public class VentanaMenu extends JFrame {
 				con = BD.initBD("BaseDatos.db");
 				ArrayList<Perros> alPerros = BD.obtenerPerros(con);
 //				System.out.println(alPerros.size());
-				for(Perros p: alPerros) {
+				//for(Perros p: alPerros) {
 //					System.out.println(p.getRutaFoto());
 //					ImageIcon im = new ImageIcon(p.getRutaFoto());
 //					im.setDescription(p.getRutaFoto());
 //					JLabel lbl = new JLabel(im);
 //					panelCentro.add(lbl);
-					panelCentro.add(new PanelPerros(p));
-				}
+				//	panelCentro.add(new PanelPerros(p));
+				//}
+				cargarPerros(alPerros,0);
 				BD.closeBD();
 				panelCentro.updateUI();
 				btnComprar.setVisible(false);
@@ -231,7 +232,7 @@ public class VentanaMenu extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Desde aquí accederemos a la ventana comprar
+				// Desde aquï¿½ accederemos a la ventana comprar
 				
 			}
 		});
@@ -246,5 +247,12 @@ public class VentanaMenu extends JFrame {
 		});
 		
 		setVisible(true);
+	}
+	
+	private void cargarPerros(ArrayList<Perros> perros, int i) {
+		if(i<perros.size()) {
+			panelCentro.add(new PanelPerros(perros.get(i)));
+			cargarPerros(perros, i+1);
+		}
 	}
 }
