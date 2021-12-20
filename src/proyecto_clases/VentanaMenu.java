@@ -107,7 +107,7 @@ public class VentanaMenu extends JFrame {
 		JMenu mnQS = new JMenu("Quienes Somos");
 		mnQS.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
-		//Aï¿½ADIR LOS COMPONENTES A LOS PANELES
+		//AÑADIR LOS COMPONENTES A LOS PANELES
 		contentPane.add(panelMenu, BorderLayout.NORTH);
 		//contentPane.add(panelCentro, BorderLayout.CENTER);
 		contentPane.add(scrollPanelCentro, BorderLayout.CENTER);
@@ -232,7 +232,7 @@ public class VentanaMenu extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Desde aquï¿½ accederemos a la ventana comprar
+				// Desde aquí accederemos a la ventana comprar
 				
 			}
 		});
@@ -249,6 +249,11 @@ public class VentanaMenu extends JFrame {
 		setVisible(true);
 	}
 	
+	/**
+	 * Método recursivo para recorrer el ArrayList de Perros
+	 * @param perros <- ArrayList que recorremos para cargar los Perros
+	 * @param i <- Entero que utilizamos para recorrer el ArrayList
+	 */
 	private void cargarPerros(ArrayList<Perros> perros, int i) {
 		if(i<perros.size()) {
 			panelCentro.add(new PanelPerros(perros.get(i)));

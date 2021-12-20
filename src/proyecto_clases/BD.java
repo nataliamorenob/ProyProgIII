@@ -10,8 +10,7 @@ import java.util.ArrayList;
 public class BD {
 	private static Connection con;
 	
-	//MÃ©todo que establece la conexiÃ³n con la BBDD
-	
+	//Método que establece la conexión con la BBDD
 	public static Connection initBD(String nombreBD ) {
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -27,8 +26,7 @@ public class BD {
 		
 	}
 	
-	//MÃ©todo que cierra la conexiÃ³n con la BBDD
-	
+	//Método que cierra la conexión con la BBDD
 	public static void closeBD() {
 		if(con!=null) {
 			try {
@@ -72,8 +70,15 @@ public class BD {
 	}
 	
 	
-	
-	//xq es int? X LO QUE DEVUELVE--->0 SI NO EXISTE, 1 SI EXISTE PERO CONTRA NO CORRECTO, 2 SI CONTRA Y USUARIO CORRECTOS
+	/**
+	 * Método que devuelve un valor entero dependiendo de si el usuario existe con la contraseña pasada por parámetro
+	 * @param usuario <- el nick del usuario con el que se registrará
+	 * @param contrasenia <- la contraseña con la que el usuario se registra
+	 * @return 
+	 * -  0 si no exite dicho usuario
+	 * -  1 si existe el usuario pero la contraseña no es correcta
+	 * -  2 si el usuario existe y la contraseña es correcta
+	 */
 	public static int cogerUsuario(String usuario, String contrasenia){
 		String resolucion="SELECT contrasenia FROM Usuario WHERE usuario ='"+usuario+"'";
 		java.sql.Statement stat=null;
@@ -104,13 +109,14 @@ public class BD {
 						}
 					}
 				}
-			
-		
-	
-		return resultado;
-		
-		
+		return resultado;	
 	}
+	
+	/**
+	 * Método para añadir un nuevo usuario a la BBDD
+	 * @param usuario  <- el nick del usuario con el que se registrará 
+	 * @param contrasenia <- la contraseña con la que el usuario se registra
+	 */
 	public static void anyadirUsuario(String usuario, String contrasenia ) {
 		String resolucion="INSERT INTO Usuario VALUES('"+usuario+"','"+contrasenia+"')";
 		java.sql.Statement stat=null;

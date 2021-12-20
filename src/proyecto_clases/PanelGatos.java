@@ -44,35 +44,35 @@ public class PanelGatos extends JPanel {
 		panelDerecha.setPreferredSize(new Dimension(200, 200));
 		
 		JLabel lblNombre = new JLabel("Nombre: "+g.getNombre());
-		lblNombre.setFont(new Font("Baskerville Old Face", Font.PLAIN, 11));
+		lblNombre.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblNombre);
 		
 		JLabel lblEdad = new JLabel("Edad: "+g.getEdad());
-		lblEdad.setFont(new Font("Baskerville Old Face", Font.PLAIN, 11));
+		lblEdad.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblEdad);
 		
 		JLabel lblSexo = new JLabel("Sexo: "+g.getSexo());
-		lblSexo.setFont(new Font("Baskerville Old Face", Font.PLAIN, 11));
+		lblSexo.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblSexo);
 		
 		JLabel lblPeso = new JLabel("Peso: "+g.getPeso());
-		lblPeso.setFont(new Font("Baskerville Old Face", Font.PLAIN, 11));
+		lblPeso.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblPeso);
 		
 		JLabel lblCaracteristica = new JLabel("Carac: "+g.getCaracteristicas());
-		lblCaracteristica.setFont(new Font("Baskerville Old Face", Font.PLAIN, 11));
+		lblCaracteristica.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblCaracteristica);
 		
 		JLabel lblTiempoAdopcion = new JLabel("Tiempo: "+g.getTiempoEnAdopcion());
-		lblTiempoAdopcion.setFont(new Font("Baskerville Old Face", Font.PLAIN, 11));
+		lblTiempoAdopcion.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblTiempoAdopcion);
 		
 		JLabel lblLocalizacion = new JLabel("Localización: "+g.getLocalizacion());
-		lblLocalizacion.setFont(new Font("Baskerville Old Face", Font.PLAIN, 11));
+		lblLocalizacion.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblLocalizacion);
 		
 		JLabel lblColores = new JLabel("Colores: "+g.getColores());
-		lblColores.setFont(new Font("Baskerville Old Face", Font.PLAIN, 11));
+		lblColores.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblColores);
 		
 		JPanel panelCentro = new JPanel();
