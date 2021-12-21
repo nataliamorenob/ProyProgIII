@@ -26,7 +26,9 @@ import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Taskbar.State;
+import java.awt.Toolkit;
 
 public class VentanaMenu extends JFrame { 
 
@@ -68,7 +70,7 @@ public class VentanaMenu extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		//CREACIï¿½N DE COMPONENTES
+		//CREACIÓN DE COMPONENTES
 		JPanel panelMenu = new JPanel();
 		panelCentro = new JPanel();
 		panelCentro.setLayout(new GridLayout(0, 2));
