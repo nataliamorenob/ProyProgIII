@@ -29,6 +29,7 @@ public class VentanaInicioSesion extends JFrame {
 	private JButton btnExit, btnIniciarSesion, btnRegistrarse;
 	private JLabel lblContrasenia, lblUsuario;
 	private JPasswordField passwordFieldContrasenia;
+	private JFrame ventanaInicioSesion;
 	
 	/**
 	 * Launch the application.
@@ -54,6 +55,7 @@ public class VentanaInicioSesion extends JFrame {
 		BD.closeBD();
 		ImageIcon im = new ImageIcon("FOTOS/logo.jpg");
 		this.setIconImage(im.getImage());
+		ventanaInicioSesion = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setTitle("VENTANA INICIO SESION");
@@ -117,16 +119,14 @@ public class VentanaInicioSesion extends JFrame {
 						
 					}else {
 						JOptionPane.showMessageDialog(null, "Bienvenido");
-						
+						//Una vez se haya registrado correctamente accederemos a la VentanaMenu
+						new VentanaMenu();
+						ventanaInicioSesion.setVisible(false);
 					}
-					
 					BD.closeBD();
 				}
 				textFieldUsuario.setText("");
 				passwordFieldContrasenia.setText("");
-				
-				
-				
 			}
 		});
 		
@@ -154,7 +154,6 @@ public class VentanaInicioSesion extends JFrame {
 				textFieldUsuario.setText("");
 				passwordFieldContrasenia.setText("");
 			}
-		
 		});
 		
 		setVisible(true);
