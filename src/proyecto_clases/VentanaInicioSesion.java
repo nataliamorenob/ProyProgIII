@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import com.sun.jdi.connect.spi.Connection;
 
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -51,10 +52,11 @@ public class VentanaInicioSesion extends JFrame {
 	public VentanaInicioSesion() {
 		BD.initBD("BaseDatos.db");
 		BD.closeBD();
-		
+		ImageIcon im = new ImageIcon("FOTOS/logo.jpg");
+		this.setIconImage(im.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		setTitle("VENTANA INICIO SESIÓN");
+		setTitle("VENTANA INICIO SESIï¿½N");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -66,7 +68,7 @@ public class VentanaInicioSesion extends JFrame {
 		JButton btnExit = new JButton("Exit");
 		panelSur.add(btnExit);
 		
-		JButton btnIniciarSesion = new JButton("Iniciar sesión");
+		JButton btnIniciarSesion = new JButton("Iniciar sesiï¿½n");
 		panelSur.add(btnIniciarSesion);
 		
 		JButton btnRegistrarse = new JButton("Crear cuenta");
@@ -83,7 +85,7 @@ public class VentanaInicioSesion extends JFrame {
 		panelCentro.add(textFieldUsuario);
 		textFieldUsuario.setColumns(10);
 		
-		JLabel lblContrasenia = new JLabel("Contraseña:");
+		JLabel lblContrasenia = new JLabel("Contraseï¿½a:");
 		panelCentro.add(lblContrasenia);
 		
 		passwordFieldContrasenia = new JPasswordField();
@@ -107,11 +109,11 @@ public class VentanaInicioSesion extends JFrame {
 					BD.initBD("BaseDatos.db"); 
 					int result=BD.cogerUsuario(usuario, contrasenia);
 					if(result==0) {
-						JOptionPane.showMessageDialog(null, "Aún no te has registrado");
+						JOptionPane.showMessageDialog(null, "Aï¿½n no te has registrado");
 						btnRegistrarse.setEnabled(true);
 					
 					}else if(result==1) {
-						JOptionPane.showMessageDialog(null, "La contraseña es incorrecta");
+						JOptionPane.showMessageDialog(null, "La contraseï¿½a es incorrecta");
 						
 					}else {
 						JOptionPane.showMessageDialog(null, "Bienvenido");
