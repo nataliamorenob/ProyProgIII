@@ -59,6 +59,8 @@ public class VentanaMenu extends JFrame {
 
 		con=BD.initBD("BaseDatos.db");
 		BD.crearTablas(con);
+		ImageIcon im = new ImageIcon("FOTOS/logo.jpg");
+		this.setIconImage(im.getImage());
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
 		setExtendedState(MAXIMIZED_BOTH);
