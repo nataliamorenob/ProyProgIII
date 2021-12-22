@@ -40,7 +40,7 @@ public class BD {
 	public static void crearTablas(Connection con) {
  		String sent1 = "CREATE TABLE IF NOT EXISTS Perros(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, tiempoEnAdopcion Integer, localizacion String, colores String,rutaFoto String)";
 		String sent2 = "CREATE TABLE IF NOT EXISTS Gatos(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, tiempoEnAdopcion Integer, localizacion String, colores String,rutaFoto String)";
-		String sent3 = "CREATE TABLE IF NOT EXISTS Otros(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, estimacionAnyo Integer, peligroExtincion boolean, rutaFoto String)";
+		String sent3 = "CREATE TABLE IF NOT EXISTS Otros(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, peligroExtincion boolean, rutaFoto String)";
 		String sent4 = "CREATE TABLE IF NOT EXISTS Alimentos(nombre String, precio Integer, animal_dirigido String, rutaFoto String)";
 		String sent5 = "CREATE TABLE IF NOT EXISTS Accesorios(nombre String, precio Integer, animal_dirigido String, rutaFoto String)";
 		String sent6 = "CREATE TABLE IF NOT EXISTS Usuario(usuario String, contrasenia String)";
@@ -201,6 +201,15 @@ public class BD {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		return alGatos;
 	}
@@ -219,15 +228,23 @@ public class BD {
 				String sexo = rs.getString("SEXO");
 				Integer peso =rs.getInt("PESO");
 				String caracteristicas = rs.getString("CARACTERISTICAS");
-				Integer estimacionanyo = rs.getInt("ESTIMACIONANYO");
 				Boolean peligroExtincion = rs.getBoolean("PELIGROEXTINCION");
 				String rutaFoto = rs.getString("rutaFoto");
-				o = new Otros(nombre, edad, sexo, peso, caracteristicas, estimacionanyo, peligroExtincion, rutaFoto);
+				o = new Otros(nombre, edad, sexo, peso, caracteristicas, peligroExtincion, rutaFoto);
 				alOtros.add(o);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		return alOtros;
 	}

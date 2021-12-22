@@ -179,7 +179,12 @@ public class VentanaMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelCentro.removeAll(); 
-				panelCentro.add(new PanelOtros());
+				con = BD.initBD("BaseDatos.db");
+				ArrayList<Otros> alOtros = BD.obtenerOtros(con);
+				for(Otros o: alOtros) {
+					panelCentro.add(new PanelOtros(o));
+				}
+				BD.closeBD();
 				panelCentro.updateUI();
 				btnComprar.setVisible(false);
 			}
