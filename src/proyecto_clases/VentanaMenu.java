@@ -230,6 +230,7 @@ public class VentanaMenu extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				// Desde aqui accederemos a la ventana de animales reservados
 
 				
@@ -244,17 +245,24 @@ public class VentanaMenu extends JFrame {
 				// Desde aqu� accederemos a la ventana comprar
 				
 
+
+				//Desde aqui accederemos a la ventana de animales reservados
+
 				new VentanaReservas();
+
 				ventanaMenu.setVisible(false);
 
+
+				ventanaMenu.setVisible(false);	
+
 			}
-		});
+		});		
 		
 		btnCarrito.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Accedemos a la ventana de las compras que deseamos hacer
+				//Accedemos a la ventana de las compras que deseamos hacer
 				new VentanaCesta();
 				ventanaMenu.setVisible(false);
 			}
@@ -265,11 +273,16 @@ public class VentanaMenu extends JFrame {
 	
 	/**
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * M�todo recursivo para recorrer el ArrayList de Perros
 	 * @param perros <- ArrayList que recorremos para cargar los Perros
 =======
 	 * M�todo recursivo para recorrer el ArrayList de Perros
 	 * @param perros <- ArrayList de tipo Perros que recorremos para cargar todos los Perros
+>>>>>>> branch 'master' of https://github.com/nataliamorenob/ProyProgIII.git
+=======
+	 * M�todo recursivo para recorrer el ArrayList de Perros
+	 * @param perros <- ArrayList que recorremos para cargar los Perros
 >>>>>>> branch 'master' of https://github.com/nataliamorenob/ProyProgIII.git
 	 * @param i <- Entero que utilizamos para recorrer el ArrayList
 	 */

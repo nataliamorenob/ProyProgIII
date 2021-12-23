@@ -9,9 +9,11 @@ import java.util.ArrayList;
 
 public class BD {
 	private static Connection con;
+
 	
 
 	//M�todo que establece la conexi�n con la BBDD
+
 
 	/**
 	 * M�todo que establece la conexi�n con la BBDD
@@ -33,9 +35,11 @@ public class BD {
 		return con;
 		
 	}
+
 	
 
 	//M�todo que cierra la conexi�n con la BBDD
+
 
 	/**
 	 * M�todo que cierra la conexi�n con la BBDD
