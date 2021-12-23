@@ -10,8 +10,7 @@ import java.util.ArrayList;
 public class BD {
 	private static Connection con;
 	
-	//MÃ©todo que establece la conexiÃ³n con la BBDD
-	
+	//Método que establece la conexión con la BBDD
 	public static Connection initBD(String nombreBD ) {
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -27,8 +26,7 @@ public class BD {
 		
 	}
 	
-	//MÃ©todo que cierra la conexiÃ³n con la BBDD
-	
+	//Método que cierra la conexión con la BBDD
 	public static void closeBD() {
 		if(con!=null) {
 			try {
@@ -42,7 +40,7 @@ public class BD {
 	public static void crearTablas(Connection con) {
  		String sent1 = "CREATE TABLE IF NOT EXISTS Perros(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, tiempoEnAdopcion Integer, localizacion String, colores String,rutaFoto String)";
 		String sent2 = "CREATE TABLE IF NOT EXISTS Gatos(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, tiempoEnAdopcion Integer, localizacion String, colores String,rutaFoto String)";
-		String sent3 = "CREATE TABLE IF NOT EXISTS Otros(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, estimacionAnyo Integer, peligroExtincion boolean, rutaFoto String)";
+		String sent3 = "CREATE TABLE IF NOT EXISTS Otros(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, peligroExtincion boolean, rutaFoto String)";
 		String sent4 = "CREATE TABLE IF NOT EXISTS Alimentos(nombre String, precio Integer, animal_dirigido String, rutaFoto String)";
 		String sent5 = "CREATE TABLE IF NOT EXISTS Accesorios(nombre String, precio Integer, animal_dirigido String, rutaFoto String)";
 		String sent6 = "CREATE TABLE IF NOT EXISTS Usuario(usuario String, contrasenia String)";
@@ -72,8 +70,15 @@ public class BD {
 	}
 	
 	
-	
-	//xq es int? X LO QUE DEVUELVE--->0 SI NO EXISTE, 1 SI EXISTE PERO CONTRA NO CORRECTO, 2 SI CONTRA Y USUARIO CORRECTOS
+	/**
+	 * Método que devuelve un valor entero dependiendo de si el usuario existe con la contraseña pasada por parámetro
+	 * @param usuario <- el nick del usuario con el que se registrará
+	 * @param contrasenia <- la contraseña con la que el usuario se registra
+	 * @return 
+	 * -  0 si no exite dicho usuario
+	 * -  1 si existe el usuario pero la contraseña no es correcta
+	 * -  2 si el usuario existe y la contraseña es correcta
+	 */
 	public static int cogerUsuario(String usuario, String contrasenia){
 		String resolucion="SELECT contrasenia FROM Usuario WHERE usuario ='"+usuario+"'";
 		java.sql.Statement stat=null;
@@ -104,13 +109,14 @@ public class BD {
 						}
 					}
 				}
-			
-		
-	
-		return resultado;
-		
-		
+		return resultado;	
 	}
+	
+	/**
+	 * Método para añadir un nuevo usuario a la BBDD
+	 * @param usuario  <- el nick del usuario con el que se registrará 
+	 * @param contrasenia <- la contraseña con la que el usuario se registra
+	 */
 	public static void anyadirUsuario(String usuario, String contrasenia ) {
 		String resolucion="INSERT INTO Usuario VALUES('"+usuario+"','"+contrasenia+"')";
 		java.sql.Statement stat=null;
@@ -195,6 +201,15 @@ public class BD {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		return alGatos;
 	}
@@ -213,15 +228,23 @@ public class BD {
 				String sexo = rs.getString("SEXO");
 				Integer peso =rs.getInt("PESO");
 				String caracteristicas = rs.getString("CARACTERISTICAS");
-				Integer estimacionanyo = rs.getInt("ESTIMACIONANYO");
 				Boolean peligroExtincion = rs.getBoolean("PELIGROEXTINCION");
 				String rutaFoto = rs.getString("rutaFoto");
-				o = new Otros(nombre, edad, sexo, peso, caracteristicas, estimacionanyo, peligroExtincion, rutaFoto);
+				o = new Otros(nombre, edad, sexo, peso, caracteristicas, peligroExtincion, rutaFoto);
 				alOtros.add(o);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		return alOtros;
 	}

@@ -13,10 +13,12 @@ import javax.swing.border.EmptyBorder;
 import com.sun.jdi.connect.spi.Connection;
 
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import java.awt.Toolkit;
 
 public class VentanaInicioSesion extends JFrame {
 	
@@ -27,6 +29,7 @@ public class VentanaInicioSesion extends JFrame {
 	private JButton btnExit, btnIniciarSesion, btnRegistrarse;
 	private JLabel lblContrasenia, lblUsuario;
 	private JPasswordField passwordFieldContrasenia;
+	private JFrame ventanaInicioSesion;
 	
 	/**
 	 * Launch the application.
@@ -50,10 +53,12 @@ public class VentanaInicioSesion extends JFrame {
 	public VentanaInicioSesion() {
 		BD.initBD("BaseDatos.db");
 		BD.closeBD();
-		
+		ImageIcon im = new ImageIcon("FOTOS/logo.jpg");
+		this.setIconImage(im.getImage());
+		ventanaInicioSesion = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		setTitle("VENTANA INICIO SESIÓN");
+		setTitle("VENTANA INICIO SESION");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -65,7 +70,7 @@ public class VentanaInicioSesion extends JFrame {
 		JButton btnExit = new JButton("Exit");
 		panelSur.add(btnExit);
 		
-		JButton btnIniciarSesion = new JButton("Iniciar sesión");
+		JButton btnIniciarSesion = new JButton("Iniciar sesion");
 		panelSur.add(btnIniciarSesion);
 		
 		JButton btnRegistrarse = new JButton("Crear cuenta");
@@ -106,7 +111,7 @@ public class VentanaInicioSesion extends JFrame {
 					BD.initBD("BaseDatos.db"); 
 					int result=BD.cogerUsuario(usuario, contrasenia);
 					if(result==0) {
-						JOptionPane.showMessageDialog(null, "Aún no te has registrado");
+						JOptionPane.showMessageDialog(null, "Aun no te has registrado");
 						btnRegistrarse.setEnabled(true);
 					
 					}else if(result==1) {
@@ -114,16 +119,14 @@ public class VentanaInicioSesion extends JFrame {
 						
 					}else {
 						JOptionPane.showMessageDialog(null, "Bienvenido");
-						
+						//Una vez se haya registrado correctamente accederemos a la VentanaMenu
+						new VentanaMenu();
+						ventanaInicioSesion.setVisible(false);
 					}
-					
 					BD.closeBD();
 				}
 				textFieldUsuario.setText("");
 				passwordFieldContrasenia.setText("");
-				
-				
-				
 			}
 		});
 		
@@ -151,23 +154,7 @@ public class VentanaInicioSesion extends JFrame {
 				textFieldUsuario.setText("");
 				passwordFieldContrasenia.setText("");
 			}
-		
 		});
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		setVisible(true);
 	}

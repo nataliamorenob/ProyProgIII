@@ -26,7 +26,9 @@ import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Taskbar.State;
+import java.awt.Toolkit;
 
 public class VentanaMenu extends JFrame { 
 
@@ -57,6 +59,8 @@ public class VentanaMenu extends JFrame {
 
 		con=BD.initBD("BaseDatos.db");
 		BD.crearTablas(con);
+		ImageIcon im = new ImageIcon("FOTOS/logo.jpg");
+		this.setIconImage(im.getImage());
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
 		setExtendedState(MAXIMIZED_BOTH);
@@ -141,14 +145,15 @@ public class VentanaMenu extends JFrame {
 				con = BD.initBD("BaseDatos.db");
 				ArrayList<Perros> alPerros = BD.obtenerPerros(con);
 //				System.out.println(alPerros.size());
-				for(Perros p: alPerros) {
+				//for(Perros p: alPerros) {
 //					System.out.println(p.getRutaFoto());
 //					ImageIcon im = new ImageIcon(p.getRutaFoto());
 //					im.setDescription(p.getRutaFoto());
 //					JLabel lbl = new JLabel(im);
 //					panelCentro.add(lbl);
-					panelCentro.add(new PanelPerros(p));
-				}
+				//	panelCentro.add(new PanelPerros(p));
+				//}
+				cargarPerros(alPerros,0);
 				BD.closeBD();
 				panelCentro.updateUI();
 				btnComprar.setVisible(false);
@@ -174,7 +179,12 @@ public class VentanaMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelCentro.removeAll(); 
-				panelCentro.add(new PanelOtros());
+				con = BD.initBD("BaseDatos.db");
+				ArrayList<Otros> alOtros = BD.obtenerOtros(con);
+				for(Otros o: alOtros) {
+					panelCentro.add(new PanelOtros(o));
+				}
+				BD.closeBD();
 				panelCentro.updateUI();
 				btnComprar.setVisible(false);
 			}
@@ -246,5 +256,17 @@ public class VentanaMenu extends JFrame {
 		});
 		
 		setVisible(true);
+	}
+	
+	/**
+	 * Método recursivo para recorrer el ArrayList de Perros
+	 * @param perros <- ArrayList que recorremos para cargar los Perros
+	 * @param i <- Entero que utilizamos para recorrer el ArrayList
+	 */
+	private void cargarPerros(ArrayList<Perros> perros, int i) {
+		if(i<perros.size()) {
+			panelCentro.add(new PanelPerros(perros.get(i)));
+			cargarPerros(perros, i+1);
+		}
 	}
 }
