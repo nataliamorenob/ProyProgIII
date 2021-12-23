@@ -7,6 +7,7 @@ import java.beans.PropertyChangeListener;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import javax.swing.AbstractButton;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -34,6 +35,7 @@ public class VentanaMenu extends JFrame {
 
 	private JPanel contentPane, panelCentro;
 	private Connection con;
+	private JFrame ventanaMenu;
 
 
 	/**
@@ -61,6 +63,7 @@ public class VentanaMenu extends JFrame {
 		BD.crearTablas(con);
 		ImageIcon im = new ImageIcon("FOTOS/logo.jpg");
 		this.setIconImage(im.getImage());
+		ventanaMenu = this;
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
 		setExtendedState(MAXIMIZED_BOTH);
@@ -81,11 +84,10 @@ public class VentanaMenu extends JFrame {
 		
 		JMenuBar menuBar = new JMenuBar();
 		JButton btnReserva = new JButton("Reservas");
+		JButton btnComprar=new JButton("Comprar");
 		btnReserva.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		JButton btnCarrito = new JButton("Cesta");
 		btnCarrito.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
-		JButton btnComprar = new JButton("Comprar");
-		btnComprar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		
 		JMenu mnAnimales = new JMenu("Animales");
 		mnAnimales.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
@@ -105,7 +107,7 @@ public class VentanaMenu extends JFrame {
 		JMenu mnAlimentos = new JMenu("Alimentos");
 		mnAlimentos.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
-		JMenu mnLocalizacion = new JMenu("Localizaci\u00F3n");
+		JMenu mnLocalizacion = new JMenu("Localizacion");
 		mnLocalizacion.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
 		JMenu mnQS = new JMenu("Quienes Somos");
@@ -130,8 +132,6 @@ public class VentanaMenu extends JFrame {
 		
 		panelAbajo.add(btnReserva);
 		panelAbajo.add(btnCarrito);
-		panelAbajo.add(btnComprar); 
-		btnComprar.setVisible(false);
 
 		 
 		
@@ -156,7 +156,6 @@ public class VentanaMenu extends JFrame {
 				cargarPerros(alPerros,0);
 				BD.closeBD();
 				panelCentro.updateUI();
-				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -171,7 +170,6 @@ public class VentanaMenu extends JFrame {
 				}
 				BD.closeBD();
 				panelCentro.updateUI();
-				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -186,7 +184,6 @@ public class VentanaMenu extends JFrame {
 				}
 				BD.closeBD();
 				panelCentro.updateUI();
-				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -196,7 +193,6 @@ public class VentanaMenu extends JFrame {
 				panelCentro.removeAll(); 
 				panelCentro.add(new PanelLocalizacion());
 				panelCentro.updateUI();
-				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -206,7 +202,6 @@ public class VentanaMenu extends JFrame {
 				panelCentro.removeAll(); 
 				panelCentro.add(new PanelQuienesSomos());
 				panelCentro.updateUI();
-				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -220,7 +215,6 @@ public class VentanaMenu extends JFrame {
 				}
 				BD.closeBD();
 				panelCentro.updateUI();
-				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -229,7 +223,6 @@ public class VentanaMenu extends JFrame {
 				panelCentro.removeAll(); 
 				panelCentro.add(new PanelAlimentos());
 				panelCentro.updateUI();
-				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -238,9 +231,11 @@ public class VentanaMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Desde aqui accederemos a la ventana de animales reservados
+
 				
 			}
 		});
+		
 		
 		btnComprar.addActionListener(new ActionListener() {
 			
@@ -248,6 +243,10 @@ public class VentanaMenu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// Desde aqu� accederemos a la ventana comprar
 				
+
+				new VentanaReservas();
+				ventanaMenu.setVisible(false);
+
 			}
 		});
 		
@@ -256,7 +255,8 @@ public class VentanaMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Accedemos a la ventana de las compras que deseamos hacer
-				
+				new VentanaCesta();
+				ventanaMenu.setVisible(false);
 			}
 		});
 		
@@ -264,8 +264,13 @@ public class VentanaMenu extends JFrame {
 	}
 	
 	/**
+<<<<<<< HEAD
 	 * M�todo recursivo para recorrer el ArrayList de Perros
 	 * @param perros <- ArrayList que recorremos para cargar los Perros
+=======
+	 * M�todo recursivo para recorrer el ArrayList de Perros
+	 * @param perros <- ArrayList de tipo Perros que recorremos para cargar todos los Perros
+>>>>>>> branch 'master' of https://github.com/nataliamorenob/ProyProgIII.git
 	 * @param i <- Entero que utilizamos para recorrer el ArrayList
 	 */
 	private void cargarPerros(ArrayList<Perros> perros, int i) {

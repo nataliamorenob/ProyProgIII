@@ -88,9 +88,6 @@ public class PanelPerros extends JPanel {
 		ImageIcon imagenConDimensiones = new ImageIcon(im.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT));
 		lbLabelFoto.setIcon(imagenConDimensiones); 
 		panelCentro.add(lbLabelFoto);
-
 	}
-	
-	
 }
 

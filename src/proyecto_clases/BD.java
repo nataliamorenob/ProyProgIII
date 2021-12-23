@@ -10,7 +10,15 @@ import java.util.ArrayList;
 public class BD {
 	private static Connection con;
 	
+
 	//M�todo que establece la conexi�n con la BBDD
+
+	/**
+	 * M�todo que establece la conexi�n con la BBDD
+	 * @param nombreBD <- El nombre de la BBDD
+	 * @return con <- La conexi�n con la BBDD
+	 */
+
 	public static Connection initBD(String nombreBD ) {
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -26,7 +34,13 @@ public class BD {
 		
 	}
 	
+
 	//M�todo que cierra la conexi�n con la BBDD
+
+	/**
+	 * M�todo que cierra la conexi�n con la BBDD
+	 */
+
 	public static void closeBD() {
 		if(con!=null) {
 			try {
@@ -37,6 +51,7 @@ public class BD {
 			}
 		}
 	}
+	
 	public static void crearTablas(Connection con) {
  		String sent1 = "CREATE TABLE IF NOT EXISTS Perros(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, tiempoEnAdopcion Integer, localizacion String, colores String,rutaFoto String)";
 		String sent2 = "CREATE TABLE IF NOT EXISTS Gatos(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, tiempoEnAdopcion Integer, localizacion String, colores String,rutaFoto String)";
@@ -138,6 +153,11 @@ public class BD {
 		}
 	}
 	
+	/**
+	 * M�todo que devuelve un ArrayList de todos los perros que hay en la BBDD
+	 * @param con <- La conexi�n con la BBDD
+	 * @return alPerros <- El ArrayList que contiene los perros
+	 */
 	public static ArrayList<Perros> obtenerPerros(Connection con) {
 		ArrayList<Perros> alPerros=new ArrayList<>();
 		Perros p = null;
@@ -177,6 +197,11 @@ public class BD {
 		return alPerros;
 	}
 	
+	/**
+	 * M�todo que devuelve un ArrayList de todos los gatos que hay en la BBDD
+	 * @param con <- La conexi�n con la BBDD
+	 * @return alGatos <- El ArrayList con todos los gatos
+	 */
 	public static ArrayList<Gatos> obtenerGatos(Connection con){
 		ArrayList<Gatos> alGatos=new ArrayList<>();
 		Gatos g = null;
@@ -214,6 +239,11 @@ public class BD {
 		return alGatos;
 	}
 	
+	/**
+	 * M�todo que devuelve un ArrayList de todos los animales no adoptables (otros) que hay en la BBDD
+	 * @param con <- La conexi�n con la BBDD
+	 * @return alOtros <- El ArrayList que contiene otros
+	 */
 	public static ArrayList<Otros> obtenerOtros(Connection con){
 		ArrayList<Otros> alOtros = new ArrayList<>();
 		Otros o = null;
@@ -249,6 +279,11 @@ public class BD {
 		return alOtros;
 	}
 	
+	/**
+	 * M�todo que devuelve un ArrayList de tipo Alimentos con todos los alimentos que se encuentren en la BBDD
+	 * @param con <- Conexi�n con la base de datos
+	 * @return alAlimentos <- ArrayList que contiene todos los alimentos
+	 */
 	public static ArrayList<Alimentos> obtenerAlimentos(Connection con){
 		ArrayList<Alimentos> alAlimentos = new ArrayList<>();
 		Alimentos amt = null;
@@ -268,10 +303,24 @@ public class BD {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		return alAlimentos;
 	}
 	
+	/**
+	 * M�todo que devuelve un ArrayList de tipo Accesorios con todos los que se encuentren en la BBDD
+	 * @param con <- Conexi�n con la base de datos
+	 * @return alAccesorios <- ArrayList que contiene todos los accesorios
+	 */
 	public static ArrayList<Accesorios> obtenerAccesorios(Connection con){
 		ArrayList<Accesorios> alAccesorios = new ArrayList<>();
 		Accesorios acs = null;
@@ -291,6 +340,15 @@ public class BD {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		return alAccesorios;
 	}
