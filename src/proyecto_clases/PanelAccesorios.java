@@ -7,14 +7,17 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class PanelAccesorios extends JPanel {
-	//h
+
 	/**
 	 * Create the panel.
 	 */
@@ -23,7 +26,17 @@ public class PanelAccesorios extends JPanel {
 		
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		
+		JPanel panelSur = new JPanel();
+		add(panelSur, BorderLayout.SOUTH);
 		
+		JButton btnComprar = new JButton("COMPRAR");
+		btnComprar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
+		btnComprar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		panelSur.add(btnComprar);
 		JPanel panelDerecha = new JPanel();
 		add(panelDerecha, BorderLayout.EAST);
 		panelDerecha.setLayout(new GridLayout(8, 0, 0, 0));
