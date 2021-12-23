@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class BD {
 	private static Connection con;
 	
-	//Método que establece la conexión con la BBDD
+	//Mï¿½todo que establece la conexiï¿½n con la BBDD
 	public static Connection initBD(String nombreBD ) {
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -26,7 +26,7 @@ public class BD {
 		
 	}
 	
-	//Método que cierra la conexión con la BBDD
+	//Mï¿½todo que cierra la conexiï¿½n con la BBDD
 	public static void closeBD() {
 		if(con!=null) {
 			try {
@@ -71,13 +71,13 @@ public class BD {
 	
 	
 	/**
-	 * Método que devuelve un valor entero dependiendo de si el usuario existe con la contraseña pasada por parámetro
-	 * @param usuario <- el nick del usuario con el que se registrará
-	 * @param contrasenia <- la contraseña con la que el usuario se registra
+	 * Mï¿½todo que devuelve un valor entero dependiendo de si el usuario existe con la contraseï¿½a pasada por parï¿½metro
+	 * @param usuario <- el nick del usuario con el que se registrarï¿½
+	 * @param contrasenia <- la contraseï¿½a con la que el usuario se registra
 	 * @return 
 	 * -  0 si no exite dicho usuario
-	 * -  1 si existe el usuario pero la contraseña no es correcta
-	 * -  2 si el usuario existe y la contraseña es correcta
+	 * -  1 si existe el usuario pero la contraseï¿½a no es correcta
+	 * -  2 si el usuario existe y la contraseï¿½a es correcta
 	 */
 	public static int cogerUsuario(String usuario, String contrasenia){
 		String resolucion="SELECT contrasenia FROM Usuario WHERE usuario ='"+usuario+"'";
@@ -113,9 +113,9 @@ public class BD {
 	}
 	
 	/**
-	 * Método para añadir un nuevo usuario a la BBDD
-	 * @param usuario  <- el nick del usuario con el que se registrará 
-	 * @param contrasenia <- la contraseña con la que el usuario se registra
+	 * Mï¿½todo para aï¿½adir un nuevo usuario a la BBDD
+	 * @param usuario  <- el nick del usuario con el que se registrarï¿½ 
+	 * @param contrasenia <- la contraseï¿½a con la que el usuario se registra
 	 */
 	public static void anyadirUsuario(String usuario, String contrasenia ) {
 		String resolucion="INSERT INTO Usuario VALUES('"+usuario+"','"+contrasenia+"')";
@@ -260,7 +260,7 @@ public class BD {
 			while(rs.next()) {
 				String nombre = rs.getString("NOMBRE");
 				Integer precio = rs.getInt("PRECIO");
-				String animalDirigido = rs.getString("ANIMALDIRIGIDO");
+				String animalDirigido = rs.getString("ANIMAL_DIRIGIDO");
 				String rutaFoto = rs.getString("rutaFoto");
 				amt = new Alimentos(nombre, precio, animalDirigido, rutaFoto);
 				alAlimentos.add(amt);
@@ -283,7 +283,7 @@ public class BD {
 			while(rs.next()) {
 				String nombre = rs.getString("NOMBRE");
 				Integer precio = rs.getInt("PRECIO");
-				String animalDirigido = rs.getString("ANIMALDIRIGIDO");
+				String animalDirigido = rs.getString("ANIMAL_DIRIGIDO");
 				String rutaFoto = rs.getString("rutaFoto");
 				acs = new Accesorios(nombre, precio, animalDirigido, rutaFoto);
 				alAccesorios.add(acs);

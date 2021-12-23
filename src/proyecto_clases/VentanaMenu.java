@@ -72,7 +72,7 @@ public class VentanaMenu extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		//CREACIÓN DE COMPONENTES
+		//CREACIï¿½N DE COMPONENTES
 		JPanel panelMenu = new JPanel();
 		panelCentro = new JPanel();
 		panelCentro.setLayout(new GridLayout(0, 2));
@@ -111,7 +111,7 @@ public class VentanaMenu extends JFrame {
 		JMenu mnQS = new JMenu("Quienes Somos");
 		mnQS.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
-		//AÑADIR LOS COMPONENTES A LOS PANELES
+		//Aï¿½ADIR LOS COMPONENTES A LOS PANELES
 		contentPane.add(panelMenu, BorderLayout.NORTH);
 		//contentPane.add(panelCentro, BorderLayout.CENTER);
 		contentPane.add(scrollPanelCentro, BorderLayout.CENTER);
@@ -213,7 +213,12 @@ public class VentanaMenu extends JFrame {
 		mnAccesorios.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				panelCentro.removeAll(); 
-				panelCentro.add(new PanelAccesorios());
+				con=BD.initBD("BaseDatos.db");
+				ArrayList<Accesorios> alAccesorios=BD.obtenerAccesorios(con);
+				for(Accesorios a:alAccesorios) {
+					panelCentro.add(new PanelAccesorios(a));
+				}
+				BD.closeBD();
 				panelCentro.updateUI();
 				btnComprar.setVisible(false);
 			}
@@ -241,7 +246,7 @@ public class VentanaMenu extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Desde aquí accederemos a la ventana comprar
+				// Desde aquï¿½ accederemos a la ventana comprar
 				
 			}
 		});
@@ -259,7 +264,7 @@ public class VentanaMenu extends JFrame {
 	}
 	
 	/**
-	 * Método recursivo para recorrer el ArrayList de Perros
+	 * Mï¿½todo recursivo para recorrer el ArrayList de Perros
 	 * @param perros <- ArrayList que recorremos para cargar los Perros
 	 * @param i <- Entero que utilizamos para recorrer el ArrayList
 	 */
