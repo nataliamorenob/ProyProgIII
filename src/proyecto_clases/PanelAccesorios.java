@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class PanelAccesorios extends JPanel {
-
+	//h
 	/**
 	 * Create the panel.
 	 */
