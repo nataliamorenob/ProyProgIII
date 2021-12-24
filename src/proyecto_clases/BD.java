@@ -18,6 +18,7 @@ public class BD {
 	/**
 	 * M�todo que establece la conexi�n con la BBDD
 	 * @param nombreBD <- El nombre de la BBDD
+	 * @param b 
 	 * @return con <- La conexi�n con la BBDD
 	 */
 

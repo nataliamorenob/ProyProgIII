@@ -1,16 +1,20 @@
 package proyecto_clases;
 import java.awt.BorderLayout;
 
+
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.sun.jdi.connect.spi.Connection;
+import java.util.regex.Pattern; 
+import java.util.regex.Matcher;
 
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
@@ -49,6 +53,7 @@ public class VentanaInicioSesion extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @return 
 	 */
 	public VentanaInicioSesion() {
 		BD.initBD("BaseDatos.db");
@@ -87,7 +92,24 @@ public class VentanaInicioSesion extends JFrame {
 		panelCentro.add(textFieldUsuario);
 		textFieldUsuario.setColumns(10);
 		
-		JLabel lblContrasenia = new JLabel("Contraseña:");
+		//String RE = "[a-z]{1,8} + \\d{1,}";
+		//String codigo="hola1";
+		/*String RE = "[a-zA-Z]{5,10}";
+		Pattern patron = Pattern.compile(RE);
+
+		Matcher m = patron.matcher(textFieldUsuario.getText());
+		boolean correcto=Pattern.matches(RE, textFieldUsuario.getText());
+		if(correcto) {
+			JOptionPane.showMessageDialog(null,"El nombre de usuario es correcto");
+			
+		}else {
+			JOptionPane.showMessageDialog(null,"El nombre de usuario NO es correcto");
+		}*/
+		
+		
+		
+		
+		JLabel lblContrasenia = new JLabel("Contraseï¿½a:");
 		panelCentro.add(lblContrasenia);
 		
 		passwordFieldContrasenia = new JPasswordField();
@@ -115,7 +137,7 @@ public class VentanaInicioSesion extends JFrame {
 						btnRegistrarse.setEnabled(true);
 					
 					}else if(result==1) {
-						JOptionPane.showMessageDialog(null, "La contraseña es incorrecta");
+						JOptionPane.showMessageDialog(null, "La contraseï¿½a es incorrecta");
 						
 					}else {
 						JOptionPane.showMessageDialog(null, "Bienvenido");
