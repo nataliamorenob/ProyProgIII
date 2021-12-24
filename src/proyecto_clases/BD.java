@@ -9,8 +9,18 @@ import java.util.ArrayList;
 
 public class BD {
 	private static Connection con;
+
 	
-	//Método que establece la conexión con la BBDD
+
+	//Mï¿½todo que establece la conexiï¿½n con la BBDD
+
+
+	/**
+	 * Mï¿½todo que establece la conexiï¿½n con la BBDD
+	 * @param nombreBD <- El nombre de la BBDD
+	 * @return con <- La conexiï¿½n con la BBDD
+	 */
+
 	public static Connection initBD(String nombreBD ) {
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -25,8 +35,16 @@ public class BD {
 		return con;
 		
 	}
+
 	
-	//Método que cierra la conexión con la BBDD
+
+	//Mï¿½todo que cierra la conexiï¿½n con la BBDD
+
+
+	/**
+	 * Mï¿½todo que cierra la conexiï¿½n con la BBDD
+	 */
+
 	public static void closeBD() {
 		if(con!=null) {
 			try {
@@ -37,6 +55,7 @@ public class BD {
 			}
 		}
 	}
+	
 	public static void crearTablas(Connection con) {
  		String sent1 = "CREATE TABLE IF NOT EXISTS Perros(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, tiempoEnAdopcion Integer, localizacion String, colores String,rutaFoto String)";
 		String sent2 = "CREATE TABLE IF NOT EXISTS Gatos(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, tiempoEnAdopcion Integer, localizacion String, colores String,rutaFoto String)";
@@ -71,13 +90,13 @@ public class BD {
 	
 	
 	/**
-	 * Método que devuelve un valor entero dependiendo de si el usuario existe con la contraseña pasada por parámetro
-	 * @param usuario <- el nick del usuario con el que se registrará
-	 * @param contrasenia <- la contraseña con la que el usuario se registra
+	 * Mï¿½todo que devuelve un valor entero dependiendo de si el usuario existe con la contraseï¿½a pasada por parï¿½metro
+	 * @param usuario <- el nick del usuario con el que se registrarï¿½
+	 * @param contrasenia <- la contraseï¿½a con la que el usuario se registra
 	 * @return 
 	 * -  0 si no exite dicho usuario
-	 * -  1 si existe el usuario pero la contraseña no es correcta
-	 * -  2 si el usuario existe y la contraseña es correcta
+	 * -  1 si existe el usuario pero la contraseï¿½a no es correcta
+	 * -  2 si el usuario existe y la contraseï¿½a es correcta
 	 */
 	public static int cogerUsuario(String usuario, String contrasenia){
 		String resolucion="SELECT contrasenia FROM Usuario WHERE usuario ='"+usuario+"'";
@@ -113,9 +132,9 @@ public class BD {
 	}
 	
 	/**
-	 * Método para añadir un nuevo usuario a la BBDD
-	 * @param usuario  <- el nick del usuario con el que se registrará 
-	 * @param contrasenia <- la contraseña con la que el usuario se registra
+	 * Mï¿½todo para aï¿½adir un nuevo usuario a la BBDD
+	 * @param usuario  <- el nick del usuario con el que se registrarï¿½ 
+	 * @param contrasenia <- la contraseï¿½a con la que el usuario se registra
 	 */
 	public static void anyadirUsuario(String usuario, String contrasenia ) {
 		String resolucion="INSERT INTO Usuario VALUES('"+usuario+"','"+contrasenia+"')";
@@ -138,6 +157,11 @@ public class BD {
 		}
 	}
 	
+	/**
+	 * Mï¿½todo que devuelve un ArrayList de todos los perros que hay en la BBDD
+	 * @param con <- La conexiï¿½n con la BBDD
+	 * @return alPerros <- El ArrayList que contiene los perros
+	 */
 	public static ArrayList<Perros> obtenerPerros(Connection con) {
 		ArrayList<Perros> alPerros=new ArrayList<>();
 		Perros p = null;
@@ -177,6 +201,11 @@ public class BD {
 		return alPerros;
 	}
 	
+	/**
+	 * Mï¿½todo que devuelve un ArrayList de todos los gatos que hay en la BBDD
+	 * @param con <- La conexiï¿½n con la BBDD
+	 * @return alGatos <- El ArrayList con todos los gatos
+	 */
 	public static ArrayList<Gatos> obtenerGatos(Connection con){
 		ArrayList<Gatos> alGatos=new ArrayList<>();
 		Gatos g = null;
@@ -214,6 +243,11 @@ public class BD {
 		return alGatos;
 	}
 	
+	/**
+	 * Mï¿½todo que devuelve un ArrayList de todos los animales no adoptables (otros) que hay en la BBDD
+	 * @param con <- La conexiï¿½n con la BBDD
+	 * @return alOtros <- El ArrayList que contiene otros
+	 */
 	public static ArrayList<Otros> obtenerOtros(Connection con){
 		ArrayList<Otros> alOtros = new ArrayList<>();
 		Otros o = null;
@@ -249,6 +283,11 @@ public class BD {
 		return alOtros;
 	}
 	
+	/**
+	 * Mï¿½todo que devuelve un ArrayList de tipo Alimentos con todos los alimentos que se encuentren en la BBDD
+	 * @param con <- Conexiï¿½n con la base de datos
+	 * @return alAlimentos <- ArrayList que contiene todos los alimentos
+	 */
 	public static ArrayList<Alimentos> obtenerAlimentos(Connection con){
 		ArrayList<Alimentos> alAlimentos = new ArrayList<>();
 		Alimentos amt = null;
@@ -260,7 +299,7 @@ public class BD {
 			while(rs.next()) {
 				String nombre = rs.getString("NOMBRE");
 				Integer precio = rs.getInt("PRECIO");
-				String animalDirigido = rs.getString("ANIMALDIRIGIDO");
+				String animalDirigido = rs.getString("ANIMAL_DIRIGIDO");
 				String rutaFoto = rs.getString("rutaFoto");
 				amt = new Alimentos(nombre, precio, animalDirigido, rutaFoto);
 				alAlimentos.add(amt);
@@ -268,10 +307,24 @@ public class BD {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		return alAlimentos;
 	}
 	
+	/**
+	 * Mï¿½todo que devuelve un ArrayList de tipo Accesorios con todos los que se encuentren en la BBDD
+	 * @param con <- Conexiï¿½n con la base de datos
+	 * @return alAccesorios <- ArrayList que contiene todos los accesorios
+	 */
 	public static ArrayList<Accesorios> obtenerAccesorios(Connection con){
 		ArrayList<Accesorios> alAccesorios = new ArrayList<>();
 		Accesorios acs = null;
@@ -283,7 +336,7 @@ public class BD {
 			while(rs.next()) {
 				String nombre = rs.getString("NOMBRE");
 				Integer precio = rs.getInt("PRECIO");
-				String animalDirigido = rs.getString("ANIMALDIRIGIDO");
+				String animalDirigido = rs.getString("ANIMAL_DIRIGIDO");
 				String rutaFoto = rs.getString("rutaFoto");
 				acs = new Accesorios(nombre, precio, animalDirigido, rutaFoto);
 				alAccesorios.add(acs);
@@ -291,6 +344,15 @@ public class BD {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		return alAccesorios;
 	}
