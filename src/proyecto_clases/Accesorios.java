@@ -24,10 +24,10 @@ public class Accesorios {
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre = nombre; 
 	}
 
-	public int getPrecio() {
+	public int getPrecio() { 
 		return precio;
 	}
 
@@ -51,6 +51,5 @@ public class Accesorios {
 		this.rutaFoto = rutaFoto;
 	}
 	
-	
-	
+/*Hola*/
 }
