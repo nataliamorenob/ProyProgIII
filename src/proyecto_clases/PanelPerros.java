@@ -4,6 +4,8 @@ import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Color;
@@ -18,7 +20,9 @@ import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.awt.event.ActionEvent;
+import java.util.*;
 
 public class PanelPerros extends JPanel {
 	
@@ -36,8 +40,40 @@ public class PanelPerros extends JPanel {
 		btnReservar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		btnReservar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ArrayList <Integer> respuestas = new ArrayList<>();
+				int pregunta1 = JOptionPane.showConfirmDialog(null, "¿Ha tenido o tiene algún otro perro o mascota?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				int pregunta2 = JOptionPane.showConfirmDialog(null, "¿Se considera capaz de afrontar los gastos que conlleva tener un perro?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				int pregunta3 = JOptionPane.showConfirmDialog(null, "¿Su trabajo le requiere viajar constantemente?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				int pregunta4 = JOptionPane.showConfirmDialog(null, "¿Considera que su perro se podría adaptar a su vivienda?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				int pregunta5 = JOptionPane.showConfirmDialog(null, "¿Considera el perro podría adaptarse a su entorno?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				respuestas.add(pregunta1);
+				respuestas.add(pregunta2);
+				respuestas.add(pregunta3);
+				respuestas.add(pregunta4);
+				respuestas.add(pregunta5);
+				//YES = 0 and NO = 1
+				int contador = 0;
+				for(Integer i : respuestas) {
+					if(respuestas.get(i) == 0) {
+						contador ++;
+					}
+				}
+				if(contador >= 3) {
+					JOptionPane.showConfirmDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idóneo para la adopcion. \n Recuerde que está información se comprobará el día de la adoción", "Cuestionario previo a la adopción",JOptionPane.OK_OPTION);
+						
+				}
+				
+				else {
+					JOptionPane.showConfirmDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopción. \n Para más información contacte con nosotros. \n Gracias.", "Cuestionario previo a la adpción", JOptionPane.OK_OPTION);
+				}
+				
+					
+				
+					
+					
 				
 			}
+			
 		});
 		panelSur.add(btnReservar);
 		

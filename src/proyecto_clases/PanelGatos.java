@@ -1,10 +1,13 @@
 package proyecto_clases;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.Font;
 import java.awt.FlowLayout;
 
@@ -33,6 +36,35 @@ public class PanelGatos extends JPanel {
 		btnReservar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		btnReservar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ArrayList <Integer> respuestas = new ArrayList<>();
+				int pregunta1 = JOptionPane.showConfirmDialog(null, "¿Ha tenido o tiene algún otro gato o mascota?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				int pregunta2 = JOptionPane.showConfirmDialog(null, "¿Se considera capaz de afrontar los gastos que conlleva tener un gato?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				int pregunta3 = JOptionPane.showConfirmDialog(null, "¿Su trabajo le requiere viajar constantemente?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				int pregunta4 = JOptionPane.showConfirmDialog(null, "¿Considera que su gato se podría adaptar a su vivienda?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				int pregunta5 = JOptionPane.showConfirmDialog(null, "¿Considera que podría proporcionar a su gato un entorno seguro?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				respuestas.add(pregunta1);
+				respuestas.add(pregunta2);
+				respuestas.add(pregunta3);
+				respuestas.add(pregunta4);
+				respuestas.add(pregunta5);
+				//YES = 0 and NO = 1
+				int contador = 0;
+				for(Integer i : respuestas) {
+					if(respuestas.get(i) == 0) {
+						contador ++;
+					}
+				}
+				if(contador >= 3) {
+					JOptionPane.showConfirmDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idóneo para la adopción. \n Recuerde que está información se comprobará el día de la adoción", "Cuestionario previo a la adopción",JOptionPane.OK_OPTION);
+						
+				}
+				
+				else {
+					JOptionPane.showConfirmDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopción. \n Para más información contacte con nosotros. \n Gracias.", "Cuestionario previo a la adopción", JOptionPane.OK_OPTION);
+				}
+				
+					
+				
 				
 			}
 		});
