@@ -1,0 +1,12 @@
+El perro reservado ha sido:Panda
+Datos: 
+Edad: 5, Sexo: M, Peso: 7, Colores: Blanco y negro
+Caracteristicas: Enérgico y sensible
+Tiempo en adopcion: 3
+Localizacion: Vitoria
+El perro reservado ha sido:Boira
+Datos: 
+Edad: 14, Sexo: F, Peso: 19, Colores: Marrón y negro
+Caracteristicas: Docil y curiosa
+Tiempo en adopcion: 7
+Localizacion: Vitoria

@@ -75,7 +75,7 @@ public class VentanaMenu extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		//CREACIï¿½N DE COMPONENTES
+		//CREACION DE COMPONENTES
 		JPanel panelMenu = new JPanel();
 		panelCentro = new JPanel();
 		panelCentro.setLayout(new GridLayout(0, 2));
@@ -84,7 +84,6 @@ public class VentanaMenu extends JFrame {
 		
 		JMenuBar menuBar = new JMenuBar();
 		JButton btnReserva = new JButton("Reservas");
-		JButton btnComprar=new JButton("Comprar");
 		btnReserva.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		JButton btnCarrito = new JButton("Cesta");
 		btnCarrito.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
@@ -113,7 +112,7 @@ public class VentanaMenu extends JFrame {
 		JMenu mnQS = new JMenu("Quienes Somos");
 		mnQS.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
-		//Aï¿½ADIR LOS COMPONENTES A LOS PANELES
+		//AÑADIR LOS COMPONENTES A LOS PANELES
 		contentPane.add(panelMenu, BorderLayout.NORTH);
 		//contentPane.add(panelCentro, BorderLayout.CENTER);
 		contentPane.add(scrollPanelCentro, BorderLayout.CENTER);
@@ -235,23 +234,12 @@ public class VentanaMenu extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				// Desde aqui accederemos a la ventana de animales reservados
-
+				new VentanaReservas();
+				ventanaMenu.setVisible(false);
 				
 			}
 		});
-		
-		
-		btnComprar.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				//Desde aqui accederemos a la ventana de animales reservados
-				new VentanaReservas();
-				ventanaMenu.setVisible(false);
-			}
-		});		
 		
 		btnCarrito.addActionListener(new ActionListener() {
 			

@@ -7,6 +7,10 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.awt.Font;
 import java.awt.FlowLayout;
@@ -26,6 +30,8 @@ public class PanelGatos extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelGatos(Gatos g) {
+		Connection con;
+		con=BD.initBD("BaseDatos.db");
 		setLayout(new BorderLayout(0, 0));
 		
 		setBorder(BorderFactory.createLineBorder(Color.black));
@@ -42,6 +48,7 @@ public class PanelGatos extends JPanel {
 				int pregunta3 = JOptionPane.showConfirmDialog(null, "¿Su trabajo le requiere viajar constantemente?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
 				int pregunta4 = JOptionPane.showConfirmDialog(null, "¿Considera que su gato se podría adaptar a su vivienda?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
 				int pregunta5 = JOptionPane.showConfirmDialog(null, "¿Considera que podría proporcionar a su gato un entorno seguro?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca su nombre de usuario:",  "Cuestionario previo a la adopción", JOptionPane.QUESTION_MESSAGE);
 				respuestas.add(pregunta1);
 				respuestas.add(pregunta2);
 				respuestas.add(pregunta3);
@@ -55,19 +62,46 @@ public class PanelGatos extends JPanel {
 					}
 				}
 				if(contador >= 3) {
-					JOptionPane.showConfirmDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idóneo para la adopción. \n Recuerde que está información se comprobará el día de la adoción", "Cuestionario previo a la adopción",JOptionPane.OK_OPTION);
-						
+					int existe = BD.existeUsuario(con, pregunta6);
+					if(existe == 1) {
+						JOptionPane.showMessageDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idóneo para la adopción. \n Recuerde que está información se comprobará el día de la adopción", "Cuestionario previo a la adopción",JOptionPane.INFORMATION_MESSAGE);	
+						BD.gatoReservado(con, g.getNombre());
+						//Lo del fichero no funciona en PanelGatos
+						FileWriter fw = null;
+				        PrintWriter pw = null;
+				        try {
+							fw = new FileWriter("animalesReservados.txt");
+							pw = new PrintWriter(fw);
+							ArrayList<Gatos> alGatosReservados = BD.obtenerGatos(con);
+							for(Gatos g: alGatosReservados) {
+								if(g.isReservado() == true) {
+									String nombre = g.getNombre();
+									Integer edad = g.getEdad();
+									String sexo = g.getSexo();
+									Integer peso = g.getPeso();
+									String caracteristicas = g.getCaracteristicas();
+									Integer tiempoEnAdopcion = g.getTiempoEnAdopcion();
+									String localizacion = g.getLocalizacion();
+									String colores = g.getColores();
+									String rutaFoto = g.getRutaFoto();
+									pw.println("El gato reservado ha sido:" + nombre + "\nDatos: " + "\nEdad: " + edad + ", Sexo: " +
+											sexo + ", Peso: " + peso + ", Colores: " + colores + "\nCaracteristicas: " + caracteristicas + 
+											"\nTiempo en adopcion: "+ tiempoEnAdopcion + "\nLocalizacion: " + localizacion);
+								}
+							}
+						}catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
 				}
 				
 				else {
-					JOptionPane.showConfirmDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopción. \n Para más información contacte con nosotros. \n Gracias.", "Cuestionario previo a la adopción", JOptionPane.OK_OPTION);
+					JOptionPane.showMessageDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopción. \n Para más información contacte con nosotros. \n Gracias.", "Cuestionario previo a la adopción", JOptionPane.ERROR_MESSAGE);
 				}
-				
-					
-				
-				
 			}
 		});
+		
 		panelSur.add(btnReservar);
 		
 		JPanel panelDerecha = new JPanel();
