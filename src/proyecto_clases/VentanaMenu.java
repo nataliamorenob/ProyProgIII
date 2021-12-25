@@ -58,7 +58,6 @@ public class VentanaMenu extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaMenu() {
-
 		con=BD.initBD("BaseDatos.db");
 		BD.crearTablas(con);
 		ImageIcon im = new ImageIcon("FOTOS/logo.jpg");

@@ -91,7 +91,7 @@ public class PanelPerros extends JPanel {
 									String localizacion = p.getLocalizacion();
 									String colores = p.getColores();
 									String rutaFoto = p.getRutaFoto();
-									pw.println("El perro reservado ha sido:" + nombre + "\nDatos: " + "\nEdad: " + edad + ", Sexo: " +
+									pw.println("El perro reservado ha sido: " + nombre + "\nDatos: " + "\nEdad: " + edad + ", Sexo: " +
 											sexo + ", Peso: " + peso + ", Colores: " + colores + "\nCaracteristicas: " + caracteristicas + 
 											"\nTiempo en adopcion: "+ tiempoEnAdopcion + "\nLocalizacion: " + localizacion);
 								}

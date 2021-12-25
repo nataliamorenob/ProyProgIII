@@ -84,7 +84,7 @@ public class PanelGatos extends JPanel {
 									String localizacion = g.getLocalizacion();
 									String colores = g.getColores();
 									String rutaFoto = g.getRutaFoto();
-									pw.println("El gato reservado ha sido:" + nombre + "\nDatos: " + "\nEdad: " + edad + ", Sexo: " +
+									pw.println("El gato reservado ha sido :" + nombre + "\nDatos: " + "\nEdad: " + edad + ", Sexo: " +
 											sexo + ", Peso: " + peso + ", Colores: " + colores + "\nCaracteristicas: " + caracteristicas + 
 											"\nTiempo en adopcion: "+ tiempoEnAdopcion + "\nLocalizacion: " + localizacion);
 								}
