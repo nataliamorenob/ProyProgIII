@@ -50,6 +50,35 @@ public class VentanaInicioSesion extends JFrame {
 			}
 		});
 	}
+	//EXPRESION REGULAR NATALIA TENGO QUE MEJORARLO PORQUE ME DA MAL
+	/*private boolean comprobarUsuarioER(String passwordFieldContrasenia) {
+		String RE = "[a-zA-Z]{5,10}";
+		Pattern patron = Pattern.compile(RE);
+		Matcher m=Pattern.matcher(passwordFieldContrasenia.get);
+	
+		if(passwordFieldContrasenia.isEmpty() || passwordFieldContrasenia=="" ) {
+			JOptionPane.showMessageDialog(null, "El campo no puede estar vacío");
+			return false;
+		}else if(!m.matches()) {
+			JOptionPane.showMessageDialog(null, "Contraseña no valida");
+			return false;
+		}
+		return true;
+	}*/
+	
+	
+	
+	/*boolean correcto=Pattern.matches(RE, passwordFieldContrasenia);
+	if(correcto) {
+		JOptionPane.showMessageDialog(null,"El nombre de usuario es correcto");
+		
+	}else {
+		JOptionPane.showMessageDialog(null,"El nombre de usuario NO es correcto");
+	}
+	return m.matches();
+	}*/
+	
+	
 
 	/**
 	 * Create the frame.
@@ -119,6 +148,8 @@ public class VentanaInicioSesion extends JFrame {
 		
 		
 		
+	
+		
 		//BOTONES
 		
 		btnIniciarSesion.addActionListener(new ActionListener() {
@@ -178,8 +209,22 @@ public class VentanaInicioSesion extends JFrame {
 			}
 		});
 		
+		
 		setVisible(true);
 	}
+	/*private  comprobarUsuarioER(String textFieldUsuario) {
+		String RE = "[a-zA-Z]{5,10}";
+		Pattern patron = Pattern.compile(RE);
+
+		Matcher m = patron.matcher(textFieldUsuario.getText());
+		boolean correcto=Pattern.matches(RE, textFieldUsuario.getText());
+		if(correcto) {
+			JOptionPane.showMessageDialog(null,"El nombre de usuario es correcto");
+			
+		}else {
+			JOptionPane.showMessageDialog(null,"El nombre de usuario NO es correcto");
+		}
+	}*/
 
 
 	
