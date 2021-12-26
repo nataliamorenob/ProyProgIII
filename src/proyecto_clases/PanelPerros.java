@@ -23,6 +23,9 @@ import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
 import java.awt.event.ActionEvent;
 import java.util.*;
+//hola
+
+
 
 public class PanelPerros extends JPanel {
 	
@@ -41,11 +44,11 @@ public class PanelPerros extends JPanel {
 		btnReservar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList <Integer> respuestas = new ArrayList<>();
-				int pregunta1 = JOptionPane.showConfirmDialog(null, "¿Ha tenido o tiene algún otro perro o mascota?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
-				int pregunta2 = JOptionPane.showConfirmDialog(null, "¿Se considera capaz de afrontar los gastos que conlleva tener un perro?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
-				int pregunta3 = JOptionPane.showConfirmDialog(null, "¿Su trabajo le requiere viajar constantemente?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
-				int pregunta4 = JOptionPane.showConfirmDialog(null, "¿Considera que su perro se podría adaptar a su vivienda?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
-				int pregunta5 = JOptionPane.showConfirmDialog(null, "¿Considera el perro podría adaptarse a su entorno?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				int pregunta1 = JOptionPane.showConfirmDialog(null, "ï¿½Ha tenido o tiene algï¿½n otro perro o mascota?", "Cuestionario previo a la adopciï¿½n", JOptionPane.YES_NO_OPTION);
+				int pregunta2 = JOptionPane.showConfirmDialog(null, "ï¿½Se considera capaz de afrontar los gastos que conlleva tener un perro?", "Cuestionario previo a la adopciï¿½n", JOptionPane.YES_NO_OPTION);
+				int pregunta3 = JOptionPane.showConfirmDialog(null, "ï¿½Su trabajo le requiere viajar constantemente?", "Cuestionario previo a la adopciï¿½n", JOptionPane.YES_NO_OPTION);
+				int pregunta4 = JOptionPane.showConfirmDialog(null, "ï¿½Considera que su perro se podrï¿½a adaptar a su vivienda?", "Cuestionario previo a la adopciï¿½n", JOptionPane.YES_NO_OPTION);
+				int pregunta5 = JOptionPane.showConfirmDialog(null, "ï¿½Considera el perro podrï¿½a adaptarse a su entorno?", "Cuestionario previo a la adopciï¿½n", JOptionPane.YES_NO_OPTION);
 				respuestas.add(pregunta1);
 				respuestas.add(pregunta2);
 				respuestas.add(pregunta3);
@@ -59,12 +62,12 @@ public class PanelPerros extends JPanel {
 					}
 				}
 				if(contador >= 3) {
-					JOptionPane.showConfirmDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idóneo para la adopcion. \n Recuerde que está información se comprobará el día de la adoción", "Cuestionario previo a la adopción",JOptionPane.OK_OPTION);
+					JOptionPane.showConfirmDialog(null, "ï¿½Enhorabuena! Consideramos que usted es un candidato idï¿½neo para la adopcion. \n Recuerde que estï¿½ informaciï¿½n se comprobarï¿½ el dï¿½a de la adociï¿½n", "Cuestionario previo a la adopciï¿½n",JOptionPane.OK_OPTION);
 						
 				}
 				
 				else {
-					JOptionPane.showConfirmDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopción. \n Para más información contacte con nosotros. \n Gracias.", "Cuestionario previo a la adpción", JOptionPane.OK_OPTION);
+					JOptionPane.showConfirmDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopciï¿½n. \n Para mï¿½s informaciï¿½n contacte con nosotros. \n Gracias.", "Cuestionario previo a la adpciï¿½n", JOptionPane.OK_OPTION);
 				}
 				
 					
@@ -106,8 +109,13 @@ public class PanelPerros extends JPanel {
 		lblTiempoAdopcion.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblTiempoAdopcion);
 		
-		JLabel lblLocalizacion = new JLabel("Localización: "+p.getLocalizacion());
+
+		JLabel lblLocalizacion = new JLabel("Localizaciï¿½n: "+p.getLocalizacion());
 		lblLocalizacion.setFont(new Font("Bell MT", Font.PLAIN, 11));
+
+		//JLabel lblLocalizacion = new JLabel("Localizaciï¿½n: "+p.getLocalizacion());
+		lblLocalizacion.setFont(new Font("Baskerville Old Face", Font.PLAIN, 11));
+
 		panelDerecha.add(lblLocalizacion);
 		
 		JLabel lblColores = new JLabel("Colores: "+p.getColores());
