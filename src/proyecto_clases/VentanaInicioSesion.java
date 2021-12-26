@@ -24,6 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import java.awt.Toolkit;
 
+//hola
 public class VentanaInicioSesion extends JFrame {
 	
 	
