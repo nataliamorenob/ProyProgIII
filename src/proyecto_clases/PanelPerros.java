@@ -19,6 +19,8 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+//hola
+
 
 public class PanelPerros extends JPanel {
 	
@@ -70,7 +72,7 @@ public class PanelPerros extends JPanel {
 		lblTiempoAdopcion.setFont(new Font("Baskerville Old Face", Font.PLAIN, 11));
 		panelDerecha.add(lblTiempoAdopcion);
 		
-		JLabel lblLocalizacion = new JLabel("Localización: "+p.getLocalizacion());
+		JLabel lblLocalizacion = new JLabel("Localizaciï¿½n: "+p.getLocalizacion());
 		lblLocalizacion.setFont(new Font("Baskerville Old Face", Font.PLAIN, 11));
 		panelDerecha.add(lblLocalizacion);
 		
