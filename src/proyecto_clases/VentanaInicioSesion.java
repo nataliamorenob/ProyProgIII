@@ -173,7 +173,7 @@ public class VentanaInicioSesion extends JFrame {
 						
 					}else {
 						JOptionPane.showMessageDialog(null, "Bienvenido");
-						//Una vez se haya registrado correctamente accederemos a la VentanaMenu
+						//Una vez que haya iniciado sesion correctamente accederemos a la VentanaMenu
 						new VentanaMenu();
 						ventanaInicioSesion.setVisible(false);
 					}

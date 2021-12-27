@@ -1,0 +1,12 @@
+El perro reservado ha sido: Lua
+Datos: 
+Edad: 2, Sexo: F, Peso: 8, Colores: Negro y blanco.
+Caracteristicas: Cariñosa y juguetona
+Tiempo en adopcion: 4
+Localizacion: Vitoria
+El perro reservado ha sido: Bimba
+Datos: 
+Edad: 8, Sexo: M, Peso: 8, Colores: Blanco y negro
+Caracteristicas: Enérgico y fiel
+Tiempo en adopcion: 7
+Localizacion: Vitoria
