@@ -23,7 +23,7 @@ import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
 import java.awt.event.ActionEvent;
 import java.util.*;
-//hola
+
 
 
 
@@ -33,7 +33,7 @@ public class PanelPerros extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelPerros(Perros p) {
-		setLayout(new BorderLayout(0, 0));
+setLayout(new BorderLayout(0, 0));
 		
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		JPanel panelSur = new JPanel();
@@ -44,11 +44,11 @@ public class PanelPerros extends JPanel {
 		btnReservar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList <Integer> respuestas = new ArrayList<>();
-				int pregunta1 = JOptionPane.showConfirmDialog(null, "�Ha tenido o tiene alg�n otro perro o mascota?", "Cuestionario previo a la adopci�n", JOptionPane.YES_NO_OPTION);
-				int pregunta2 = JOptionPane.showConfirmDialog(null, "�Se considera capaz de afrontar los gastos que conlleva tener un perro?", "Cuestionario previo a la adopci�n", JOptionPane.YES_NO_OPTION);
-				int pregunta3 = JOptionPane.showConfirmDialog(null, "�Su trabajo le requiere viajar constantemente?", "Cuestionario previo a la adopci�n", JOptionPane.YES_NO_OPTION);
-				int pregunta4 = JOptionPane.showConfirmDialog(null, "�Considera que su perro se podr�a adaptar a su vivienda?", "Cuestionario previo a la adopci�n", JOptionPane.YES_NO_OPTION);
-				int pregunta5 = JOptionPane.showConfirmDialog(null, "�Considera el perro podr�a adaptarse a su entorno?", "Cuestionario previo a la adopci�n", JOptionPane.YES_NO_OPTION);
+				int pregunta1 = JOptionPane.showConfirmDialog(null, "?Ha tenido o tiene algun otro perro o mascota?", "Cuestionario previo a la adopcion", JOptionPane.YES_NO_OPTION);
+				int pregunta2 = JOptionPane.showConfirmDialog(null, "?Se considera capaz de afrontar los gastos que conlleva tener un perro?", "Cuestionario previo a la adopcion", JOptionPane.YES_NO_OPTION);
+				int pregunta3 = JOptionPane.showConfirmDialog(null, "?Su trabajo le requiere viajar constantemente?", "Cuestionario previo a la adopcion", JOptionPane.YES_NO_OPTION);
+				int pregunta4 = JOptionPane.showConfirmDialog(null, "?Considera que su perro se podria adaptar a su vivienda?", "Cuestionario previo a la adopcion", JOptionPane.YES_NO_OPTION);
+				int pregunta5 = JOptionPane.showConfirmDialog(null, "?Considera el perro podria adaptarse a su entorno?", "Cuestionario previo a la adopcion", JOptionPane.YES_NO_OPTION);
 				respuestas.add(pregunta1);
 				respuestas.add(pregunta2);
 				respuestas.add(pregunta3);
@@ -62,17 +62,13 @@ public class PanelPerros extends JPanel {
 					}
 				}
 				if(contador >= 3) {
-					JOptionPane.showConfirmDialog(null, "�Enhorabuena! Consideramos que usted es un candidato id�neo para la adopcion. \n Recuerde que est� informaci�n se comprobar� el d�a de la adoci�n", "Cuestionario previo a la adopci�n",JOptionPane.OK_OPTION);
+					JOptionPane.showConfirmDialog(null, "?Enhorabuena! Consideramos que usted es un candidato id?neo para la adopcion. \n Recuerde que est? informaci?n se comprobar? el d?a de la adoci?n", "Cuestionario previo a la adopci?n",JOptionPane.OK_OPTION);
 						
 				}
 				
 				else {
-					JOptionPane.showConfirmDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopci�n. \n Para m�s informaci�n contacte con nosotros. \n Gracias.", "Cuestionario previo a la adpci�n", JOptionPane.OK_OPTION);
+					JOptionPane.showConfirmDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopci?n. \n Para m?s informaci?n contacte con nosotros. \n Gracias.", "Cuestionario previo a la adpci?n", JOptionPane.OK_OPTION);
 				}
-				
-					
-				
-					
 					
 				
 			}

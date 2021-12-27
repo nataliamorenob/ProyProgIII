@@ -52,20 +52,7 @@ public class VentanaInicioSesion extends JFrame {
 		});
 	}
 	//EXPRESION REGULAR NATALIA TENGO QUE MEJORARLO PORQUE ME DA MAL
-	/*private boolean comprobarUsuarioER(String passwordFieldContrasenia) {
-		String RE = "[a-zA-Z]{5,10}";
-		Pattern patron = Pattern.compile(RE);
-		Matcher m=Pattern.matcher(passwordFieldContrasenia.get);
-	
-		if(passwordFieldContrasenia.isEmpty() || passwordFieldContrasenia=="" ) {
-			JOptionPane.showMessageDialog(null, "El campo no puede estar vacío");
-			return false;
-		}else if(!m.matches()) {
-			JOptionPane.showMessageDialog(null, "Contraseña no valida");
-			return false;
-		}
-		return true;
-	}*/
+
 	
 	
 	
@@ -148,7 +135,20 @@ public class VentanaInicioSesion extends JFrame {
 		panelCentro.add(passwordFieldContrasenia);
 		
 		
+	/*	private boolean comprobarUsuarioER(String passwordFieldContrasenia) {
+			String RE = "[a-zA-Z]{5,10}";
+			Pattern patron = Pattern.compile(RE);
+			Matcher m=Pattern.matcher(passwordFieldContrasenia.getText()); 
 		
+			if(passwordFieldContrasenia.isEmpty() || passwordFieldContrasenia=="" ) {
+				JOptionPane.showMessageDialog(null, "El campo no puede estar vacío");
+				return false;
+			}else if(!m.matches()) {
+				JOptionPane.showMessageDialog(null, "Contraseña no valida");
+				return false;
+			}
+			return true;
+		}*/
 	
 		
 		//BOTONES
