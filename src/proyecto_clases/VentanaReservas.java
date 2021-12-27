@@ -79,7 +79,6 @@ public class VentanaReservas extends JFrame {
 				Integer peso = Integer.parseInt(datos[3]);
 				String caracteristicas = datos[4];
 				Animales an = new Animales(nombre, edad, sexo, peso, caracteristicas, caracteristicas);
-				//Guardamos en la estructura que sea
 				tsAnimales.add(an);
 				linea = br.readLine();
 			}
