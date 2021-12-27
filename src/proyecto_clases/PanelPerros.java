@@ -44,6 +44,9 @@ public class PanelPerros extends JPanel {
 
 		setLayout(new BorderLayout(0, 0));
 
+		setLayout(new BorderLayout(0, 0));
+
+
 		Connection con;
 		con=BD.initBD("BaseDatos.db");
 		setLayout(new BorderLayout(0, 0));
@@ -64,7 +67,11 @@ public class PanelPerros extends JPanel {
 				int pregunta3 = JOptionPane.showConfirmDialog(null, "?Su trabajo le requiere viajar constantemente?", "Cuestionario previo a la adopcion", JOptionPane.YES_NO_OPTION);
 				int pregunta4 = JOptionPane.showConfirmDialog(null, "?Considera que su perro se podria adaptar a su vivienda?", "Cuestionario previo a la adopcion", JOptionPane.YES_NO_OPTION);
 				int pregunta5 = JOptionPane.showConfirmDialog(null, "?Considera el perro podria adaptarse a su entorno?", "Cuestionario previo a la adopcion", JOptionPane.YES_NO_OPTION);
+
 				String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca su nombre de usuario:",  "Cuestionario previo a la adopci�n", JOptionPane.QUESTION_MESSAGE);
+
+
+
 
 				respuestas.add(pregunta1);
 				respuestas.add(pregunta2);
@@ -127,12 +134,13 @@ public class PanelPerros extends JPanel {
 
 					JOptionPane.showConfirmDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopci?n. \n Para m?s informaci?n contacte con nosotros. \n Gracias.", "Cuestionario previo a la adpci?n", JOptionPane.OK_OPTION);
 
-					JOptionPane.showMessageDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopci�n. \n Para m�s informaci�n contacte con nosotros. \n Gracias.", "Cuestionario previo a la adopci�n", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopci�n. \n Para m�s informaci�n contacte con nosotros. \n Gracias.", "Cuestionario previo a la adopci�n", JOptionPane.INFORMATION_MESSAGE);
 
 				}
 
-					
+
 				
+
 
 
 			}
