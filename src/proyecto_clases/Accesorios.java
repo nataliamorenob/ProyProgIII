@@ -1,6 +1,7 @@
 package proyecto_clases;
 
 public class Accesorios {
+	//holaa.a
 	private String nombre;
 	private int precio;
 	private String animal_dirigido; //para que animal es ese accesorio

@@ -19,7 +19,7 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-//hola
+
 
 
 public class PanelPerros extends JPanel {
