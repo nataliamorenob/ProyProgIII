@@ -94,11 +94,11 @@ public class PanelPerros extends JPanel {
 					if(existe == 1){
 						JOptionPane.showMessageDialog(null, "�Enhorabuena! Consideramos que usted es un candidato id�neo para la adopcion. \n Recuerde que est� informaci�n se comprobar� el d�a de la adopci�n", "Cuestionario previo a la adopci�n", JOptionPane.INFORMATION_MESSAGE);
 						BD.perroReservado(con, p.getNombre());
-						FileWriter fw = null;
+						//FileWriter fw = null;
 				        PrintWriter pw = null;
 						try {
-							fw = new FileWriter("animalesReservados.txt");
-							pw = new PrintWriter(fw);
+							//fw = new FileWriter("animalesReservados.txt");
+							pw = new PrintWriter(new FileWriter("animalesReservados.txt", true)); 
 							ArrayList<Perros> alPerrosReservados = BD.obtenerPerros(con);
 							for(Perros p: alPerrosReservados) {
 								if(p.isReservado() == true) {
@@ -111,9 +111,11 @@ public class PanelPerros extends JPanel {
 									String localizacion = p.getLocalizacion();
 									String colores = p.getColores();
 									String rutaFoto = p.getRutaFoto();
+									
+									pw.println("\n- El usuario que ha hecho la reserva es: " + pregunta6 + "\n"); //CAMBIO
 									pw.println("El perro reservado ha sido: " + nombre + "\nDatos: " + "\nEdad: " + edad + ", Sexo: " +
-											sexo + ", Peso: " + peso + ", Colores: " + colores + "\nCaracteristicas: " + caracteristicas + 
-											"\nTiempo en adopcion: "+ tiempoEnAdopcion + "\nLocalizacion: " + localizacion);
+											sexo + ", Peso: " + peso + ", Colores: " + colores + "\nCaracteristicas: " + caracteristicas +
+											"\nTiempo en adopcion: "+ tiempoEnAdopcion + "\nLocalizacion: " + localizacion + "\n"); 
 								}
 							}
 						} catch (IOException e1) {
@@ -127,6 +129,7 @@ public class PanelPerros extends JPanel {
 						}
 					}else {
 						JOptionPane.showMessageDialog(null, "El nombre de usuario es incorrecto",  "Cuestionario previo a la adopci�n", JOptionPane.ERROR_MESSAGE);
+						//new VentanaInicioSesion();
 					}
 
 				}
@@ -134,14 +137,9 @@ public class PanelPerros extends JPanel {
 
 					JOptionPane.showConfirmDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopci?n. \n Para m?s informaci?n contacte con nosotros. \n Gracias.", "Cuestionario previo a la adpci?n", JOptionPane.OK_OPTION);
 
-		JOptionPane.showMessageDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopci�n. \n Para m�s informaci�n contacte con nosotros. \n Gracias.", "Cuestionario previo a la adopci�n", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopci�n. \n Para m�s informaci�n contacte con nosotros. \n Gracias.", "Cuestionario previo a la adopci�n", JOptionPane.INFORMATION_MESSAGE);
 
 				}
-
-
-				
-
-
 
 			}
 		});

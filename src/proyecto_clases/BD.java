@@ -87,7 +87,7 @@ public class BD {
 	 * -  1 si existe el usuario pero la contrase�a no es correcta
 	 * -  2 si el usuario existe y la contrase�a es correcta
 	 */
-	public static int cogerUsuario(String usuario, String contrasenia){
+	public static int cogerUsuario(Connection con, String usuario, String contrasenia){
 		String resolucion="SELECT contrasenia FROM Usuario WHERE usuario ='"+usuario+"'";
 		java.sql.Statement stat=null;
 		int resultado=0;
@@ -125,7 +125,7 @@ public class BD {
 	 * @param usuario  <- el nick del usuario con el que se registrara 
 	 * @param contrasenia <- la contrase�a con la que el usuario se registra
 	 */
-	public static void anyadirUsuario(String usuario, String contrasenia ) {
+	public static void anyadirUsuario(Connection con, String usuario, String contrasenia ) {
 		String resolucion="INSERT INTO Usuario VALUES('"+usuario+"','"+contrasenia+"')";
 		java.sql.Statement stat=null;
 		try {
@@ -405,9 +405,283 @@ public class BD {
 		}
 		return alAccesorios;
 	}
+	
+	/**
+	 * Método que obtiene los gatos cuya localización es Beasain
+	 * @param con -> Conexión con la BBDD
+	 * @param loc -> localización
+	 * @return
+	 */
+	//CAMBIO
+	public static ArrayList<Gatos> obtenerGatosBeasain(Connection con, String loc){
+		ArrayList<Gatos> gatosBeasain = new ArrayList<>();
+		Gatos g = null;
+		String sent = "SELECT * FROM GATOS WHERE localizacion = '"+loc+"'";
+		Statement st = null;
+		try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(sent);
+			while(rs.next()) {
+				String nombre = rs.getString("NOMBRE");
+				Integer edad = rs.getInt("EDAD");
+				String sexo = rs.getString("SEXO");
+				Integer peso =rs.getInt("PESO");
+				String caracteristicas = rs.getString("CARACTERISTICAS");
+				Integer tiempoEnAdopcion = rs.getInt("TIEMPOENADOPCION");
+				String localizacion = rs.getString("LOCALIZACION");
+				String colores = rs.getString("COLORES");
+				Boolean reservado = rs.getBoolean("RESERVADO");
+				String rutaFoto = rs.getString("rutaFoto");
+				g = new Gatos(nombre, edad, sexo, peso, caracteristicas, tiempoEnAdopcion, localizacion, colores, reservado, rutaFoto);
+				gatosBeasain.add(g);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return gatosBeasain;
+	}
+	/**
+	 * Método que obtiene los gatos cuya localización es Vitoria
+	 * @param con -> Conexión con la BBDD
+	 * @param loc -> localización
+	 * @return
+	 */
+	public static ArrayList<Gatos> obtenerGatosVitoria(Connection con, String loc){
+		ArrayList<Gatos> gatosVitoria = new ArrayList<>();
+		Gatos g = null;
+		String sent = "SELECT * FROM GATOS WHERE localizacion = '"+loc+"'";
+		Statement st = null;
+		try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(sent);
+			while(rs.next()) {
+				String nombre = rs.getString("NOMBRE");
+				Integer edad = rs.getInt("EDAD");
+				String sexo = rs.getString("SEXO");
+				Integer peso =rs.getInt("PESO");
+				String caracteristicas = rs.getString("CARACTERISTICAS");
+				Integer tiempoEnAdopcion = rs.getInt("TIEMPOENADOPCION");
+				String localizacion = rs.getString("LOCALIZACION");
+				String colores = rs.getString("COLORES");
+				Boolean reservado = rs.getBoolean("RESERVADO");
+				String rutaFoto = rs.getString("rutaFoto");
+				g = new Gatos(nombre, edad, sexo, peso, caracteristicas, tiempoEnAdopcion, localizacion, colores, reservado, rutaFoto);
+				gatosVitoria.add(g);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return gatosVitoria;
+	}
+	/**
+	 * Método que obtiene los gatos cuya localización es Getxo
+	 * @param con -> Conexión con la BBDD
+	 * @param loc -> localización
+	 * @return
+	 */
+	public static ArrayList<Gatos> obtenerGatosGetxo(Connection con, String loc){
+		ArrayList<Gatos> gatosGetxo = new ArrayList<>();
+		Gatos g = null;
+		String sent = "SELECT * FROM GATOS WHERE localizacion = '"+loc+"'";
+		Statement st = null;
+		try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(sent);
+			while(rs.next()) {
+				String nombre = rs.getString("NOMBRE");
+				Integer edad = rs.getInt("EDAD");
+				String sexo = rs.getString("SEXO");
+				Integer peso =rs.getInt("PESO");
+				String caracteristicas = rs.getString("CARACTERISTICAS");
+				Integer tiempoEnAdopcion = rs.getInt("TIEMPOENADOPCION");
+				String localizacion = rs.getString("LOCALIZACION");
+				String colores = rs.getString("COLORES");
+				Boolean reservado = rs.getBoolean("RESERVADO");
+				String rutaFoto = rs.getString("rutaFoto");
+				g = new Gatos(nombre, edad, sexo, peso, caracteristicas, tiempoEnAdopcion, localizacion, colores, reservado, rutaFoto);
+				gatosGetxo.add(g);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return gatosGetxo;
+	}
+	/**
+	 * Método que obtiene los perros cuya localización es Beasain
+	 * @param con -> Conexión con la BBDD
+	 * @param loc -> localización
+	 * @return
+	 */
+	public static ArrayList<Perros> obtenerPerrosBeasain(Connection con, String loc){
+		ArrayList<Perros> perrosBeasain = new ArrayList<>();
+		Perros p = null;
+		String sent = "SELECT * FROM PERROS WHERE localizacion = '"+loc+"'";
+		Statement st = null;
+		try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(sent);
+			while(rs.next()) {
+				String nombre = rs.getString("NOMBRE");
+				Integer edad = rs.getInt("EDAD");
+				String sexo = rs.getString("SEXO");
+				Integer peso =rs.getInt("PESO");
+				String caracteristicas = rs.getString("CARACTERISTICAS");
+				Integer tiempoEnAdopcion = rs.getInt("TIEMPOENADOPCION");
+				String localizacion = rs.getString("LOCALIZACION");
+				String colores = rs.getString("COLORES");
+				Boolean reservado = rs.getBoolean("RESERVADO");
+				String rutaFoto = rs.getString("rutaFoto");
+				p = new Perros(nombre, edad, sexo, peso, caracteristicas, tiempoEnAdopcion, localizacion, colores, reservado, rutaFoto);
+				perrosBeasain.add(p);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return perrosBeasain;
+	}
+	/**
+	 * Método que obtiene los perros cuya localización es Vitoria
+	 * @param con -> Conexión con la BBDD
+	 * @param loc -> localización
+	 * @return
+	 */
+	public static ArrayList<Perros> obtenerPerrosVitoria(Connection con, String loc){
+		ArrayList<Perros> perrosVitoria = new ArrayList<>();
+		Perros p = null;
+		String sent = "SELECT * FROM PERROS WHERE localizacion = '"+loc+"'";
+		Statement st = null;
+		try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(sent);
+			while(rs.next()) {
+				String nombre = rs.getString("NOMBRE");
+				Integer edad = rs.getInt("EDAD");
+				String sexo = rs.getString("SEXO");
+				Integer peso =rs.getInt("PESO");
+				String caracteristicas = rs.getString("CARACTERISTICAS");
+				Integer tiempoEnAdopcion = rs.getInt("TIEMPOENADOPCION");
+				String localizacion = rs.getString("LOCALIZACION");
+				String colores = rs.getString("COLORES");
+				Boolean reservado = rs.getBoolean("RESERVADO");
+				String rutaFoto = rs.getString("rutaFoto");
+				p = new Perros(nombre, edad, sexo, peso, caracteristicas, tiempoEnAdopcion, localizacion, colores, reservado, rutaFoto);
+				perrosVitoria.add(p);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return perrosVitoria;
+	}
+	/**
+	 * Método que obtiene los perros cuya localización es Getxo
+	 * @param con -> Conexión con la BBDD
+	 * @param loc -> localización
+	 * @return
+	 */
+	public static ArrayList<Perros> obtenerPerrosGetxo(Connection con, String loc){
+		ArrayList<Perros> perrosGetxo = new ArrayList<>();
+		Perros p = null;
+		String sent = "SELECT * FROM PERROS WHERE localizacion = '"+loc+"'";
+		Statement st = null;
+		try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(sent);
+			while(rs.next()) {
+				String nombre = rs.getString("NOMBRE");
+				Integer edad = rs.getInt("EDAD");
+				String sexo = rs.getString("SEXO");
+				Integer peso =rs.getInt("PESO");
+				String caracteristicas = rs.getString("CARACTERISTICAS");
+				Integer tiempoEnAdopcion = rs.getInt("TIEMPOENADOPCION");
+				String localizacion = rs.getString("LOCALIZACION");
+				String colores = rs.getString("COLORES");
+				Boolean reservado = rs.getBoolean("RESERVADO");
+				String rutaFoto = rs.getString("rutaFoto");
+				p = new Perros(nombre, edad, sexo, peso, caracteristicas, tiempoEnAdopcion, localizacion, colores, reservado, rutaFoto);
+				perrosGetxo.add(p);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return perrosGetxo;
+	}
+	/***
+	 * Método que borra los perros seleccionados
+	 * @param nombre->El nombre del perro
+	 */
+	public static void borrarPerros(Connection con, String nombre) {
+		try {
+			Statement st = con.createStatement();
+			String sent = "DELETE FROM PERROS WHERE nombre= '"+nombre+"'";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+
+	}
 }
-
-
-
 
 

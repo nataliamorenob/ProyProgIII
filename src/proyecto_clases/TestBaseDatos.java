@@ -2,11 +2,23 @@ package proyecto_clases;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.SQLException;
 
-public class Tests {
+public class TestBaseDatos {
+	
+	@Before
+	public void before() {
+		BD.initBD("BaseDatos.db");
+	}
+	
+	@After
+	public void after() {
+		BD.closeBD();
+	}
 
 	@Test
 	//Expresiones regulares con nombre de usuario
@@ -23,6 +35,17 @@ public class Tests {
 		assertNotNull(BD.initBD("BaseDatos.db"));
 	}
 	
+
+		
+	/***
+	* Test que comprueba si el método obtenerPerros de la BD es igual a 15.
+	*/
+	/*@Test
+	public void testObtenerPerros() {
+		ArrayList<Perros> alPerros=BD.obtenerPerros(Connection con);
+		assertTrue(alPerros.size()==15);
+	}*/
+
 	
 	
 	

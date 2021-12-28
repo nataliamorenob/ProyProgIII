@@ -2,17 +2,18 @@ package proyecto_clases;
 import java.awt.BorderLayout;
 
 
+
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.sun.jdi.connect.spi.Connection;
 import java.util.regex.Pattern; 
 import java.util.regex.Matcher;
 
@@ -35,6 +36,7 @@ public class VentanaInicioSesion extends JFrame {
 	private JLabel lblContrasenia, lblUsuario;
 	private JPasswordField passwordFieldContrasenia;
 	private JFrame ventanaInicioSesion;
+	private Connection con;
 	
 	/**
 	 * Launch the application.
@@ -162,8 +164,8 @@ public class VentanaInicioSesion extends JFrame {
 				String contrasenia=passwordFieldContrasenia.getText();
 				
 				if(!usuario.equals("") & !contrasenia.equals("")) {
-					BD.initBD("BaseDatos.db"); 
-					int result=BD.cogerUsuario(usuario, contrasenia);
+					Connection con=BD.initBD("BaseDatos.db"); 
+					int result=BD.cogerUsuario(con, usuario, contrasenia);
 					if(result==0) {
 						JOptionPane.showMessageDialog(null, "Aun no te has registrado");
 						btnRegistrarse.setEnabled(true);
@@ -173,14 +175,19 @@ public class VentanaInicioSesion extends JFrame {
 						
 					}else {
 						JOptionPane.showMessageDialog(null, "Bienvenido");
-						//Una vez que haya iniciado sesion correctamente accederemos a la VentanaMenu
-						new VentanaMenu();
-						ventanaInicioSesion.setVisible(false);
+						if(usuario=="admin" & contrasenia=="admin") {
+							new VentanaAdmin();
+						}else {
+							JOptionPane.showMessageDialog(null, "Bienvenido");
+							//Una vez que haya iniciado sesion correctamente accederemos a la VentanaMenu
+							new VentanaMenu();
+							ventanaInicioSesion.setVisible(false);
 					}
-					BD.closeBD();
+					//BD.closeBD(); //cambio
 				}
 				textFieldUsuario.setText("");
 				passwordFieldContrasenia.setText("");
+			}
 			}
 		});
 		
@@ -193,10 +200,10 @@ public class VentanaInicioSesion extends JFrame {
 				String usuario=textFieldUsuario.getText();
 				String contrasenia=passwordFieldContrasenia.getText();
 				if(!usuario.equals("") & !contrasenia.equals("")) {
-					BD.initBD("BaseDatos.db");   
-					int result=BD.cogerUsuario(usuario, contrasenia);
+					Connection con=BD.initBD("BaseDatos.db");   
+					int result=BD.cogerUsuario(con, usuario, contrasenia);
 					if(result==0) {
-						BD.anyadirUsuario(usuario, contrasenia);
+						BD.anyadirUsuario(con, usuario, contrasenia);
 						BD.closeBD();
 						btnRegistrarse.setEnabled(false);
 						JOptionPane.showMessageDialog(null, "Te has registrado correctamente.");
@@ -213,7 +220,7 @@ public class VentanaInicioSesion extends JFrame {
 		
 		setVisible(true);
 	}
-	/*private  comprobarUsuarioER(String textFieldUsuario) {
+/*	private  comprobarUsuarioER(String textFieldUsuario) {
 		String RE = "[a-zA-Z]{5,10}";
 		Pattern patron = Pattern.compile(RE);
 
@@ -226,6 +233,15 @@ public class VentanaInicioSesion extends JFrame {
 			JOptionPane.showMessageDialog(null,"El nombre de usuario NO es correcto");
 		}
 	}*/
+	private void comprobarContrasenia(String usuario, String contrasenia) {
+		String ercontrasenia = "[A-Z][a-z]{5}[0-9]";
+		boolean correcto = Pattern.matches(ercontrasenia, contrasenia);
+		if(correcto) {
+			System.out.println("te has logeado bn");
+		}else {
+			System.out.println("La contrase�a no es correcta");
+		}
+	}
 
 
 	
