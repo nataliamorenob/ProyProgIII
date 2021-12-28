@@ -1,11 +1,8 @@
 package proyecto_clases;
 
 public class Otros extends Animales implements Visitables {
-	private int estimacionAnyo;
 	private boolean peligroExtincion;
 
-	
-	
 	
 	private Otros() {
 		super();	
@@ -13,24 +10,10 @@ public class Otros extends Animales implements Visitables {
 
 
 
-	public Otros(String nombre, int edad, String sexo, int peso, String caracteristicas, int estimacionAnyo, boolean peligroExtincion,String rutaFoto) {
+	public Otros(String nombre, int edad, String sexo, int peso, String caracteristicas, boolean peligroExtincion,String rutaFoto) {
 		super(nombre, edad, sexo, peso, caracteristicas,rutaFoto);
-		this.estimacionAnyo = estimacionAnyo;
 		this.peligroExtincion = peligroExtincion;
 	}
-
-
-
-	public int getEstimacionAnyo() {
-		return estimacionAnyo;
-	}
-
-
-
-	public void setEstimacionAnyo(int estimacionAnyo) {
-		this.estimacionAnyo = estimacionAnyo;
-	}
-
 
 
 	public boolean isPeligroExtincion() {

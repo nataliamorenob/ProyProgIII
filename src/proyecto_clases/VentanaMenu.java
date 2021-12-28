@@ -7,6 +7,7 @@ import java.beans.PropertyChangeListener;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import javax.swing.AbstractButton;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -26,12 +27,15 @@ import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Taskbar.State;
+import java.awt.Toolkit;
 
 public class VentanaMenu extends JFrame { 
 
 	private JPanel contentPane, panelCentro;
 	private Connection con;
+	private JFrame ventanaMenu;
 
 
 	/**
@@ -49,14 +53,16 @@ public class VentanaMenu extends JFrame {
 			}
 		});
 	}
-
+	//base 
 	/**
 	 * Create the frame.
 	 */
 	public VentanaMenu() {
-
 		con=BD.initBD("BaseDatos.db");
 		BD.crearTablas(con);
+		ImageIcon im = new ImageIcon("FOTOS/logo.jpg");
+		this.setIconImage(im.getImage());
+		ventanaMenu = this;
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
 		setExtendedState(MAXIMIZED_BOTH);
@@ -68,7 +74,7 @@ public class VentanaMenu extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		//CREACIÓN DE COMPONENTES
+		//CREACION DE COMPONENTES
 		JPanel panelMenu = new JPanel();
 		panelCentro = new JPanel();
 		panelCentro.setLayout(new GridLayout(0, 2));
@@ -80,8 +86,6 @@ public class VentanaMenu extends JFrame {
 		btnReserva.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		JButton btnCarrito = new JButton("Cesta");
 		btnCarrito.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
-		JButton btnComprar = new JButton("Comprar");
-		btnComprar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		
 		JMenu mnAnimales = new JMenu("Animales");
 		mnAnimales.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
@@ -101,13 +105,13 @@ public class VentanaMenu extends JFrame {
 		JMenu mnAlimentos = new JMenu("Alimentos");
 		mnAlimentos.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
-		JMenu mnLocalizacion = new JMenu("Localizaci\u00F3n");
+		JMenu mnLocalizacion = new JMenu("Localizacion");
 		mnLocalizacion.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
 		JMenu mnQS = new JMenu("Quienes Somos");
 		mnQS.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
-		//AÑADIR LOS COMPONENTES A LOS PANELES
+		//Aï¿½ADIR LOS COMPONENTES A LOS PANELES
 		contentPane.add(panelMenu, BorderLayout.NORTH);
 		//contentPane.add(panelCentro, BorderLayout.CENTER);
 		contentPane.add(scrollPanelCentro, BorderLayout.CENTER);
@@ -126,8 +130,6 @@ public class VentanaMenu extends JFrame {
 		
 		panelAbajo.add(btnReserva);
 		panelAbajo.add(btnCarrito);
-		panelAbajo.add(btnComprar); 
-		btnComprar.setVisible(false);
 
 		 
 		
@@ -141,17 +143,17 @@ public class VentanaMenu extends JFrame {
 				con = BD.initBD("BaseDatos.db");
 				ArrayList<Perros> alPerros = BD.obtenerPerros(con);
 //				System.out.println(alPerros.size());
-				for(Perros p: alPerros) {
+				//for(Perros p: alPerros) {
 //					System.out.println(p.getRutaFoto());
 //					ImageIcon im = new ImageIcon(p.getRutaFoto());
 //					im.setDescription(p.getRutaFoto());
 //					JLabel lbl = new JLabel(im);
 //					panelCentro.add(lbl);
-					panelCentro.add(new PanelPerros(p));
-				}
+				//	panelCentro.add(new PanelPerros(p));
+				//}
+				cargarPerros(alPerros,0);
 				BD.closeBD();
 				panelCentro.updateUI();
-				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -166,7 +168,6 @@ public class VentanaMenu extends JFrame {
 				}
 				BD.closeBD();
 				panelCentro.updateUI();
-				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -174,9 +175,13 @@ public class VentanaMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelCentro.removeAll(); 
-				panelCentro.add(new PanelOtros());
+				con = BD.initBD("BaseDatos.db");
+				ArrayList<Otros> alOtros = BD.obtenerOtros(con);
+				for(Otros o: alOtros) {
+					panelCentro.add(new PanelOtros(o));
+				}
+				BD.closeBD();
 				panelCentro.updateUI();
-				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -186,7 +191,6 @@ public class VentanaMenu extends JFrame {
 				panelCentro.removeAll(); 
 				panelCentro.add(new PanelLocalizacion());
 				panelCentro.updateUI();
-				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -196,25 +200,32 @@ public class VentanaMenu extends JFrame {
 				panelCentro.removeAll(); 
 				panelCentro.add(new PanelQuienesSomos());
 				panelCentro.updateUI();
-				btnComprar.setVisible(false);
 			}
 		});
 		
 		mnAccesorios.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				panelCentro.removeAll(); 
-				panelCentro.add(new PanelAccesorios());
+				con=BD.initBD("BaseDatos.db");
+				ArrayList<Accesorios> alAccesorios=BD.obtenerAccesorios(con);
+				for(Accesorios a:alAccesorios) {
+					panelCentro.add(new PanelAccesorios(a));
+				}
+				BD.closeBD();
 				panelCentro.updateUI();
-				btnComprar.setVisible(false);
 			}
 		});
 		
 		mnAlimentos.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				panelCentro.removeAll(); 
-				panelCentro.add(new PanelAlimentos());
+				con=BD.initBD("BaseDatos.db");
+				ArrayList<Alimentos> alAlimentos=BD.obtenerAlimentos(con);
+				for(Alimentos al: alAlimentos) {
+					panelCentro.add(new PanelAlimentos(al));
+				}
+				BD.closeBD();
 				panelCentro.updateUI();
-				btnComprar.setVisible(false);
 			}
 		});
 		
@@ -223,15 +234,8 @@ public class VentanaMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Desde aqui accederemos a la ventana de animales reservados
-				
-			}
-		});
-		
-		btnComprar.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// Desde aquí accederemos a la ventana comprar
+				new VentanaReservas();
+				ventanaMenu.setVisible(false);
 				
 			}
 		});
@@ -240,11 +244,24 @@ public class VentanaMenu extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Accedemos a la ventana de las compras que deseamos hacer
-				
+				//Accedemos a la ventana de las compras que deseamos hacer
+				new VentanaCesta();
+				ventanaMenu.setVisible(false);
 			}
 		});
 		
 		setVisible(true);
+	}
+	
+	/**
+	 * Metodo recursivo para recorrer el ArrayList de Perros
+	 * @param perros <- ArrayList que recorremos para cargar los Perros
+	 * @param i <- Entero que utilizamos para recorrer el ArrayList
+	 */
+	private void cargarPerros(ArrayList<Perros> perros, int i) {
+		if(i<perros.size()) {
+			panelCentro.add(new PanelPerros(perros.get(i)));
+			cargarPerros(perros, i+1);
+		}
 	}
 }

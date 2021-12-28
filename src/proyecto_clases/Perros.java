@@ -4,7 +4,8 @@ public class Perros extends Animales implements Adoptable{
 	private int tiempoEnAdopcion; //el timepo que ha estado en la protectora en MESES
 	private String localizacion;
 	private String colores;
-
+	private boolean reservado;
+	
 	
 	public Perros() {
 		super();
@@ -13,26 +14,26 @@ public class Perros extends Animales implements Adoptable{
 	
 	
 	
-	public Perros(String nombre, int edad, String sexo, int peso, String caracteristicas,int tiempoEnAdopcion, String localizacion,String colores, String rutaFoto){
+	public Perros(String nombre, int edad, String sexo, int peso, String caracteristicas,int tiempoEnAdopcion, String localizacion,String colores, boolean reservado,String rutaFoto){
 		super(nombre, edad, sexo, peso, caracteristicas,rutaFoto);
 
 		this.tiempoEnAdopcion = tiempoEnAdopcion;
 		this.localizacion = localizacion;
 		this.colores=colores;
+		this.reservado = reservado;
 		
 	}
 
 
 
-	private Perros(int tiempoEnAdopcion, String localizacion,String colores) {
+	private Perros(int tiempoEnAdopcion, String localizacion,String colores, boolean reservado) {
 		super();
 		this.tiempoEnAdopcion=tiempoEnAdopcion;
 		this.localizacion = localizacion;
 		this.colores = colores;
+		this.reservado = reservado;
 		
 	}
-
-
 
 	public int getTiempoEnAdopcion() {
 		return tiempoEnAdopcion;
@@ -68,20 +69,14 @@ public class Perros extends Animales implements Adoptable{
 		this.colores = colores;
 	}
 	
-	
-	
-	
-	
 
-	
-	
-	
-	
+	public boolean isReservado() {
+		return reservado;
+	}
 
-	
-
-	
-	
-	
+	public void setReservado(boolean reservado) {
+		this.reservado = reservado;
+	}
+		
 	
 }

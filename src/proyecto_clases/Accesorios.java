@@ -1,12 +1,13 @@
 package proyecto_clases;
 
+
 public class Accesorios {
 	//holaa.a
 	private String nombre;
 	private int precio;
 	private String animal_dirigido; //para que animal es ese accesorio
 	private String rutaFoto;
-	
+		
 	private Accesorios(){
 		super();
 		
@@ -25,10 +26,10 @@ public class Accesorios {
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre = nombre; 
 	}
 
-	public int getPrecio() {
+	public int getPrecio() { 
 		return precio;
 	}
 
@@ -52,6 +53,5 @@ public class Accesorios {
 		this.rutaFoto = rutaFoto;
 	}
 	
-	
-	
+/*Hola*/
 }
