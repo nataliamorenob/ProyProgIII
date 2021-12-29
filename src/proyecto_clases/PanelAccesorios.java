@@ -30,7 +30,7 @@ public class PanelAccesorios extends JPanel {
 		JPanel panelSur = new JPanel();
 		add(panelSur, BorderLayout.SOUTH);
 		
-		JButton btnComprar = new JButton("COMPRAR");
+		JButton btnComprar = new JButton("AÑADIR A LA CESTA");
 		btnComprar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
