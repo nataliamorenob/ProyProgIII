@@ -81,6 +81,24 @@ public class VentanaMenu extends JFrame {
 		JScrollPane scrollPanelCentro = new JScrollPane(panelCentro);
 //		scrollPanelCentro.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 //		scrollPanelCentro.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		
+		JPanel panelFrase = new JPanel();
+		JPanel panelLogo = new JPanel();
+		panelFrase.setLayout(new BorderLayout());
+		panelLogo.setLayout(new BorderLayout());
+		panelCentro.add(panelLogo);
+		panelCentro.add(panelFrase);
+		
+		JLabel jlimagen = new JLabel();
+		jlimagen.setIcon(new ImageIcon("/Users/veronicagutierrezvillegas/eclipse-workspace/hoy3/FOTOS/Refugio.jpg"));
+		
+		JLabel jlfrase = new JLabel();
+		jlfrase.setIcon(new ImageIcon("/Users/veronicagutierrezvillegas/eclipse-workspace/hoy3/FOTOS/frase.jpeg"));
+		
+		panelFrase.add(jlfrase);
+		panelLogo.add(jlimagen);
+		
+		
 		JPanel panelAbajo = new JPanel();
 		
 		JMenuBar menuBar = new JMenuBar();
