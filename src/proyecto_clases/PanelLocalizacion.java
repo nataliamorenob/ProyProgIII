@@ -34,7 +34,7 @@ public class PanelLocalizacion extends JPanel {
 		//Connection con; //CAMBIO
 		//con = BD.initBD("BaseDatos.db"); //CAMBIO
 		
-		JPanel panel = new JPanel();
+		/*JPanel panel = new JPanel();
 		add(panel);
 		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -146,8 +146,130 @@ public class PanelLocalizacion extends JPanel {
 				BD.closeBD();
 				panel.updateUI();
 			}
+		});*/
+		
+		JPanel panelBase = new JPanel();
+		add(panelBase);
+		
+		panelBase.setLayout(new BorderLayout());
+		
+		JPanel panelCentro = new JPanel();
+		panelCentro.setLayout(new GridLayout(0, 2));
+		
+		JMenuBar jm1 = new JMenuBar();
+		
+		JMenu perros = new JMenu("PERROS");
+		JMenuItem jmiBeasainP = new JMenuItem("BEASAIN");
+		JMenuItem jmiGetxoP = new JMenuItem("GETXO");
+		JMenuItem jmiVitoriaP = new JMenuItem("VITORIA");
+		
+		
+		JMenu gatos = new JMenu("GATOS");
+		JMenuItem jmiBeasainG = new JMenuItem("BEASAIN");
+		JMenuItem jmiGetxoG = new JMenuItem("GETXO");
+		JMenuItem jmiVitoriaG = new JMenuItem("VITORIA");
+		
+		panelBase.add(jm1, BorderLayout.NORTH);
+		jm1.add(perros);
+		jm1.add(gatos);
+		
+		perros.add(jmiBeasainP);
+		perros.add(jmiGetxoP);
+		perros.add(jmiVitoriaP);
+		
+		gatos.add(jmiBeasainG);
+		gatos.add(jmiGetxoG);
+		gatos.add(jmiVitoriaG);
+		
+		jmiBeasainG.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelBase.removeAll(); 
+				panelBase.add(panelCentro, BorderLayout.CENTER);
+				Connection con = BD.initBD("BaseDatos.db");
+				ArrayList<Gatos> alGatos = BD.obtenerGatosBeasain(con, "Beasain");
+				for(Gatos g: alGatos) {
+					panelCentro.add(new PanelGatos(g));
+				}
+				BD.closeBD();
+				panelBase.updateUI();
+			}
 		});
 		
+		jmiVitoriaG.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelBase.removeAll(); 
+				panelBase.add(panelCentro, BorderLayout.CENTER);
+				Connection con = BD.initBD("BaseDatos.db");
+				ArrayList<Gatos> alGatos = BD.obtenerGatosVitoria(con, "Vitoria");
+				for(Gatos g: alGatos) {
+					panelCentro.add(new PanelGatos(g));
+				}
+				BD.closeBD();
+				panelBase.updateUI();
+			}
+		});
+		
+		jmiGetxoG.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelBase.removeAll(); 
+				panelBase.add(panelCentro, BorderLayout.CENTER);
+				Connection con = BD.initBD("BaseDatos.db");
+				ArrayList<Gatos> alGatos = BD.obtenerGatosGetxo(con, "Getxo");
+				for(Gatos g: alGatos) {
+					panelCentro.add(new PanelGatos(g));
+				}
+				BD.closeBD();
+				panelBase.updateUI();
+			}
+		});
+		
+		jmiBeasainP.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelBase.removeAll(); 
+				panelBase.add(panelCentro, BorderLayout.CENTER);
+				Connection con = BD.initBD("BaseDatos.db");
+				ArrayList<Perros> alPerros = BD.obtenerPerrosBeasain(con, "Beasain");
+				for(Perros p: alPerros) {
+					panelCentro.add(new PanelPerros(p));
+				}
+				BD.closeBD();
+				panelBase.updateUI();
+			}
+		});
+		
+		jmiVitoriaP.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelBase.removeAll(); 
+				panelBase.add(panelCentro, BorderLayout.CENTER);
+				Connection con = BD.initBD("BaseDatos.db");
+				ArrayList<Perros> alPerros = BD.obtenerPerrosVitoria(con, "Vitoria");
+				for(Perros p: alPerros) {
+					panelCentro.add(new PanelPerros(p));
+				}
+				BD.closeBD();
+				panelBase.updateUI();
+			}
+		});
+		
+		jmiGetxoP.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelBase.removeAll(); 
+				panelBase.add(panelCentro, BorderLayout.CENTER);
+				Connection con = BD.initBD("BaseDatos.db");
+				ArrayList<Perros> alPerros = BD.obtenerPerrosGetxo(con, "Getxo");
+				for(Perros p: alPerros) {
+					panelCentro.add(new PanelPerros(p));
+				}
+				BD.closeBD();
+				panelBase.updateUI();
+			}
+		});
 		
 	}
 	
