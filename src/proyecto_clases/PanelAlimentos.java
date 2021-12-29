@@ -45,7 +45,7 @@ public class PanelAlimentos extends JPanel {
 				BD.alimentoReservado(con, al.getNombre());
 				PrintWriter pw = null;
 				try {
-					pw = new PrintWriter(new FileWriter("cesta.txt", true));
+					pw = new PrintWriter(new PrintWriter("cesta.txt"));
 					ArrayList<Alimentos> alAlimentosEnCesta = BD.obtenerAlimentos(con);
 					for(Alimentos ali: alAlimentosEnCesta) {
 						if(ali.isAliEnCesta() == true) {
