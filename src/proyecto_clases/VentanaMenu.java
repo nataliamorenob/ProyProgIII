@@ -90,10 +90,10 @@ public class VentanaMenu extends JFrame {
 		panelCentro.add(panelFrase);
 		
 		JLabel jlimagen = new JLabel();
-		jlimagen.setIcon(new ImageIcon("/Users/veronicagutierrezvillegas/eclipse-workspace/hoy3/FOTOS/Refugio.jpg"));
+		jlimagen.setIcon(new ImageIcon("FOTOS/Refugio.jpg"));
 		
 		JLabel jlfrase = new JLabel();
-		jlfrase.setIcon(new ImageIcon("/Users/veronicagutierrezvillegas/eclipse-workspace/hoy3/FOTOS/frase.jpeg"));
+		jlfrase.setIcon(new ImageIcon("FOTOS/frase.jpeg"));
 		
 		panelFrase.add(jlfrase);
 		panelLogo.add(jlimagen);
