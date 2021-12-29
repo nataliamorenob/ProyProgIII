@@ -121,6 +121,15 @@ public class VentanaAdmin extends JFrame {
 			}
 		});
 
+		btnAnyadir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	
 	}
 
 }

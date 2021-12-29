@@ -30,7 +30,7 @@ public class PanelQuienesSomos extends JPanel {
 	public PanelQuienesSomos() {
 		
 		add(base);
-		lPanel.setPreferredSize(new Dimension(200, 200));
+		lPanel.setPreferredSize(new Dimension(400, 400));
 		lPanel.setLayout(new BorderLayout());
 
 		//Label for the left panel
