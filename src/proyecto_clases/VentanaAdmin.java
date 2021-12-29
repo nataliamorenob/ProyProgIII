@@ -4,6 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 public class VentanaAdmin extends JFrame {
 
 	private JPanel contentPane;
+	private Connection con;
 
 	/**
 	 * Launch the application.
@@ -48,7 +53,8 @@ public class VentanaAdmin extends JFrame {
 		JPanel panelCentro = new JPanel();
 		contentPane.add(panelCentro, BorderLayout.CENTER);
 		
-		
+		//
+		//
 		
 		
 		
@@ -101,7 +107,20 @@ public class VentanaAdmin extends JFrame {
 
 		 
 		
-		
+		mntmPerro.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelCentro.removeAll(); 
+				con = BD.initBD("BaseDatos.db");
+				ArrayList<Perros> alPerros = BD.obtenerPerros(con);
+				for(Perros p: alPerros) {
+					panelCentro.add(new PanelPerrosAdmin(p));
+				}
+				BD.closeBD();
+				panelCentro.updateUI();
+				
+			}
+		});
 		
 		
 		
