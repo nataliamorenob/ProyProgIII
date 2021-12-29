@@ -59,6 +59,7 @@ public class VentanaReservas extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		setExtendedState(MAXIMIZED_BOTH);
+		setTitle("RESERVAS");
 		ImageIcon im = new ImageIcon("FOTOS/logo.jpg");
 		this.setIconImage(im.getImage());
 		ventanaReservas = this;

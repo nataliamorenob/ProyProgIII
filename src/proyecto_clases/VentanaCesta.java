@@ -44,6 +44,7 @@ public class VentanaCesta extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		setExtendedState(MAXIMIZED_BOTH);
+		setTitle("CESTA DE LA COMPRA");
 		ImageIcon im = new ImageIcon("FOTOS/logo.jpg");
 		this.setIconImage(im.getImage());
 		ventanaCesta = this;
