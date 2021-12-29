@@ -4,6 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 public class VentanaAdmin extends JFrame {
 
 	private JPanel contentPane;
+	private Connection con;
 
 	/**
 	 * Launch the application.
@@ -47,8 +52,10 @@ public class VentanaAdmin extends JFrame {
 		
 		JPanel panelCentro = new JPanel();
 		contentPane.add(panelCentro, BorderLayout.CENTER);
+		setExtendedState(MAXIMIZED_BOTH);
 		
-		
+		//
+		//
 		
 		
 		
@@ -58,7 +65,10 @@ public class VentanaAdmin extends JFrame {
 		JPanel panelAbajo = new JPanel();
 		
 		JMenuBar menuBar = new JMenuBar();
-		JButton btnAnyadir = new JButton("Anyadir");
+
+		JButton btnAnyadir = new JButton("Añadir");
+
+
 		btnAnyadir.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 
 		
@@ -83,9 +93,7 @@ public class VentanaAdmin extends JFrame {
 		
 		//AÑADIR LOS COMPONENTES A LOS PANELES
 		contentPane.add(panelMenu, BorderLayout.NORTH);
-		//contentPane.add(panelCentro, BorderLayout.CENTER);
 		contentPane.add(scrollPanelCentro, BorderLayout.CENTER);
-		//panelCentro.setLayout(new GridLayout(0, 3, 0, 0));
 		contentPane.add(panelAbajo, BorderLayout.SOUTH);
 		
 		panelMenu.add(menuBar);
@@ -101,13 +109,30 @@ public class VentanaAdmin extends JFrame {
 
 		 
 		
-		
-		
-		
-		
-		
-		
-		
+		mntmPerro.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelCentro.removeAll(); 
+				con = BD.initBD("BaseDatos.db");
+				ArrayList<Perros> alPerros = BD.obtenerPerros(con);
+				for(Perros p: alPerros) {
+					panelCentro.add(new PanelPerrosAdmin(p));
+				}
+				BD.closeBD();
+				panelCentro.updateUI();
+				
+			}
+		});
+
+		btnAnyadir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	
 	}
 
 }

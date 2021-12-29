@@ -79,6 +79,8 @@ public class VentanaMenu extends JFrame {
 		panelCentro = new JPanel();
 		panelCentro.setLayout(new GridLayout(0, 2));
 		JScrollPane scrollPanelCentro = new JScrollPane(panelCentro);
+//		scrollPanelCentro.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+//		scrollPanelCentro.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		JPanel panelAbajo = new JPanel();
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -233,7 +235,7 @@ public class VentanaMenu extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Desde aqui accederemos a la ventana de animales reservados
+				//Desde aqui accederemos a la ventana de animales reservados
 				new VentanaReservas();
 				ventanaMenu.setVisible(false);
 				

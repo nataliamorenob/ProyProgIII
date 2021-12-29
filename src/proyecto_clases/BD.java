@@ -13,9 +13,8 @@ public class BD {
 	/**
 	 * Metodo que establece la conexion con la BBDD
 	 * @param nombreBD <- El nombre de la BBDD
-	 * @return con <- La conexi锟絥 con la BBDD
+	 * @return con <- La conexion con la BBDD
 	 */
-
 	public static Connection initBD(String nombreBD ) {
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -81,11 +80,11 @@ public class BD {
 	/**
 	 * Metodo que devuelve un valor entero dependiendo de si el usuario existe
 	 * @param usuario <- el nick del usuario con el que se registra
-	 * @param contrasenia <- la contrase锟絘 con la que el usuario se registra
+	 * @param contrasenia <- la contrase馻 con la que el usuario se registra
 	 * @return resultado con valor:
 	 * -  0 si no existe dicho usuario
-	 * -  1 si existe el usuario pero la contrase锟絘 no es correcta
-	 * -  2 si el usuario existe y la contrase锟絘 es correcta
+	 * -  1 si existe el usuario pero la contrase馻 no es correcta
+	 * -  2 si el usuario existe y la contrase馻 es correcta
 	 */
 	public static int cogerUsuario(Connection con, String usuario, String contrasenia){
 		String resolucion="SELECT contrasenia FROM Usuario WHERE usuario ='"+usuario+"'";
@@ -121,9 +120,9 @@ public class BD {
 	}
 	
 	/**
-	 * Metodo para a锟絘dir un nuevo usuario a la BBDD
+	 * Metodo para a馻dir un nuevo usuario a la BBDD
 	 * @param usuario  <- el nick del usuario con el que se registrara 
-	 * @param contrasenia <- la contrase锟絘 con la que el usuario se registra
+	 * @param contrasenia <- la contrase馻 con la que el usuario se registra
 	 */
 	public static void anyadirUsuario(Connection con, String usuario, String contrasenia ) {
 		String resolucion="INSERT INTO Usuario VALUES('"+usuario+"','"+contrasenia+"')";
@@ -407,12 +406,11 @@ public class BD {
 	}
 	
 	/**
-	 * M茅todo que obtiene los gatos cuya localizaci贸n es Beasain
-	 * @param con -> Conexi贸n con la BBDD
-	 * @param loc -> localizaci贸n
+	 * Metodo que obtiene los gatos cuya localizacion es Beasain
+	 * @param con -> Conexion con la BBDD
+	 * @param loc -> localizacion
 	 * @return
 	 */
-	//CAMBIO
 	public static ArrayList<Gatos> obtenerGatosBeasain(Connection con, String loc){
 		ArrayList<Gatos> gatosBeasain = new ArrayList<>();
 		Gatos g = null;
@@ -451,9 +449,9 @@ public class BD {
 		return gatosBeasain;
 	}
 	/**
-	 * M茅todo que obtiene los gatos cuya localizaci贸n es Vitoria
-	 * @param con -> Conexi贸n con la BBDD
-	 * @param loc -> localizaci贸n
+	 * Metodo que obtiene los gatos cuya localizacion es Vitoria
+	 * @param con -> Conexion con la BBDD
+	 * @param loc -> localizacion
 	 * @return
 	 */
 	public static ArrayList<Gatos> obtenerGatosVitoria(Connection con, String loc){
@@ -494,9 +492,9 @@ public class BD {
 		return gatosVitoria;
 	}
 	/**
-	 * M茅todo que obtiene los gatos cuya localizaci贸n es Getxo
-	 * @param con -> Conexi贸n con la BBDD
-	 * @param loc -> localizaci贸n
+	 * Metodo que obtiene los gatos cuya localizacion es Getxo
+	 * @param con -> Conexion con la BBDD
+	 * @param loc -> localizacion
 	 * @return
 	 */
 	public static ArrayList<Gatos> obtenerGatosGetxo(Connection con, String loc){
@@ -537,9 +535,9 @@ public class BD {
 		return gatosGetxo;
 	}
 	/**
-	 * M茅todo que obtiene los perros cuya localizaci贸n es Beasain
-	 * @param con -> Conexi贸n con la BBDD
-	 * @param loc -> localizaci贸n
+	 * Metodo que obtiene los perros cuya localizacion es Beasain
+	 * @param con -> Conexion con la BBDD
+	 * @param loc -> localizacion
 	 * @return
 	 */
 	public static ArrayList<Perros> obtenerPerrosBeasain(Connection con, String loc){
@@ -623,9 +621,9 @@ public class BD {
 		return perrosVitoria;
 	}
 	/**
-	 * M茅todo que obtiene los perros cuya localizaci贸n es Getxo
-	 * @param con -> Conexi贸n con la BBDD
-	 * @param loc -> localizaci贸n
+	 * Metodo que obtiene los perros cuya localizaci贸n es Getxo
+	 * @param con -> Conexion con la BBDD
+	 * @param loc -> localizacion
 	 * @return
 	 */
 	public static ArrayList<Perros> obtenerPerrosGetxo(Connection con, String loc){
@@ -666,7 +664,7 @@ public class BD {
 		return perrosGetxo;
 	}
 	/***
-	 * M茅todo que borra los perros seleccionados
+	 * Metodo que borra los perros seleccionados
 	 * @param nombre->El nombre del perro
 	 */
 	public static void borrarPerros(Connection con, String nombre) {

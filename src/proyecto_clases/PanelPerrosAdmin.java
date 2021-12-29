@@ -46,13 +46,7 @@ public class PanelPerrosAdmin extends JPanel {
 				
 			}
 		});
-		
-		
-		
-		
-		
-			
-		
+
 		panelSur.add(btnEliminar);
 		
 		JPanel panelDerecha = new JPanel();

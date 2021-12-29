@@ -30,12 +30,8 @@ public class PanelQuienesSomos extends JPanel {
 	public PanelQuienesSomos() {
 		
 		add(base);
-		lPanel.setPreferredSize(new Dimension(400, 300));
+		lPanel.setPreferredSize(new Dimension(400, 400));
 		lPanel.setLayout(new BorderLayout());
-		
-		
-		
-		
 
 		//Label for the left panel
 		JLabel LblIcon = new JLabel();
@@ -47,29 +43,23 @@ public class PanelQuienesSomos extends JPanel {
 		EmptyBorder b =new EmptyBorder(100, 100, 100, 100);
 		rPanel.setBorder(b);
 		
-		JLabel title = new JLabel("ï¿½QUIENES SOMOS?");
+		JLabel title = new JLabel("¿QUIENES SOMOS?");
 		title.setFont(new Font("verdana", Font.BOLD, 30));
 		rPanel.add(title);
 		
 		
-		JLabel text = new JLabel("<html>Somos una pequeÃ±a asociaciÃ³n sin Ã¡nimo de lucro fromada por voluntarios y socios, <br/> "
-								+ "cuyo Ãºnico objetivo es poder beneficiar a todos aquellos animales que no tienen hogar. <br/ "
-								+ "A parte de buscar una famialia a todos aquellos perro y gatos de Bizkaia, tambiÃ©n contamos <br/>"
-								+ "con un programa de protecciÃ³n y santuario de toda la fauna autÃ³ctona que por algÃºn motivo <br/>"
-								+ "se ha quedado desplazada de su hÃ¡bitat se recupera en nuestras instalaciones hasta su posible <br/>"
-								+ "reinsercciÃ³n."
-								+ "<br/> <br/> En nuestra web podrÃ¡s encontrar contribuir mediante la compra de alimentos y accesorios <br/>"
-								+"para tu mascota o, sencillamente, encontar al compaÃ±ero que estabas buscando. <br/>"
+		JLabel text = new JLabel("<html>Somos una pequeña asociación sin ánimo de lucro fromada por voluntarios y socios, <br/> "
+								+ "cuyo único objetivo es poder beneficiar a todos aquellos animales que no tienen hogar. <br/ "
+								+ "A parte de buscar una famialia a todos aquellos perro y gatos de Bizkaia, también contamos <br/>"
+								+ "con un programa de protección y santuario de toda la fauna autóctona que por algún motivo <br/>"
+								+ "se ha quedado desplazada de su hábitat se recupera en nuestras instalaciones hasta su posible <br/>"
+								+ "reinsercción."
+								+ "<br/> <br/> En nuestra web podrás encontrar contribuir mediante la compra de alimentos y accesorios <br/>"
+								+"para tu mascota o, sencillamente, encontar al compañero que estabas buscando. <br/>"
 								+ "</html>");
 		text.setFont(new Font("monospaced", Font.PLAIN, 15));
 		
 		rPanel.add(text, BorderLayout.AFTER_LAST_LINE);
-
-		
-		
-		
-		
-		
 		
 		base.add(lPanel, BorderLayout.WEST);
 		base.add(rPanel, BorderLayout.EAST);
