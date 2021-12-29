@@ -84,10 +84,12 @@ public class PanelGatos extends JPanel {
 									String localizacion = g.getLocalizacion();
 									String colores = g.getColores();
 									String rutaFoto = g.getRutaFoto();
-									pw.println("\n- El usuario que ha hecho la reserva es: " + pregunta6 + "\n"); //CAMBIO
-									pw.println("El perro reservado ha sido: " + nombre + "\nDatos: " + "\nEdad: " + edad + ", Sexo: " +
-											sexo + ", Peso: " + peso + ", Colores: " + colores + "\nCaracteristicas: " + caracteristicas +
-											"\nTiempo en adopcion: "+ tiempoEnAdopcion + "\nLocalizacion: " + localizacion + "\n");
+									//pw.println("\n- El usuario que ha hecho la reserva es: " + pregunta6 + "\n"); //CAMBIO
+									//pw.println("El perro reservado ha sido: " + nombre + "\nDatos: " + "\nEdad: " + edad + ", Sexo: " +
+									//		sexo + ", Peso: " + peso + ", Colores: " + colores + "\nCaracteristicas: " + caracteristicas +
+									//		"\nTiempo en adopcion: "+ tiempoEnAdopcion + "\nLocalizacion: " + localizacion + "\n");
+									
+									pw.println(nombre + ","+ edad + ","+ sexo + ","+ peso + ","+ colores + ","+ caracteristicas + ","+ tiempoEnAdopcion + ","+ localizacion); 
 								}
 							}
 						}catch (IOException e1) {

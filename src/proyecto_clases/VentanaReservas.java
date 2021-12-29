@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.TreeSet;
 
 import javax.swing.ImageIcon;
@@ -91,44 +92,44 @@ public class VentanaReservas extends JFrame {
 		});
 		
 		//Leer el fichero animalesReservados
-//		File fichero = null;
-//	    FileReader fr = null;
-//	    BufferedReader br = null;
-//	    TreeSet<Animales> tsAnimales = new TreeSet<>();
-//        try {
-//        	fichero = new File ("animalesReservados.txt");
-//			fr = new FileReader (fichero);
-//			br = new BufferedReader(fr);
-//			String linea = br.readLine();
-//			while(linea!=null) {
-//				String [] datos = linea.split(",");
-//				String nombre = datos[0];
-//				Integer edad = Integer.parseInt(datos[1]);
-//				String sexo = datos[2];
-//				Integer peso = Integer.parseInt(datos[3]);
-//				String caracteristicas = datos[4];
-//				Animales an = new Animales(nombre, edad, sexo, peso, caracteristicas, caracteristicas);
-//				tsAnimales.add(an);
-//				linea = br.readLine();
-//			}
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//        
-//        String [] columnas = {"Nombre","Edad","Sexo", "Peso", "Caracteristicas"};  
-//		modeloTablaAnimales.setColumnIdentifiers(columnas);
-//		
-//		for(Animales a: tsAnimales) {
-//			String dataRow[] = {a.getNombre(), String.valueOf(a.getEdad()), a.getSexo(), String.valueOf(a.getPeso()), a.getCaracteristicas()};
-//			modeloTablaAnimales.addRow(dataRow);
-//		}
-//		tablaAnimales = new JTable(modeloTablaAnimales);
-//		JScrollPane scrollTabla = new JScrollPane(tablaAnimales);
-//		panelCentro.add(scrollTabla);
+		File fichero = null;
+	    FileReader fr = null;
+	    BufferedReader br = null;
+	    TreeSet<Animales> tsAnimales = new TreeSet();
+        try {
+        	fichero = new File ("animalesReservados.txt");
+			fr = new FileReader (fichero);
+			br = new BufferedReader(fr);
+			String linea = br.readLine();
+			while(linea!=null) {
+				String [] datos = linea.split(",");
+				String nombre = datos[0];
+				Integer edad = Integer.parseInt(datos[1]);
+				String sexo = datos[2];
+				Integer peso = Integer.parseInt(datos[3]);
+				String caracteristicas = datos[4];
+				Animales an = new Animales(nombre, edad, sexo, peso, caracteristicas, caracteristicas);
+				tsAnimales.add(an);
+				linea = br.readLine();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        String [] columnas = {"Nombre","Edad","Sexo", "Peso", "Caracteristicas"};  
+		modeloTablaAnimales.setColumnIdentifiers(columnas);
+		
+		for(Animales a: tsAnimales) {
+			String dataRow[] = {a.getNombre(), String.valueOf(a.getEdad()), a.getSexo(), String.valueOf(a.getPeso()), a.getCaracteristicas()};
+			modeloTablaAnimales.addRow(dataRow);
+		}
+		tablaAnimales = new JTable(modeloTablaAnimales);
+		JScrollPane scrollTabla = new JScrollPane(tablaAnimales);
+		panelCentro.add(scrollTabla);
 		
 		setVisible(true);
 	}
