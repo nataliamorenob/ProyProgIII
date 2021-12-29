@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.TreeSet;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -106,7 +107,8 @@ public class VentanaReservas extends JFrame {
 				String sexo = datos[2];
 				Integer peso = Integer.parseInt(datos[3]);
 				String caracteristicas = datos[4];
-				Animales an = new Animales(nombre, edad, sexo, peso, caracteristicas, caracteristicas);
+				String rutaFoto = datos[5];
+				Animales an = new Animales(nombre, edad, sexo, peso, caracteristicas, rutaFoto);
 				tsAnimales.add(an);
 				linea = br.readLine();
 			}
@@ -118,17 +120,26 @@ public class VentanaReservas extends JFrame {
 			e.printStackTrace();
 		}
         
-        String [] columnas = {"Nombre","Edad","Sexo", "Peso", "Caracteristicas"};  
-        modeloTablaAnimales = new DefaultTableModel();
+        String [] columnas = {"Nombre","Edad","Sexo", "Peso", "Caracteristicas", "Foto"};  
+        modeloTablaAnimales = new DefaultTableModel() {
+        	//Método para que la tabla no pueda ser editada
+        	public boolean isCellEditable(int row, int column) {
+    			return false;
+    		}
+        };
+        
         modeloTablaAnimales.setColumnIdentifiers(columnas);
+        
 		
 		for(Animales a: tsAnimales) {
-			String dataRow[] = {a.getNombre(), String.valueOf(a.getEdad()), a.getSexo(), String.valueOf(a.getPeso()), a.getCaracteristicas()};
+			Icon imagenAnimal = new ImageIcon(a.getRutaFoto());
+			String dataRow[] = {a.getNombre(), String.valueOf(a.getEdad()), a.getSexo(), String.valueOf(a.getPeso()), a.getCaracteristicas(), imagenAnimal};
 			modeloTablaAnimales.addRow(dataRow);
 		}
 		tablaAnimales = new JTable(modeloTablaAnimales);
 		JScrollPane scrollTabla = new JScrollPane(tablaAnimales);
 		panelCentro.add(scrollTabla);
+		
 		
 		setVisible(true);
 	}
