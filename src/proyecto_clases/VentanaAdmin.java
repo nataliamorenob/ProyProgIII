@@ -96,7 +96,7 @@ public class VentanaAdmin extends JFrame {
 		mnAlimentos.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
 		
-		//A�ADIR LOS COMPONENTES A LOS PANELES
+		//AñADIR LOS COMPONENTES A LOS PANELES
 		contentPane.add(panelMenu, BorderLayout.NORTH);
 		contentPane.add(scrollPanelCentro, BorderLayout.CENTER);
 		contentPane.add(panelAbajo, BorderLayout.SOUTH);

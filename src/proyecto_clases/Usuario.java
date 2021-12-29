@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class Usuario {
 	private String usuario;
-	private String contrasenia; //El formato deberá tener 6 letras, de las cuales una será mayúscula, y un dígito.
+	private String contrasenia; //El formato deberÃ¡ tener 6 letras, de las cuales una serÃ¡ mayÃºscula, y un dÃ­gito.
 	
 	public Usuario(String usuario, String contrasenia) {
 		this.usuario = usuario;
@@ -13,7 +13,7 @@ public class Usuario {
 		if(correcto) {
 			this.contrasenia = contrasenia;
 		}else {
-			System.out.println("La contraseña no es correcta");
+			System.out.println("La contraseÃ±a no es correcta");
 		}
 	}
 

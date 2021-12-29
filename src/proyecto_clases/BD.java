@@ -80,11 +80,11 @@ public class BD {
 	/**
 	 * Metodo que devuelve un valor entero dependiendo de si el usuario existe
 	 * @param usuario <- el nick del usuario con el que se registra
-	 * @param contrasenia <- la contrase�a con la que el usuario se registra
+	 * @param contrasenia <- la contraseña con la que el usuario se registra
 	 * @return resultado con valor:
 	 * -  0 si no existe dicho usuario
-	 * -  1 si existe el usuario pero la contrase�a no es correcta
-	 * -  2 si el usuario existe y la contrase�a es correcta
+	 * -  1 si existe el usuario pero la contraseña no es correcta
+	 * -  2 si el usuario existe y la contraseña es correcta
 	 */
 	public static int cogerUsuario(Connection con, String usuario, String contrasenia){
 		String resolucion="SELECT contrasenia FROM Usuario WHERE usuario ='"+usuario+"'";
@@ -120,9 +120,9 @@ public class BD {
 	}
 	
 	/**
-	 * Metodo para a�adir un nuevo usuario a la BBDD
+	 * Metodo para añadir un nuevo usuario a la BBDD
 	 * @param usuario  <- el nick del usuario con el que se registrara 
-	 * @param contrasenia <- la contrase�a con la que el usuario se registra
+	 * @param contrasenia <- la contraseña con la que el usuario se registra
 	 */
 	public static void anyadirUsuario(Connection con, String usuario, String contrasenia ) {
 		String resolucion="INSERT INTO Usuario VALUES('"+usuario+"','"+contrasenia+"')";
