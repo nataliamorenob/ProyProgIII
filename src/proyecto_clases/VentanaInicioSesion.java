@@ -175,10 +175,10 @@ public class VentanaInicioSesion extends JFrame {
 						
 					}else {
 						JOptionPane.showMessageDialog(null, "Bienvenido");
-						if(usuario=="admin" & contrasenia=="admin") {
-							new VentanaAdmin();
+						if(usuario.equals("admin") && contrasenia.equals("admin")) {
+							VentanaAdmin frame = new VentanaAdmin();
+							frame.setVisible(true);
 						}else {
-							JOptionPane.showMessageDialog(null, "Bienvenido");
 							//Una vez que haya iniciado sesion correctamente accederemos a la VentanaMenu
 							new VentanaMenu();
 							ventanaInicioSesion.setVisible(false);
