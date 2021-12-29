@@ -58,8 +58,8 @@ public class VentanaAdmin extends JFrame {
 		JPanel panelAbajo = new JPanel();
 		
 		JMenuBar menuBar = new JMenuBar();
-		JButton btnAñadir = new JButton("Añadir");
-		btnAñadir.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
+		JButton btnAnyadir = new JButton("Anyadir");
+		btnAnyadir.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 
 		
 		JMenu mnAnimales = new JMenu("Animales");
@@ -81,7 +81,7 @@ public class VentanaAdmin extends JFrame {
 		mnAlimentos.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
 		
-		//A�ADIR LOS COMPONENTES A LOS PANELES
+		//A�ADIR LOS COMPONENTES A LOS PANELES
 		contentPane.add(panelMenu, BorderLayout.NORTH);
 		//contentPane.add(panelCentro, BorderLayout.CENTER);
 		contentPane.add(scrollPanelCentro, BorderLayout.CENTER);
@@ -97,7 +97,7 @@ public class VentanaAdmin extends JFrame {
 		mnAnimales.add(mntmGato);
 		mnAnimales.add(mntmOtro);
 		
-		panelAbajo.add(btnAñadir);
+		panelAbajo.add(btnAnyadir);
 
 		 
 		
