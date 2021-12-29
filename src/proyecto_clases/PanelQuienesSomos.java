@@ -2,6 +2,7 @@ package proyecto_clases;
 import java.awt.Font;
 
 import java.awt.GridLayout;
+import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -23,13 +24,13 @@ public class PanelQuienesSomos extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	private JPanel base = new JPanel();
+	private JPanel panelBase = new JPanel();
 	private JPanel lPanel = new JPanel();
 	private JPanel rPanel = new JPanel();
 	
 	public PanelQuienesSomos() {
 		
-		add(base);
+		add(panelBase);
 		lPanel.setPreferredSize(new Dimension(400, 400));
 		lPanel.setLayout(new BorderLayout());
 
@@ -47,11 +48,10 @@ public class PanelQuienesSomos extends JPanel {
 		title.setFont(new Font("verdana", Font.BOLD, 30));
 		rPanel.add(title);
 		
-		
 		JLabel text = new JLabel("<html>Somos una pequeña asociación sin ánimo de lucro fromada por voluntarios y socios, <br/> "
 								+ "cuyo único objetivo es poder beneficiar a todos aquellos animales que no tienen hogar. <br/ "
 								+ "A parte de buscar una famialia a todos aquellos perro y gatos de Bizkaia, también contamos <br/>"
-								+ "con un programa de protección y santuario de toda la fauna aut�ctona que por algún motivo <br/>"
+								+ "con un programa de protección y santuario de toda la fauna autoctona que por algún motivo <br/>"
 								+ "se ha quedado desplazada de su habitat se recupera en nuestras instalaciones hasta su posible <br/>"
 								+ "reinsercción."
 								+ "<br/> <br/> En nuestra web podrás encontrar contribuir mediante la compra de alimentos y accesorios <br/>"
@@ -61,8 +61,8 @@ public class PanelQuienesSomos extends JPanel {
 		
 		rPanel.add(text, BorderLayout.AFTER_LAST_LINE);
 		
-		base.add(lPanel, BorderLayout.WEST);
-		base.add(rPanel, BorderLayout.EAST);
+		panelBase.add(lPanel, BorderLayout.WEST);
+		panelBase.add(rPanel, BorderLayout.EAST);
 	}
 }
 

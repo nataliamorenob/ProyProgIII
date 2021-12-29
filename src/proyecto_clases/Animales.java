@@ -12,6 +12,7 @@ public class Animales implements Comparable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	protected Animales(String nombre, int edad, String sexo, int peso, String caracteristicas,String rutaFoto){
 		super();
 		this.nombre = nombre;
@@ -20,9 +21,17 @@ public class Animales implements Comparable {
 		this.peso = peso;
 		this.caracteristicas = caracteristicas;
 		this.rutaFoto=rutaFoto;
-;
-
 	}
+	
+	protected Animales(String nombre, int edad, String sexo, int peso, String caracteristicas){
+		super();
+		this.nombre = nombre;
+		this.edad = edad;
+		this.sexo = sexo;
+		this.peso = peso;
+		this.caracteristicas = caracteristicas;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}

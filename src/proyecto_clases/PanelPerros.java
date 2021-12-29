@@ -78,8 +78,6 @@ public class PanelPerros extends JPanel {
 					}
 				}
 				if(contador >= 3) {
-
-					JOptionPane.showConfirmDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idóneo para la adopcion. \n Recuerde que esta información se comprobará el día de la adoción", "Cuestionario previo a la adopción",JOptionPane.OK_OPTION);
 					int existe = BD.existeUsuario(con, pregunta6);
 					if(existe == 1){
 						JOptionPane.showMessageDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idoneo para la adopcion. \n Recuerde que esta información se comprobará el día de la adoción", "Cuestionario previo a la adopción", JOptionPane.INFORMATION_MESSAGE);
@@ -106,7 +104,7 @@ public class PanelPerros extends JPanel {
 											//sexo + ", Peso: " + peso + ", Colores: " + colores + "\nCaracteristicas: " + caracteristicas +
 											//"\nTiempo en adopcion: "+ tiempoEnAdopcion + "\nLocalizacion: " + localizacion + "\n"); 
 									
-									pw.println(nombre + ","+ edad + ","+ sexo + ","+ peso + ","+ colores + ","+ caracteristicas + ","+ tiempoEnAdopcion + ","+ localizacion + "," + rutaFoto); 
+									pw.println(nombre + ","+ edad + ","+ sexo + ","+ peso + ","+ colores + ","+ caracteristicas + ","+ tiempoEnAdopcion + ","+ localizacion); 
 															
 								}
 							}

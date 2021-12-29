@@ -31,6 +31,7 @@ public class VentanaReservas extends JFrame {
 	private JFrame ventanaReservas;
 	private JTable tablaAnimales;
 	private DefaultTableModel modeloTablaAnimales;
+	private ImageIcon imAnimal;
 
 	/**
 	 * Launch the application.
@@ -107,20 +108,29 @@ public class VentanaReservas extends JFrame {
 				String sexo = datos[2];
 				Integer peso = Integer.parseInt(datos[3]);
 				String caracteristicas = datos[4];
-				String rutaFoto = datos[5];
-				Animales an = new Animales(nombre, edad, sexo, peso, caracteristicas, rutaFoto);
+				Animales an = new Animales(nombre, edad, sexo, peso, caracteristicas);
 				tsAnimales.add(an);
 				linea = br.readLine();
 			}
+		
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(br!=null) {
+				try {
+					br.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
 		}
         
-        String [] columnas = {"Nombre","Edad","Sexo", "Peso", "Caracteristicas", "Foto"};  
+        String [] columnas = {"Nombre","Edad","Sexo", "Peso", "Caracteristicas"};  
         modeloTablaAnimales = new DefaultTableModel() {
         	//Método para que la tabla no pueda ser editada
         	public boolean isCellEditable(int row, int column) {
@@ -129,11 +139,9 @@ public class VentanaReservas extends JFrame {
         };
         
         modeloTablaAnimales.setColumnIdentifiers(columnas);
-        
 		
 		for(Animales a: tsAnimales) {
-			Icon imagenAnimal = new ImageIcon(a.getRutaFoto());
-			String dataRow[] = {a.getNombre(), String.valueOf(a.getEdad()), a.getSexo(), String.valueOf(a.getPeso()), a.getCaracteristicas(), imagenAnimal};
+			String dataRow[] = {a.getNombre(), String.valueOf(a.getEdad()), a.getSexo(), String.valueOf(a.getPeso()), a.getCaracteristicas()};
 			modeloTablaAnimales.addRow(dataRow);
 		}
 		tablaAnimales = new JTable(modeloTablaAnimales);
