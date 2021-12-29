@@ -156,18 +156,26 @@ public class PanelLocalizacion extends JPanel {
 		JPanel panelCentro = new JPanel();
 		panelCentro.setLayout(new GridLayout(0, 2));
 		
-		JMenuBar jm1 = new JMenuBar();
+	    JMenuBar jm1 = new JMenuBar();
 		
 		JMenu perros = new JMenu("PERROS");
+		perros.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		JMenuItem jmiBeasainP = new JMenuItem("BEASAIN");
+		jmiBeasainP.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		JMenuItem jmiGetxoP = new JMenuItem("GETXO");
+		jmiGetxoP.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		JMenuItem jmiVitoriaP = new JMenuItem("VITORIA");
+		jmiVitoriaP.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		
 		
 		JMenu gatos = new JMenu("GATOS");
+		gatos.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		JMenuItem jmiBeasainG = new JMenuItem("BEASAIN");
+		jmiBeasainG.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		JMenuItem jmiGetxoG = new JMenuItem("GETXO");
+		jmiGetxoG.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		JMenuItem jmiVitoriaG = new JMenuItem("VITORIA");
+		jmiVitoriaG.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		
 		panelBase.add(jm1, BorderLayout.NORTH);
 		jm1.add(perros);

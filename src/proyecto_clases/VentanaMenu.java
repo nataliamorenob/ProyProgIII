@@ -82,22 +82,33 @@ public class VentanaMenu extends JFrame {
 //		scrollPanelCentro.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 //		scrollPanelCentro.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		
-		JPanel panelFrase = new JPanel();
-		JPanel panelLogo = new JPanel();
-		panelFrase.setLayout(new BorderLayout());
-		panelLogo.setLayout(new BorderLayout());
-		panelCentro.add(panelLogo);
-		panelCentro.add(panelFrase);
+//		JPanel panelFrase = new JPanel();
+//		JPanel panelLogo = new JPanel();
+//		panelFrase.setLayout(new BorderLayout());
+//		panelLogo.setLayout(new BorderLayout());
+//		panelCentro.add(panelLogo);
+//		panelCentro.add(panelFrase);
+	
+//		JLabel jlimagen = new JLabel();
+//		jlimagen.setIcon(new ImageIcon("FOTOS/Refugio.jpg"));
+//		
+//		JLabel jlfrase = new JLabel();
+//		jlfrase.setIcon(new ImageIcon("FOTOS/frase.jpeg"));
 		
-		JLabel jlimagen = new JLabel();
-		jlimagen.setIcon(new ImageIcon("FOTOS/Refugio.jpg"));
+//		panelFrase.add(jlfrase);
+//		panelLogo.add(jlimagen);
 		
-		JLabel jlfrase = new JLabel();
-		jlfrase.setIcon(new ImageIcon("FOTOS/frase.jpeg"));
+		ImageIcon imRefugio = new ImageIcon("FOTOS/Refugio.jpg");
+		JLabel lblRefugio = new JLabel(imRefugio);
+		ImageIcon imRefugioDim = new ImageIcon(imRefugio.getImage().getScaledInstance(600, 400, Image.SCALE_DEFAULT));
+		lblRefugio.setIcon(imRefugioDim); 
+		panelCentro.add(lblRefugio);
 		
-		panelFrase.add(jlfrase);
-		panelLogo.add(jlimagen);
-		
+		ImageIcon imFrase = new ImageIcon("FOTOS/frase.jpeg");
+		JLabel lblFrase = new JLabel(imFrase);
+		ImageIcon imFraseDim = new ImageIcon(imFrase.getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT));
+		lblFrase.setIcon(imFraseDim); 
+		panelCentro.add(lblFrase);
 		
 		JPanel panelAbajo = new JPanel();
 		
