@@ -54,6 +54,7 @@ public class VentanaAdmin extends JFrame {
 		contentPane.add(panelCentro, BorderLayout.CENTER);
 		
 		//
+		//
 		
 		
 		
