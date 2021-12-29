@@ -34,30 +34,18 @@ public class PanelLocalizacion extends JPanel {
 		//Connection con; //CAMBIO
 		//con = BD.initBD("BaseDatos.db"); //CAMBIO
 		
-		
 		JPanel panel = new JPanel();
 		add(panel);
 		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		
-		
-		//JLabel lblNewLabel = new JLabel("NUESTRAS LOCALIZACIONES");
-		//lblNewLabel.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		//add(lblNewLabel);
-		
-		
-		
-		// PRINCIPIO CAMBIO
+
 		JMenuBar jm1 = new JMenuBar();
 	
 		JMenu perros = new JMenu("PERROS");
 		JMenuItem jmiBeasainP = new JMenuItem("BEASAIN");
 		JMenuItem jmiGetxoP = new JMenuItem("GETXO");
 		JMenuItem jmiVitoriaP = new JMenuItem("VITORIA");
-		
 		
 		JMenu gatos = new JMenu("GATOS");
 		JMenuItem jmiBeasainG = new JMenuItem("BEASAIN");

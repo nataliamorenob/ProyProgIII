@@ -233,7 +233,7 @@ public class VentanaMenu extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Desde aqui accederemos a la ventana de animales reservados
+				//Desde aqui accederemos a la ventana de animales reservados
 				new VentanaReservas();
 				ventanaMenu.setVisible(false);
 				
