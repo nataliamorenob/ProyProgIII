@@ -128,7 +128,7 @@ public class VentanaInicioSesion extends JFrame {
 		
 		
 		
-		JLabel lblContrasenia = new JLabel("Contrase�a:");
+		JLabel lblContrasenia = new JLabel("Contraseña:");
 		panelCentro.add(lblContrasenia);
 		
 		passwordFieldContrasenia = new JPasswordField();
@@ -171,7 +171,7 @@ public class VentanaInicioSesion extends JFrame {
 						btnRegistrarse.setEnabled(true);
 					
 					}else if(result==1) {
-						JOptionPane.showMessageDialog(null, "La contrase�a es incorrecta");
+						JOptionPane.showMessageDialog(null, "La contraseña es incorrecta");
 						
 					}else {
 						JOptionPane.showMessageDialog(null, "Bienvenido");

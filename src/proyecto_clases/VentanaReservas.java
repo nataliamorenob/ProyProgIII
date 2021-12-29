@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import javax.swing.JLabel;
+import java.awt.Font;
 
 public class VentanaReservas extends JFrame {
 
@@ -56,50 +57,53 @@ public class VentanaReservas extends JFrame {
 		contentPane.add(panelNorte, BorderLayout.NORTH);
 		
 		JLabel reservalbl = new JLabel("Animales Reservados");
+		reservalbl.setFont(new Font("Baskerville Old Face", Font.PLAIN, 11));
 		panelNorte.add(reservalbl);
 		
 		JPanel panelCentro = new JPanel();
 		contentPane.add(panelCentro, BorderLayout.CENTER);
 		
 		//Leer el fichero animalesReservados
-		File fichero = null;
-	    FileReader fr = null;
-	    BufferedReader br = null;
-	    TreeSet<Animales> tsAnimales = new TreeSet<>();
-        try {
-        	fichero = new File ("animalesReservados.txt");
-			fr = new FileReader (fichero);
-			br = new BufferedReader(fr);
-			String linea = br.readLine();
-			while(linea!=null) {
-				String [] datos = linea.split(",");
-				String nombre = datos[0];
-				Integer edad = Integer.parseInt(datos[1]);
-				String sexo = datos[2];
-				Integer peso = Integer.parseInt(datos[3]);
-				String caracteristicas = datos[4];
-				Animales an = new Animales(nombre, edad, sexo, peso, caracteristicas, caracteristicas);
-				tsAnimales.add(an);
-				linea = br.readLine();
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
-        String [] columnas = {"Nombre","Edad","Sexo", "Peso", "Caracteristicas"};  
-		modeloTablaAnimales.setColumnIdentifiers(columnas);
+//		File fichero = null;
+//	    FileReader fr = null;
+//	    BufferedReader br = null;
+//	    TreeSet<Animales> tsAnimales = new TreeSet<>();
+//        try {
+//        	fichero = new File ("animalesReservados.txt");
+//			fr = new FileReader (fichero);
+//			br = new BufferedReader(fr);
+//			String linea = br.readLine();
+//			while(linea!=null) {
+//				String [] datos = linea.split(",");
+//				String nombre = datos[0];
+//				Integer edad = Integer.parseInt(datos[1]);
+//				String sexo = datos[2];
+//				Integer peso = Integer.parseInt(datos[3]);
+//				String caracteristicas = datos[4];
+//				Animales an = new Animales(nombre, edad, sexo, peso, caracteristicas, caracteristicas);
+//				tsAnimales.add(an);
+//				linea = br.readLine();
+//			}
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//        
+//        String [] columnas = {"Nombre","Edad","Sexo", "Peso", "Caracteristicas"};  
+//		modeloTablaAnimales.setColumnIdentifiers(columnas);
+//		
+//		for(Animales a: tsAnimales) {
+//			String dataRow[] = {a.getNombre(), String.valueOf(a.getEdad()), a.getSexo(), String.valueOf(a.getPeso()), a.getCaracteristicas()};
+//			modeloTablaAnimales.addRow(dataRow);
+//		}
+//		tablaAnimales = new JTable(modeloTablaAnimales);
+//		JScrollPane scrollTabla = new JScrollPane(tablaAnimales);
+//		panelCentro.add(scrollTabla);
 		
-		for(Animales a: tsAnimales) {
-			String dataRow[] = {a.getNombre(), String.valueOf(a.getEdad()), a.getSexo(), String.valueOf(a.getPeso()), a.getCaracteristicas()};
-			modeloTablaAnimales.addRow(dataRow);
-		}
-		tablaAnimales = new JTable(modeloTablaAnimales);
-		JScrollPane scrollTabla = new JScrollPane(tablaAnimales);
-		panelCentro.add(scrollTabla);
+		setVisible(true);
 	}
 
 }

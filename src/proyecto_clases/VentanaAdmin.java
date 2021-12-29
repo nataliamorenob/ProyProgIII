@@ -6,17 +6,23 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+
 
 public class VentanaAdmin extends JFrame {
 
@@ -43,8 +49,12 @@ public class VentanaAdmin extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaAdmin() {
+		ImageIcon im = new ImageIcon("FOTOS/logo.jpg");
+		this.setIconImage(im.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		setExtendedState(MAXIMIZED_BOTH);
+		setTitle("PROTECTORA");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -52,11 +62,6 @@ public class VentanaAdmin extends JFrame {
 		
 		JPanel panelCentro = new JPanel();
 		contentPane.add(panelCentro, BorderLayout.CENTER);
-		setExtendedState(MAXIMIZED_BOTH);
-		
-		//
-		//
-		
 		
 		
 		JPanel panelMenu = new JPanel();
@@ -66,7 +71,7 @@ public class VentanaAdmin extends JFrame {
 		
 		JMenuBar menuBar = new JMenuBar();
 
-		JButton btnAnyadir = new JButton("A�adir");
+		JButton btnAnyadir = new JButton("Añadir");
 
 
 		btnAnyadir.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
@@ -91,7 +96,7 @@ public class VentanaAdmin extends JFrame {
 		mnAlimentos.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
 		
-		//A�ADIR LOS COMPONENTES A LOS PANELES
+		//A�ADIR LOS COMPONENTES A LOS PANELES
 		contentPane.add(panelMenu, BorderLayout.NORTH);
 		contentPane.add(scrollPanelCentro, BorderLayout.CENTER);
 		contentPane.add(panelAbajo, BorderLayout.SOUTH);
@@ -106,8 +111,6 @@ public class VentanaAdmin extends JFrame {
 		mnAnimales.add(mntmOtro);
 		
 		panelAbajo.add(btnAnyadir);
-
-		 
 		
 		mntmPerro.addActionListener(new ActionListener() {
 			@Override
@@ -124,12 +127,83 @@ public class VentanaAdmin extends JFrame {
 			}
 		});
 
+		mntmGato.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelCentro.removeAll(); 
+				con = BD.initBD("BaseDatos.db");
+				ArrayList<Gatos> alGatos = BD.obtenerGatos(con);
+				for(Gatos g: alGatos) {
+					panelCentro.add(new PanelGatosAdmin(g));
+				}
+				BD.closeBD();
+				panelCentro.updateUI();
+			}
+		});
+		
+		mntmOtro.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelCentro.removeAll();
+				con = BD.initBD("BaseDatos.db");
+				ArrayList<Otros> alOtros = BD.obtenerOtros(con);
+				for(Otros o: alOtros) {
+					panelCentro.add(new PanelOtrosAdmin(o));
+				}
+				BD.closeBD();
+				panelCentro.updateUI();
+			}
+		});
+		
+		mnAccesorios.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				panelCentro.removeAll(); 
+				con=BD.initBD("BaseDatos.db");
+				ArrayList<Accesorios> alAccesorios=BD.obtenerAccesorios(con);
+				for(Accesorios acs: alAccesorios) {
+					panelCentro.add(new PanelAccesoriosAdmin(acs));
+				}
+				BD.closeBD();
+				panelCentro.updateUI();
+			}
+		});
+		
+		mnAlimentos.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				panelCentro.removeAll(); 
+				con=BD.initBD("BaseDatos.db");
+				ArrayList<Alimentos> alAlimentos=BD.obtenerAlimentos(con);
+				for(Alimentos al: alAlimentos) {
+					panelCentro.add(new PanelAlimentosAdmin(al));
+				}
+				BD.closeBD();
+				panelCentro.updateUI();
+			}
+		});
+		
 		btnAnyadir.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				Object []  opciones= { "Perro", "Gato", "Otro", "Alimentos", "Accesorios"};
+				Object opcion = JOptionPane.showInputDialog(null,"Seleccione lo que desee añadir:", "Elegir", JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+				if(opcion.equals("Perro")) {
+					String nombre = JOptionPane.showInputDialog("Introduzca el nombre del perro que desea añadir: ");
+					int edad = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la edad del perro: "));
+					String sexo = JOptionPane.showInputDialog("Introduzca el sexo correspondiente: ");
+					int peso = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la peso del perro: "));
+					String carac = JOptionPane.showInputDialog("Determine las caracterisitcas del animal: ");
+					int tiempoAdop = Integer.parseInt(JOptionPane.showInputDialog("Añada el tiempo que lleva en adopción dicho animal: "));
+					String localizacion = JOptionPane.showInputDialog("Introduzca lo localización en la que se encuentre el animal: ");
+					String colores = JOptionPane.showInputDialog("Determine los colores del perro: ");
+					boolean reservado = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el animal está reservad: "));
+					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
+					Perros p = new Perros(nombre, edad, sexo, peso, carac, tiempoAdop, localizacion, colores, reservado, rutaFoto);
+					
+				}
+				else if(opcion.equals("Gato")) {
+					String nombre = JOptionPane.showInputDialog("Introduzca el nombre del gato que desea añadir: ");
+				}
 			}
 		});
 	

@@ -51,7 +51,7 @@ public class PanelPerrosAdmin extends JPanel {
 		
 		JPanel panelDerecha = new JPanel();
 		add(panelDerecha, BorderLayout.EAST);
-		panelDerecha.setLayout(new GridLayout(8, 0, 0, 0));
+		panelDerecha.setLayout(new GridLayout(9, 0, 0, 0));
 		panelDerecha.setPreferredSize(new Dimension(200, 200));
 		
 		JLabel lblNombre = new JLabel("Nombre: "+p.getNombre());
@@ -78,7 +78,7 @@ public class PanelPerrosAdmin extends JPanel {
 		lblTiempoAdopcion.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblTiempoAdopcion);
 		
-		JLabel lblLocalizacion = new JLabel("Localizaci�n: "+p.getLocalizacion());
+		JLabel lblLocalizacion = new JLabel("Localización: "+p.getLocalizacion());
 		lblLocalizacion.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblLocalizacion);
 		
@@ -86,6 +86,10 @@ public class PanelPerrosAdmin extends JPanel {
 		lblColores.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblColores);
 		
+		JLabel lblReservado = new JLabel("Reservado: "+p.isReservado());
+		lblReservado.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblReservado);
+	
 		JPanel panelCentro = new JPanel();
 		panelCentro.setPreferredSize(new Dimension(200, 200));
 		add(panelCentro, BorderLayout.CENTER);

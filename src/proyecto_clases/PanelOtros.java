@@ -26,7 +26,7 @@ public class PanelOtros extends JPanel {
 			
 		JPanel panelDerecha = new JPanel();
 		add(panelDerecha, BorderLayout.EAST);
-		panelDerecha.setLayout(new GridLayout(8, 0, 0, 0));
+		panelDerecha.setLayout(new GridLayout(6, 0, 0, 0));
 		panelDerecha.setPreferredSize(new Dimension(200, 200));
 		
 		JLabel lblNombre = new JLabel("Nombre: "+o.getNombre());
@@ -63,6 +63,5 @@ public class PanelOtros extends JPanel {
 		ImageIcon imagenConDimensiones = new ImageIcon(im.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT));
 		lbLabelFoto.setIcon(imagenConDimensiones); 
 		panelCentro.add(lbLabelFoto);
-
 	}
 }

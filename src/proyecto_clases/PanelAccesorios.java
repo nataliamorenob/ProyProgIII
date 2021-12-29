@@ -39,14 +39,14 @@ public class PanelAccesorios extends JPanel {
 		panelSur.add(btnComprar);
 		JPanel panelDerecha = new JPanel();
 		add(panelDerecha, BorderLayout.EAST);
-		panelDerecha.setLayout(new GridLayout(8, 0, 0, 0));
+		panelDerecha.setLayout(new GridLayout(5, 0, 0, 0));
 		panelDerecha.setPreferredSize(new Dimension(200,200));
 		
 		JLabel lblNombre = new JLabel("Nombre: "+a.getNombre());
 		lblNombre.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblNombre);
 		
-		JLabel lblPrecio = new JLabel("Precio: "+a.getPrecio());
+		JLabel lblPrecio = new JLabel("Precio: "+a.getPrecio()+"€");
 		lblPrecio.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblPrecio);
 		

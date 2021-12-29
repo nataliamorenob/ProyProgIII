@@ -80,11 +80,11 @@ public class BD {
 	/**
 	 * Metodo que devuelve un valor entero dependiendo de si el usuario existe
 	 * @param usuario <- el nick del usuario con el que se registra
-	 * @param contrasenia <- la contraseña con la que el usuario se registra
+	 * @param contrasenia <- la contraseï¿½a con la que el usuario se registra
 	 * @return resultado con valor:
 	 * -  0 si no existe dicho usuario
-	 * -  1 si existe el usuario pero la contraseña no es correcta
-	 * -  2 si el usuario existe y la contraseña es correcta
+	 * -  1 si existe el usuario pero la contraseï¿½a no es correcta
+	 * -  2 si el usuario existe y la contraseï¿½a es correcta
 	 */
 	public static int cogerUsuario(Connection con, String usuario, String contrasenia){
 		String resolucion="SELECT contrasenia FROM Usuario WHERE usuario ='"+usuario+"'";
@@ -120,9 +120,9 @@ public class BD {
 	}
 	
 	/**
-	 * Metodo para añadir un nuevo usuario a la BBDD
+	 * Metodo para aï¿½adir un nuevo usuario a la BBDD
 	 * @param usuario  <- el nick del usuario con el que se registrara 
-	 * @param contrasenia <- la contraseña con la que el usuario se registra
+	 * @param contrasenia <- la contraseï¿½a con la que el usuario se registra
 	 */
 	public static void anyadirUsuario(Connection con, String usuario, String contrasenia ) {
 		String resolucion="INSERT INTO Usuario VALUES('"+usuario+"','"+contrasenia+"')";
@@ -676,10 +676,72 @@ public class BD {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-
-
 	}
+
+	/**
+	 * Metodo que borra el gato cuyo nombre coincida con el que pasamos por parÃ¡metro
+	 * @param con -> Conexion con la BBDD
+	 * @param nombre -> El nombre del gato
+	 */
+	public static void borrarGatos(Connection con, String nombre) {
+		try {
+			Statement st = con.createStatement();
+			String sent = "DELETE FROM GATOS WHERE nombre= '"+nombre+"'";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Metodo que borra el animal otro cuyo nombre coincida con el que pasamos por parÃ¡metro
+	 * @param con -> Conexion con la BBDD
+	 * @param nombre -> El nombre del animal
+	 */
+	public static void borrarOtros(Connection con, String nombre) {
+		try {
+			Statement st = con.createStatement();
+			String sent = "DELETE FROM OTROS WHERE nombre= '"+nombre+"'";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Metodo que borra de la base de datos el accesorio que coincida con el que pasamos por parÃ¡metro
+	 * @param con -> Conexion con la BBDD
+	 * @param nombre -> El nombre del accesorio
+	 */
+	public static void borrarAccesorios(Connection con, String nombre) {
+		try {
+			Statement st = con.createStatement();
+			String sent = "DELETE FROM ACCESORIOS WHERE nombre= '"+nombre+"'";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Metodo que borra el alimento cuyo nombre coincida con el que pasamos por parÃ¡metro
+	 * @param con -> Conexion con la BBDD
+	 * @param nombre -> El nombre del alimento
+	 */
+	public static void borrarAlimentos(Connection con, String nombre) {
+		try {
+			Statement st = con.createStatement();
+			String sent = "DELETE FROM ALIMENTOS WHERE nombre= '"+nombre+"'";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }
 
 
