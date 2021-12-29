@@ -43,12 +43,12 @@ public class PanelGatos extends JPanel {
 		btnReservar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList <Integer> respuestas = new ArrayList<>();
-				int pregunta1 = JOptionPane.showConfirmDialog(null, "øHa tenido o tiene alg˙n otro gato o mascota?", "Cuestionario previo a la adopciÛn", JOptionPane.YES_NO_OPTION);
-				int pregunta2 = JOptionPane.showConfirmDialog(null, "øSe considera capaz de afrontar los gastos que conlleva tener un gato?", "Cuestionario previo a la adopciÛn", JOptionPane.YES_NO_OPTION);
-				int pregunta3 = JOptionPane.showConfirmDialog(null, "øSu trabajo le requiere viajar constantemente?", "Cuestionario previo a la adopciÛn", JOptionPane.YES_NO_OPTION);
-				int pregunta4 = JOptionPane.showConfirmDialog(null, "øConsidera que su gato se podrÌa adaptar a su vivienda?", "Cuestionario previo a la adopciÛn", JOptionPane.YES_NO_OPTION);
-				int pregunta5 = JOptionPane.showConfirmDialog(null, "øConsidera que podrÌa proporcionar a su gato un entorno seguro?", "Cuestionario previo a la adopciÛn", JOptionPane.YES_NO_OPTION);
-				String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca su nombre de usuario:",  "Cuestionario previo a la adopciÛn", JOptionPane.QUESTION_MESSAGE);
+				int pregunta1 = JOptionPane.showConfirmDialog(null, "¬øHa tenido o tiene alg√∫n otro gato o mascota?", "Cuestionario previo a la adopci√≥n", JOptionPane.YES_NO_OPTION);
+				int pregunta2 = JOptionPane.showConfirmDialog(null, "¬øSe considera capaz de afrontar los gastos que conlleva tener un gato?", "Cuestionario previo a la adopci√≥n", JOptionPane.YES_NO_OPTION);
+				int pregunta3 = JOptionPane.showConfirmDialog(null, "¬øSu trabajo le requiere viajar constantemente?", "Cuestionario previo a la adopci√≥n", JOptionPane.YES_NO_OPTION);
+				int pregunta4 = JOptionPane.showConfirmDialog(null, "¬øConsidera que su gato se podr√≠a adaptar a su vivienda?", "Cuestionario previo a la adopci√≥n", JOptionPane.YES_NO_OPTION);
+				int pregunta5 = JOptionPane.showConfirmDialog(null, "¬øConsidera que podrÔøΩa proporcionar a su gato un entorno seguro?", "Cuestionario previo a la adopciÔøΩn", JOptionPane.YES_NO_OPTION);
+				String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca su nombre de usuario:",  "Cuestionario previo a la adopciÔøΩn", JOptionPane.QUESTION_MESSAGE);
 				respuestas.add(pregunta1);
 				respuestas.add(pregunta2);
 				respuestas.add(pregunta3);
@@ -64,7 +64,7 @@ public class PanelGatos extends JPanel {
 				if(contador >= 3) {
 					int existe = BD.existeUsuario(con, pregunta6);
 					if(existe == 1) {
-						JOptionPane.showMessageDialog(null, "°Enhorabuena! Consideramos que usted es un candidato idÛneo para la adopciÛn. \n Recuerde que est· informaciÛn se comprobar· el dÌa de la adopciÛn", "Cuestionario previo a la adopciÛn",JOptionPane.INFORMATION_MESSAGE);	
+						JOptionPane.showMessageDialog(null, "¬°Enhorabuena! Consideramos que usted es un candidato idoneo para la adopci√≥n. \n Recuerde que esta informaci√≥n se comprobar√° el d√≠a de la adopci√≥n", "Cuestionario previo a la adopci√≥n",JOptionPane.INFORMATION_MESSAGE);	
 						BD.gatoReservado(con, g.getNombre());
 						//Lo del fichero no funciona en PanelGatos
 						//FileWriter fw = null;
@@ -101,12 +101,12 @@ public class PanelGatos extends JPanel {
 							}
 						}
 					}else {
-						JOptionPane.showMessageDialog(null, "El nombre de usuario es incorrecto",  "Cuestionario previo a la adopciÛn", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "El nombre de usuario es incorrecto",  "Cuestionario previo a la adopci√≥n", JOptionPane.ERROR_MESSAGE);
 						//new VentanaInicioSesion(); //cambio -> si no est√° registrado te lleva a la ventana inicio sesion
 					}
 				}
 				else {
-					JOptionPane.showMessageDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopciÛn. \n Para m·s informaciÛn contacte con nosotros. \n Gracias.", "Cuestionario previo a la adopciÛn", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopci√≥n. \n Para m√°s informaci√≥n contacte con nosotros. \n Gracias.", "Cuestionario previo a la adopci√≥n", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});
@@ -142,7 +142,7 @@ public class PanelGatos extends JPanel {
 		lblTiempoAdopcion.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblTiempoAdopcion);
 		
-		JLabel lblLocalizacion = new JLabel("LocalizaciÛn: "+g.getLocalizacion());
+		JLabel lblLocalizacion = new JLabel("Localizaci√≥n: "+g.getLocalizacion());
 		lblLocalizacion.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblLocalizacion);
 		
