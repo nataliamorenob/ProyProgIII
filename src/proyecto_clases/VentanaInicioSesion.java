@@ -265,7 +265,7 @@ public class VentanaInicioSesion extends JFrame {
 		if(correcto) {
 			System.out.println("te has logeado bn");
 		}else {
-			System.out.println("La contrase�a no es correcta");
+			System.out.println("La contraseña no es correcta");
 		}
 	}
 	

@@ -8,11 +8,17 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PanelAlimentos extends JPanel {
@@ -21,7 +27,10 @@ public class PanelAlimentos extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelAlimentos(Alimentos al) {
-setLayout(new BorderLayout(0, 0));
+		Connection con;
+		con=BD.initBD("BaseDatos.db");
+		
+		setLayout(new BorderLayout(0, 0));
 		
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		
@@ -32,6 +41,29 @@ setLayout(new BorderLayout(0, 0));
 		btnComprar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "El alimento se ha añadido correctamente la cesta");
+				BD.alimentoReservado(con, al.getNombre());
+				PrintWriter pw = null;
+				try {
+					pw = new PrintWriter(new FileWriter("cesta.txt", true));
+					ArrayList<Alimentos> alAlimentosEnCesta = BD.obtenerAlimentos(con);
+					for(Alimentos ali: alAlimentosEnCesta) {
+						if(ali.isAliEnCesta() == true) {
+							String nombre = ali.getNombre();
+							int precio = ali.getPrecio();
+							String animal_dirigido = ali.getAnimal_dirigido();
+							
+							pw.println(nombre + ","+ precio + ","+ animal_dirigido); 
+						}
+					}} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}finally { 
+					if(pw!=null) {
+						pw.flush();
+						pw.close();
+					}
+				}
 				
 			}
 		});

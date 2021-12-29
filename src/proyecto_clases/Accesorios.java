@@ -7,18 +7,20 @@ public class Accesorios {
 	private int precio;
 	private String animal_dirigido; //para que animal es ese accesorio
 	private String rutaFoto;
+	private boolean acEnCesta; //cuando un accesorio se ha añadido a la cesta se pone a 1 
 		
 	private Accesorios(){
 		super();
 		
 	}
 
-	public Accesorios(String nombre, int precio, String animal_dirigido, String rutaFoto) {
+	public Accesorios(String nombre, int precio, String animal_dirigido, String rutaFoto, boolean acEnCesta) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
 		this.animal_dirigido = animal_dirigido;
 		this.rutaFoto = rutaFoto;
+		this.setAcEnCesta(acEnCesta);
 	}
 
 	public String getNombre() {
@@ -52,6 +54,14 @@ public class Accesorios {
 	public void setRutaFoto(String rutaFoto) {
 		this.rutaFoto = rutaFoto;
 	}
+
+	public boolean isAcEnCesta() {
+		return acEnCesta;
+	}
+
+	public void setAcEnCesta(boolean acEnCesta) {
+		this.acEnCesta = acEnCesta;
+	}
 	
-/*Hola*/
+
 }

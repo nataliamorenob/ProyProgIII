@@ -7,8 +7,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.TreeSet;
 
 import javax.swing.ImageIcon;
@@ -121,7 +119,8 @@ public class VentanaReservas extends JFrame {
 		}
         
         String [] columnas = {"Nombre","Edad","Sexo", "Peso", "Caracteristicas"};  
-		modeloTablaAnimales.setColumnIdentifiers(columnas);
+        modeloTablaAnimales = new DefaultTableModel();
+        modeloTablaAnimales.setColumnIdentifiers(columnas);
 		
 		for(Animales a: tsAnimales) {
 			String dataRow[] = {a.getNombre(), String.valueOf(a.getEdad()), a.getSexo(), String.valueOf(a.getPeso()), a.getCaracteristicas()};

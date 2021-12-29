@@ -142,7 +142,7 @@ public class VentanaMenu extends JFrame {
 		JMenu mnQS = new JMenu("Quienes Somos");
 		mnQS.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
-		//A�ADIR LOS COMPONENTES A LOS PANELES
+		//AÑADIR LOS COMPONENTES A LOS PANELES
 		contentPane.add(panelMenu, BorderLayout.NORTH);
 		//contentPane.add(panelCentro, BorderLayout.CENTER);
 		contentPane.add(scrollPanelCentro, BorderLayout.CENTER);

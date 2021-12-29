@@ -9,6 +9,11 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -23,6 +28,9 @@ public class PanelAccesorios extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelAccesorios(Accesorios a) {
+		Connection con;
+		con=BD.initBD("BaseDatos.db");
+		
 		setLayout(new BorderLayout(0, 0));
 		
 		setBorder(BorderFactory.createLineBorder(Color.black));
@@ -35,6 +43,29 @@ public class PanelAccesorios extends JPanel {
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "El accesorio se ha añadido correctamente la cesta");
+				BD.accesorioReservado(con, a.getNombre());
+				PrintWriter pw = null;
+				try {
+					pw = new PrintWriter(new FileWriter("cesta.txt", true));
+					ArrayList<Accesorios> alAccesoriosEnCesta = BD.obtenerAccesorios(con);
+					for(Accesorios acc: alAccesoriosEnCesta) {
+						if(acc.isAcEnCesta() == true) {
+							String nombre = acc.getNombre();
+							int precio = acc.getPrecio();
+							String animal_dirigido = acc.getAnimal_dirigido();
+							
+							pw.println(nombre + ","+ precio + ","+ animal_dirigido); 
+						}
+					}} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}finally { 
+					if(pw!=null) {
+						pw.flush();
+						pw.close();
+					}
+				}
+				
 			}
 		});
 		panelSur.add(btnComprar);
