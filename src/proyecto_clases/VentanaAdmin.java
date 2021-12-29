@@ -196,13 +196,46 @@ public class VentanaAdmin extends JFrame {
 					int tiempoAdop = Integer.parseInt(JOptionPane.showInputDialog("Añada el tiempo que lleva en adopción dicho animal: "));
 					String localizacion = JOptionPane.showInputDialog("Introduzca lo localización en la que se encuentre el animal: ");
 					String colores = JOptionPane.showInputDialog("Determine los colores del perro: ");
-					boolean reservado = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el animal está reservad: "));
+					boolean reservado = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el animal está reservado: "));
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
-					Perros p = new Perros(nombre, edad, sexo, peso, carac, tiempoAdop, localizacion, colores, reservado, rutaFoto);
-					
+					BD.anyadirPerro(con, nombre, edad, sexo, peso, carac, tiempoAdop, localizacion, colores, reservado, rutaFoto);
 				}
 				else if(opcion.equals("Gato")) {
 					String nombre = JOptionPane.showInputDialog("Introduzca el nombre del gato que desea añadir: ");
+					int edad = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la edad del gato: "));
+					String sexo = JOptionPane.showInputDialog("Introduzca el sexo correspondiente: ");
+					int peso = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la peso del gato: "));
+					String carac = JOptionPane.showInputDialog("Determine las caracterisitcas del animal: ");
+					int tiempoAdop = Integer.parseInt(JOptionPane.showInputDialog("Añada el tiempo que lleva en adopción dicho animal: "));
+					String localizacion = JOptionPane.showInputDialog("Introduzca lo localización en la que se encuentre el animal: ");
+					String colores = JOptionPane.showInputDialog("Determine los colores del gato: ");
+					boolean reservado = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el animal está reservado: "));
+					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
+					BD.anyadirGato(con, nombre, edad, sexo, peso, carac, tiempoAdop, localizacion, colores, reservado, rutaFoto);
+				}
+				else if(opcion.equals("Otro")) {
+					String nombre = JOptionPane.showInputDialog("Introduzca el nombre del animal que desea añadir: ");
+					int edad = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la edad del gato: "));
+					String sexo = JOptionPane.showInputDialog("Introduzca el sexo correspondiente: ");
+					int peso = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la peso del gato: "));
+					String carac = JOptionPane.showInputDialog("Determine las caracterisitcas del animal: ");
+					boolean peligtoExt = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el animal está en el peligro de extinción: "));
+					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
+					BD.anyadriOtro(con, nombre, edad, sexo, peso, carac, peligtoExt, rutaFoto);
+				}
+				else if(opcion.equals("Alimentos")) {
+					String nombre = JOptionPane.showInputDialog("Introduzca el nombre del alimento que vaya a añadir: ");
+					int precio = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el precio del producto: "));
+					String animalDirigido = JOptionPane.showInputDialog("Introduzca el animal para el que sea dirigido: ");
+					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
+					BD.anyadirAlimento(con, nombre, precio, animalDirigido, rutaFoto);
+				}
+				else {
+					String nombre = JOptionPane.showInputDialog("Introduzca el nombre del accesorio a añadir: ");
+					int precio = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el precio del producto: "));
+					String animalDirigido = JOptionPane.showInputDialog("Introduzca el animal para el que sea dirigido: ");
+					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
+					BD.anyadirAccesorio(con, nombre, precio, animalDirigido, rutaFoto);
 				}
 			}
 		});

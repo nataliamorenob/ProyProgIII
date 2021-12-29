@@ -742,6 +742,115 @@ public class BD {
 		}
 	}
 	
+	/**
+	 * Método que añade un nuevo perro a la BD pasandole por paramtero los siguientes valores
+	 * @param con
+	 * @param nombre
+	 * @param edad
+	 * @param sexo
+	 * @param peso
+	 * @param caracteristicas
+	 * @param tiempoEnAdopcion
+	 * @param localizacion
+	 * @param colores
+	 * @param reservado
+	 * @param rutaFoto
+	 */
+	public static void anyadirPerro(Connection con, String nombre, int edad, String sexo, int peso, String caracteristicas,int tiempoEnAdopcion, String localizacion,String colores, boolean reservado,String rutaFoto) {
+		try {
+			Statement st = con.createStatement();
+			String sent = "INSERT INTO PERROS VALUES ('"+nombre+"',"+edad+","+sexo+","+peso+","+caracteristicas+","+tiempoEnAdopcion+","+localizacion+","+colores+","+reservado+","+rutaFoto+")";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Método que añade un gato nuevo a la BBDD con los siguientes parámetros del mismo
+	 * @param con
+	 * @param nombre
+	 * @param edad
+	 * @param sexo
+	 * @param peso
+	 * @param caracteristicas
+	 * @param tiempoEnAdopcion
+	 * @param localizacion
+	 * @param colores
+	 * @param reservado
+	 * @param rutaFoto
+	 */
+	public static void anyadirGato(Connection con, String nombre, int edad, String sexo, int peso, String caracteristicas,int tiempoEnAdopcion, String localizacion,String colores, boolean reservado,String rutaFoto) {
+		try {
+			Statement st = con.createStatement();
+			String sent = "INSERT INTO GATOS VALUES ('"+nombre+"',"+edad+","+sexo+","+peso+","+caracteristicas+","+tiempoEnAdopcion+","+localizacion+","+colores+","+reservado+","+rutaFoto+")";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Método para añadir un nuevo animal "otro" a la base de datos pasandole los siguientes valores
+	 * @param con
+	 * @param nombre
+	 * @param edad
+	 * @param sexo
+	 * @param peso
+	 * @param caracteristicas
+	 * @param peligroExtincion
+	 * @param rutaFoto
+	 */
+	public static void anyadriOtro(Connection con, String nombre, int edad, String sexo, int peso, String caracteristicas, boolean peligroExtincion,String rutaFoto) {
+		try {
+			Statement st = con.createStatement();
+			String sent = "INSERT INTO OTROS VALUES ('"+nombre+"',"+edad+","+sexo+","+peso+","+caracteristicas+","+peligroExtincion+","+rutaFoto+")";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Método que añade un alimento nuevo a la BBDD pasandole los siguientes valores
+	 * @param con
+	 * @param nombre
+	 * @param precio
+	 * @param animal_dirigido
+	 * @param rutaFoto
+	 */
+	public static void anyadirAlimento(Connection con, String nombre, int precio, String animal_dirigido, String rutaFoto) {
+		try {
+			Statement st = con.createStatement();
+			String sent = "INSERT INTO ALIMENTOS VALUES ('"+nombre+"',"+precio+","+animal_dirigido+","+rutaFoto+")";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Método que añade un nuevo accesorio a la base de datos teniendo en cuenta los siguientes valores, cuales pasamos por paramtero
+	 * @param con
+	 * @param nombre
+	 * @param precio
+	 * @param animal_dirigido
+	 * @param rutaFoto
+	 */
+	public static void anyadirAccesorio(Connection con, String nombre, int precio, String animal_dirigido, String rutaFoto) {
+		try {
+			Statement st = con.createStatement();
+			String sent = "INSERT INTO ACCESORIOS VALUES ('"+nombre+"',"+precio+","+animal_dirigido+","+rutaFoto+")";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
 
 
