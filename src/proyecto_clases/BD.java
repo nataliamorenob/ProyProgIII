@@ -48,8 +48,8 @@ public class BD {
  		String sent1 = "CREATE TABLE IF NOT EXISTS Perros(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, tiempoEnAdopcion Integer, localizacion String, colores String, rutaFoto String, reservado boolean)";
 		String sent2 = "CREATE TABLE IF NOT EXISTS Gatos(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, tiempoEnAdopcion Integer, localizacion String, colores String,rutaFoto String, reservado boolean)";
 		String sent3 = "CREATE TABLE IF NOT EXISTS Otros(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, peligroExtincion boolean, rutaFoto String)";
-		String sent4 = "CREATE TABLE IF NOT EXISTS Alimentos(nombre String, precio Integer, animal_dirigido String, rutaFoto String)";
-		String sent5 = "CREATE TABLE IF NOT EXISTS Accesorios(nombre String, precio Integer, animal_dirigido String, rutaFoto String)";
+		String sent4 = "CREATE TABLE IF NOT EXISTS Alimentos(nombre String, precio Integer, animal_dirigido String, rutaFoto String, boolean aliEnCesta)";
+		String sent5 = "CREATE TABLE IF NOT EXISTS Accesorios(nombre String, precio Integer, animal_dirigido String, rutaFoto String, boolean acEnCesta)";
 		String sent6 = "CREATE TABLE IF NOT EXISTS Usuario(usuario String, contrasenia String)";
 		Statement st = null;
 		
@@ -349,7 +349,8 @@ public class BD {
 				Integer precio = rs.getInt("PRECIO");
 				String animalDirigido = rs.getString("ANIMAL_DIRIGIDO");
 				String rutaFoto = rs.getString("rutaFoto");
-				amt = new Alimentos(nombre, precio, animalDirigido, rutaFoto);
+				boolean aliEnCesta = rs.getBoolean("EN_CESTA");
+				amt = new Alimentos(nombre, precio, animalDirigido, rutaFoto, aliEnCesta);
 				alAlimentos.add(amt);
 			}
 		} catch (SQLException e) {
@@ -386,7 +387,8 @@ public class BD {
 				Integer precio = rs.getInt("PRECIO");
 				String animalDirigido = rs.getString("ANIMAL_DIRIGIDO");
 				String rutaFoto = rs.getString("rutaFoto");
-				acs = new Accesorios(nombre, precio, animalDirigido, rutaFoto);
+				boolean acEnCesta = rs.getBoolean("EN_CESTA");
+				acs = new Accesorios(nombre, precio, animalDirigido, rutaFoto, acEnCesta);
 				alAccesorios.add(acs);
 			}
 		} catch (SQLException e) {
@@ -845,6 +847,28 @@ public class BD {
 		try {
 			Statement st = con.createStatement();
 			String sent = "INSERT INTO ACCESORIOS VALUES ('"+nombre+"',"+precio+","+animal_dirigido+","+rutaFoto+")";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void accesorioReservado(Connection con, String nombre) {
+		try {
+			Statement st = con.createStatement();
+			String sent = "UPDATE ACCESORIOS SET en_cesta = 1 WHERE nombre = '"+nombre+"'";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void alimentoReservado(Connection con, String nombre) {
+		try {
+			Statement st = con.createStatement();
+			String sent = "UPDATE ALIMENTOS SET en_cesta = 1 WHERE nombre = '"+nombre+"'";
 			st.executeUpdate(sent);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
