@@ -31,11 +31,17 @@ public class PanelAccesoriosAdmin extends JPanel {
 		JPanel panelSur = new JPanel();
 		add(panelSur, BorderLayout.SOUTH);
 		
+		JPanel panelCentro = new JPanel();
+		panelCentro.setPreferredSize(new Dimension(200, 200));
+		add(panelCentro, BorderLayout.CENTER);
+		
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BD.borrarAccesorios(con, a.getNombre());
+				panelCentro.removeAll();
+				BD.obtenerPerros(con);
 			}
 		});
 		panelSur.add(btnEliminar);
@@ -55,12 +61,7 @@ public class PanelAccesoriosAdmin extends JPanel {
 		JLabel lblAnimalDirigido = new JLabel("Animal dirigido: "+a.getAnimal_dirigido());
 		lblAnimalDirigido.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblAnimalDirigido);
-		
-
-		
-		JPanel panelCentro = new JPanel();
-		panelCentro.setPreferredSize(new Dimension(200, 200));
-		add(panelCentro, BorderLayout.CENTER);
+	
 		
 		ImageIcon im = new ImageIcon(a.getRutaFoto());
 		im.setDescription(a.getRutaFoto());
