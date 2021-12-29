@@ -1,8 +1,6 @@
 package proyecto_clases;
 import java.awt.BorderLayout;
-
-
-
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -216,6 +214,35 @@ public class VentanaInicioSesion extends JFrame {
 			}
 		});
 		
+		/**
+		 * Hilo que cambia de color lblUsuario y lblContrasenia
+		 */
+		Runnable r = new Runnable() {
+			@Override
+			public void run() {
+				while(true) {
+					lblUsuario.setForeground(Color.BLACK);
+					lblContrasenia.setForeground(Color.ORANGE);
+					try {
+						Thread.sleep(300);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					lblUsuario.setForeground(Color.ORANGE);
+					lblContrasenia.setForeground(Color.BLACK);
+					try {
+						Thread.sleep(300);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+		Thread t = new Thread(r);
+		t.start();
+		
 		
 		setVisible(true);
 	}
@@ -241,7 +268,7 @@ public class VentanaInicioSesion extends JFrame {
 			System.out.println("La contraseña no es correcta");
 		}
 	}
-
+	
 
 	
 	//private void activacionBotones() {
