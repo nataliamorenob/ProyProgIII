@@ -62,7 +62,11 @@ public class PanelAlimentosAdmin extends JPanel {
 		JLabel lblAnimalDirigido = new JLabel("Animal dirigido: "+a.getAnimal_dirigido());
 		lblAnimalDirigido.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblAnimalDirigido);
-	
+		
+		//CAMBIO NUEVO LABEL
+		JLabel lblFechaCaducidad = new JLabel("Fecha de caducidad: "+a.getFechaCaducidad());
+		lblFechaCaducidad.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblFechaCaducidad);
 		
 		ImageIcon im = new ImageIcon(a.getRutaFoto());
 		im.setDescription(a.getRutaFoto());

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 public class BD {
 	private static Connection con;
 
@@ -48,8 +49,8 @@ public class BD {
  		String sent1 = "CREATE TABLE IF NOT EXISTS Perros(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, tiempoEnAdopcion Integer, localizacion String, colores String, rutaFoto String, reservado boolean)";
 		String sent2 = "CREATE TABLE IF NOT EXISTS Gatos(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, tiempoEnAdopcion Integer, localizacion String, colores String,rutaFoto String, reservado boolean)";
 		String sent3 = "CREATE TABLE IF NOT EXISTS Otros(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, peligroExtincion boolean, rutaFoto String)";
-		String sent4 = "CREATE TABLE IF NOT EXISTS Alimentos(nombre String, precio Integer, animal_dirigido String, rutaFoto String, boolean aliEnCesta)";
-		String sent5 = "CREATE TABLE IF NOT EXISTS Accesorios(nombre String, precio Integer, animal_dirigido String, rutaFoto String, boolean acEnCesta)";
+		String sent4 = "CREATE TABLE IF NOT EXISTS Alimentos(nombre String, precio Integer, animal_dirigido String, rutaFoto String, enCesta boolean, fechaCaducidad String)"; //CAMBIO fechaCaducidad
+		String sent5 = "CREATE TABLE IF NOT EXISTS Accesorios(nombre String, precio Integer, animal_dirigido String, rutaFoto String, enCesta boolean)"; //cambio encesta
 		String sent6 = "CREATE TABLE IF NOT EXISTS Usuario(usuario String, contrasenia String)";
 		Statement st = null;
 		
@@ -349,8 +350,9 @@ public class BD {
 				Integer precio = rs.getInt("PRECIO");
 				String animalDirigido = rs.getString("ANIMAL_DIRIGIDO");
 				String rutaFoto = rs.getString("rutaFoto");
-				boolean aliEnCesta = rs.getBoolean("EN_CESTA");
-				amt = new Alimentos(nombre, precio, animalDirigido, rutaFoto, aliEnCesta);
+				boolean enCesta = rs.getBoolean("EN_CESTA"); //cambio
+				String fechaCaducidad = rs.getString("FECHA_CADUCIDAD");
+				amt = new Alimentos(nombre, precio, animalDirigido, rutaFoto, enCesta, fechaCaducidad);  //cambio
 				alAlimentos.add(amt);
 			}
 		} catch (SQLException e) {
@@ -387,8 +389,8 @@ public class BD {
 				Integer precio = rs.getInt("PRECIO");
 				String animalDirigido = rs.getString("ANIMAL_DIRIGIDO");
 				String rutaFoto = rs.getString("rutaFoto");
-				boolean acEnCesta = rs.getBoolean("EN_CESTA");
-				acs = new Accesorios(nombre, precio, animalDirigido, rutaFoto, acEnCesta);
+				boolean enCesta = rs.getBoolean("EN_CESTA");  //cambio
+				acs = new Accesorios(nombre, precio, animalDirigido, rutaFoto, enCesta); //cambio
 				alAccesorios.add(acs);
 			}
 		} catch (SQLException e) {
@@ -824,10 +826,10 @@ public class BD {
 	 * @param animal_dirigido
 	 * @param rutaFoto
 	 */
-	public static void anyadirAlimento(Connection con, String nombre, int precio, String animal_dirigido, String rutaFoto) {
+	public static void anyadirAlimento(Connection con, String nombre, int precio, String animal_dirigido, String rutaFoto, boolean enCesta, String fechaCaducidad) { //cambio
 		try {
 			Statement st = con.createStatement();
-			String sent = "INSERT INTO ALIMENTOS VALUES ('"+nombre+"',"+precio+","+animal_dirigido+","+rutaFoto+")";
+			String sent = "INSERT INTO ALIMENTOS VALUES ('"+nombre+"',"+precio+","+animal_dirigido+","+rutaFoto+","+enCesta+","+fechaCaducidad+")"; //cambio
 			st.executeUpdate(sent);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -843,10 +845,10 @@ public class BD {
 	 * @param animal_dirigido
 	 * @param rutaFoto
 	 */
-	public static void anyadirAccesorio(Connection con, String nombre, int precio, String animal_dirigido, String rutaFoto) {
+	public static void anyadirAccesorio(Connection con, String nombre, int precio, String animal_dirigido, String rutaFoto, boolean enCesta) {  //cambio
 		try {
 			Statement st = con.createStatement();
-			String sent = "INSERT INTO ACCESORIOS VALUES ('"+nombre+"',"+precio+","+animal_dirigido+","+rutaFoto+")";
+			String sent = "INSERT INTO ACCESORIOS VALUES ('"+nombre+"',"+precio+","+animal_dirigido+","+rutaFoto+","+enCesta+")"; //cambio
 			st.executeUpdate(sent);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

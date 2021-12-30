@@ -9,7 +9,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,6 +30,7 @@ public class VentanaAdmin extends JFrame {
 
 	private JPanel contentPane;
 	private Connection con;
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 	/**
 	 * Launch the application.
@@ -231,7 +234,10 @@ public class VentanaAdmin extends JFrame {
 					int precio = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el precio del producto: "));
 					String animalDirigido = JOptionPane.showInputDialog("Introduzca el animal para el que sea dirigido: ");
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
-					BD.anyadirAlimento(con, nombre, precio, animalDirigido, rutaFoto);
+					boolean enCesta = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el alimento está reservado: "));
+					//long fechaCaducidad = sdf.format(new Date(JOptionPane.showInputDialog("Indique la fecha de caducidad del alimento: ")));
+					String fechaCaducidad = JOptionPane.showInputDialog("Indique la fecha de caducidad del alimento: ");
+					//BD.anyadirAlimento(con, nombre, precio, animalDirigido, rutaFoto, enCesta, fechaCaducidad);
 					//
 				}
 				else {
@@ -239,7 +245,8 @@ public class VentanaAdmin extends JFrame {
 					int precio = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el precio del producto: "));
 					String animalDirigido = JOptionPane.showInputDialog("Introduzca el animal para el que sea dirigido: ");
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
-					BD.anyadirAccesorio(con, nombre, precio, animalDirigido, rutaFoto);
+					boolean enCesta = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el accesorio está reservado: "));
+					BD.anyadirAccesorio(con, nombre, precio, animalDirigido, rutaFoto, enCesta);
 					//
 				}
 			}

@@ -49,7 +49,7 @@ public class PanelAccesorios extends JPanel {
 					pw = new PrintWriter(new PrintWriter("cesta.txt"));
 					ArrayList<Accesorios> alAccesoriosEnCesta = BD.obtenerAccesorios(con);
 					for(Accesorios acc: alAccesoriosEnCesta) {
-						if(acc.isAcEnCesta() == true) {
+						if(acc.isEnCesta() == true) { //cambio isEnCesta -> antes acc.isAcEnCesta
 							String nombre = acc.getNombre();
 							int precio = acc.getPrecio();
 							String animal_dirigido = acc.getAnimal_dirigido();
