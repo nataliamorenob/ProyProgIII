@@ -53,7 +53,7 @@ public class VentanaMenu extends JFrame {
 			}
 		});
 	}
-	//base 
+	
 	/**
 	 * Create the frame.
 	 */

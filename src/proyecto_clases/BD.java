@@ -855,6 +855,7 @@ public class BD {
 			e.printStackTrace();
 		}
 	}
+
 	
 	public static void accesorioReservado(Connection con, String nombre) {
 		try {
