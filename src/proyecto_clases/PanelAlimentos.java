@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -45,10 +46,10 @@ public class PanelAlimentos extends JPanel {
 				BD.alimentoReservado(con, al.getNombre());
 				PrintWriter pw = null;
 				try {
-					pw = new PrintWriter(new FileWriter("cesta.txt", true));
+					pw = new PrintWriter(new PrintWriter("cesta.txt"));
 					ArrayList<Alimentos> alAlimentosEnCesta = BD.obtenerAlimentos(con);
 					for(Alimentos ali: alAlimentosEnCesta) {
-						if(ali.isAliEnCesta() == true) {
+						if(ali.isEnCesta() == true) { //cambio isEnCesta
 							String nombre = ali.getNombre();
 							int precio = ali.getPrecio();
 							String animal_dirigido = ali.getAnimal_dirigido();
@@ -85,7 +86,10 @@ public class PanelAlimentos extends JPanel {
 		lblAnimalDirigido.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblAnimalDirigido);
 		
-
+		//CAMBIO NUEVO LABEL
+		JLabel lblFechaCaducidad = new JLabel("Fecha de caducidad: "+al.getFechaCaducidad());
+		lblFechaCaducidad.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblFechaCaducidad);
 		
 		JPanel panelCentro = new JPanel();
 		panelCentro.setPreferredSize(new Dimension(200, 200));

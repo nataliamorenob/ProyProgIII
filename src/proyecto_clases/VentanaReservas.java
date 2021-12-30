@@ -9,10 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.TreeSet;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -35,7 +32,6 @@ public class VentanaReservas extends JFrame {
 	private JFrame ventanaReservas;
 	private JTable tablaAnimales;
 	private DefaultTableModel modeloTablaAnimales;
-	private ImageIcon imAnimal;
 
 	/**
 	 * Launch the application.

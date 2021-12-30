@@ -58,6 +58,8 @@ public class VentanaMenu extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaMenu() {
+		setBackground(Color.ORANGE);
+		setForeground(Color.WHITE);
 		con=BD.initBD("BaseDatos.db");
 		BD.crearTablas(con);
 		ImageIcon im = new ImageIcon("FOTOS/logo.jpg");
@@ -76,6 +78,7 @@ public class VentanaMenu extends JFrame {
 		
 		//CREACION DE COMPONENTES
 		JPanel panelMenu = new JPanel();
+		panelMenu.setForeground(Color.WHITE);
 		panelCentro = new JPanel();
 		panelCentro.setLayout(new GridLayout(0, 2));
 		JScrollPane scrollPanelCentro = new JScrollPane(panelCentro);

@@ -1,4 +1,2 @@
-Ultima Esterilizado,20,Gato
-Ultima Esterilizado,20,Gato
-Ultima Junior,12,Gato
-Hueso de juguete,6,Perros
+Cama ,23,Perros y gatos
+Collar con cascabel,9,Gatos
