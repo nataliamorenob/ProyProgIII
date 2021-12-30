@@ -12,7 +12,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,6 +28,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+
+
 
 
 public class VentanaCesta extends JFrame {
@@ -99,21 +104,7 @@ public class VentanaCesta extends JFrame {
 				ventanaCesta.setVisible(false);
 			}
 		});
-		
-		btnComprar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
 				
-			}
-		});
-		
-		btnTicket.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		
 		//Leer el fichero cesta
 				File fichero = null;
 			    FileReader fr = null;
@@ -148,6 +139,21 @@ public class VentanaCesta extends JFrame {
 						}
 					}
 				}
+		        
+		        btnComprar.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+					}
+				});
+				
+				btnTicket.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+//						mostrarTicket(tsProductos);
+					}
+				});
+
 		        
 		        String [] columnas = {"Nombre","Precio","Animal Dirigido"};  
 		        modeloTablaProductos = new DefaultTableModel() {
@@ -191,5 +197,20 @@ public class VentanaCesta extends JFrame {
 				
 		setVisible(true);
 	}
+	
+//	public static void mostrarTicket(ArrayList<Productos> productos) {
+//		System.out.println("PROTECTORA");
+//	    System.out.println("-".repeat(64));
+//	    System.out.printf("|%-20s|%-20s|%-20s|\n", "Descripción", "Precio", "Animal Dirigido");
+//	    System.out.println("-".repeat(64));
+//	    double total = 0;
+//	    for (Productos p : productos) {
+//	        System.out.printf("|%-20s|%-20s|%-20s|\n", p.getNombre(), p.getPrecio(), p.getAnimal_dirigido());
+//	        total += p.getPrecio();
+//	    }
+//	    System.out.println("-".repeat(64));
+//	    System.out.printf("|%62s|\n", "Total: " + String.valueOf(total));
+//	    System.out.println("                    **Gracias por su compra**");
+//	}
 
 }
