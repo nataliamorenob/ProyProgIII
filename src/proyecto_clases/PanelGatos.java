@@ -23,7 +23,7 @@ import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-
+//
 public class PanelGatos extends JPanel {
 
 	/**
@@ -66,7 +66,9 @@ public class PanelGatos extends JPanel {
 					if(existe == 1) {
 						JOptionPane.showMessageDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idoneo para la adopción. \n Recuerde que esta información se comprobará el día de la adopción", "Cuestionario previo a la adopción",JOptionPane.INFORMATION_MESSAGE);	
 						BD.gatoReservado(con, g.getNombre());
+
 						//Lo del fichero no funciona en PanelGatos//
+
 						//FileWriter fw = null;
 				        PrintWriter pw = null;
 				        try {

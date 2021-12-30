@@ -35,6 +35,10 @@ public class PanelPerrosAdmin extends JPanel {
 		JPanel panelSur = new JPanel();
 		add(panelSur, BorderLayout.SOUTH);
 		
+		JPanel panelCentro = new JPanel();
+		panelCentro.setPreferredSize(new Dimension(200, 200));
+		add(panelCentro, BorderLayout.CENTER);
+		
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		btnEliminar.addActionListener(new ActionListener() {
@@ -43,6 +47,8 @@ public class PanelPerrosAdmin extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				BD.borrarPerros(con, p.getNombre());
+				panelCentro.removeAll();
+				BD.obtenerPerros(con);
 				
 			}
 		});
@@ -90,9 +96,7 @@ public class PanelPerrosAdmin extends JPanel {
 		lblReservado.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblReservado);
 	
-		JPanel panelCentro = new JPanel();
-		panelCentro.setPreferredSize(new Dimension(200, 200));
-		add(panelCentro, BorderLayout.CENTER);
+		
 		
 		ImageIcon im = new ImageIcon(p.getRutaFoto());
 		im.setDescription(p.getRutaFoto());

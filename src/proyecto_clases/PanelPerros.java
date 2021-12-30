@@ -58,12 +58,12 @@ public class PanelPerros extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList <Integer> respuestas = new ArrayList<>();
 
-				int pregunta1 = JOptionPane.showConfirmDialog(null, "�Ha tenido o tiene algun otro perro o mascota?", "Cuestionario previo a la adopcion", JOptionPane.YES_NO_OPTION);
-				int pregunta2 = JOptionPane.showConfirmDialog(null, "�Se considera capaz de afrontar los gastos que conlleva tener un perro?", "Cuestionario previo a la adopcion", JOptionPane.YES_NO_OPTION);
-				int pregunta3 = JOptionPane.showConfirmDialog(null, "�Su trabajo le requiere viajar constantemente?", "Cuestionario previo a la adopcion", JOptionPane.YES_NO_OPTION);
-				int pregunta4 = JOptionPane.showConfirmDialog(null, "�Considera que su perro se podria adaptar a su vivienda?", "Cuestionario previo a la adopcion", JOptionPane.YES_NO_OPTION);
-				int pregunta5 = JOptionPane.showConfirmDialog(null, "�Considera el perro podria adaptarse a su entorno?", "Cuestionario previo a la adopcion", JOptionPane.YES_NO_OPTION);
-				String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca su nombre de usuario:",  "Cuestionario previo a la adopci�n", JOptionPane.QUESTION_MESSAGE);
+				int pregunta1 = JOptionPane.showConfirmDialog(null, "¿Ha tenido o tiene algun otro perro o mascota?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				int pregunta2 = JOptionPane.showConfirmDialog(null, "¿Se considera capaz de afrontar los gastos que conlleva tener un perro?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				int pregunta3 = JOptionPane.showConfirmDialog(null, "¿Su trabajo le requiere viajar constantemente?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				int pregunta4 = JOptionPane.showConfirmDialog(null, "¿Considera que su perro se podria adaptar a su vivienda?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				int pregunta5 = JOptionPane.showConfirmDialog(null, "¿Considera el perro podria adaptarse a su entorno?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca su nombre de usuario:",  "Cuestionario previo a la adopción", JOptionPane.QUESTION_MESSAGE);
 
 				respuestas.add(pregunta1);
 				respuestas.add(pregunta2);
@@ -79,10 +79,10 @@ public class PanelPerros extends JPanel {
 				}
 				if(contador >= 3) {
 
-					JOptionPane.showConfirmDialog(null, "�Enhorabuena! Consideramos que usted es un candidato id�neo para la adopcion. \n Recuerde que est� informaci�n se comprobar� el d�a de la adoci�n", "Cuestionario previo a la adopci�n",JOptionPane.OK_OPTION);
+					JOptionPane.showConfirmDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idóneo para la adopcion. \n Recuerde que esta información se comprobará el día de la adoción", "Cuestionario previo a la adopción",JOptionPane.OK_OPTION);
 					int existe = BD.existeUsuario(con, pregunta6);
 					if(existe == 1){
-						JOptionPane.showMessageDialog(null, "�Enhorabuena! Consideramos que usted es un candidato idoneo para la adopcion. \n Recuerde que est� informaci�n se comprobar� el d�a de la adopci�n", "Cuestionario previo a la adopci�n", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idoneo para la adopcion. \n Recuerde que esta información se comprobará el día de la adoción", "Cuestionario previo a la adopción", JOptionPane.INFORMATION_MESSAGE);
 						BD.perroReservado(con, p.getNombre());
 						//FileWriter fw = null;
 				        PrintWriter pw = null;
@@ -120,13 +120,12 @@ public class PanelPerros extends JPanel {
 							}
 						}
 					}else {
-						JOptionPane.showMessageDialog(null, "El nombre de usuario es incorrecto",  "Cuestionario previo a la adopci�n", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "El nombre de usuario es incorrecto",  "Cuestionario previo a la adopción", JOptionPane.ERROR_MESSAGE);
 						//new VentanaInicioSesion();
 					}
 				}
 				else {
-					JOptionPane.showConfirmDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopci�n. \n Para m�s informaci�n contacte con nosotros. \n Gracias.", "Cuestionario previo a la adpci�n", JOptionPane.OK_OPTION);
-					JOptionPane.showMessageDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopci�n. \n Para m�s informaci�n contacte con nosotros. \n Gracias.", "Cuestionario previo a la adopci�n", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopción. \n Para más información contacte con nosotros. \n Gracias.", "Cuestionario previo a la adopción", JOptionPane.INFORMATION_MESSAGE);
 
 				}
 

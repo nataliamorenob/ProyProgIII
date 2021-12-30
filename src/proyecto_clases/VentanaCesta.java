@@ -60,6 +60,10 @@ public class VentanaCesta extends JFrame {
 		btnComprar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		panelSur.add(btnComprar);
 		
+		JButton btnTicket =new JButton("Generar ticket");
+		btnTicket.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
+		panelSur.add(btnTicket);
+		
 		btnVolver.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -69,6 +73,13 @@ public class VentanaCesta extends JFrame {
 		});
 		
 		btnComprar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		btnTicket.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				

@@ -6,13 +6,15 @@ public class Alimentos {
 	private int precio;
 	private String animal_dirigido; //para que animal es ese alimento
 	private String rutaFoto;
+	private boolean aliEnCesta; //cuando un alimento se ha añadido a la cesta se pone a 1 
 	
-	public Alimentos(String nombre, int precio, String animal_dirigido, String rutaFoto) {
+	public Alimentos(String nombre, int precio, String animal_dirigido, String rutaFoto, boolean aliEnCesta) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
 		this.animal_dirigido = animal_dirigido;
 		this.rutaFoto = rutaFoto;
+		this.setAliEnCesta(aliEnCesta);
 	}
 	public String getNombre() {
 		return nombre;
@@ -37,6 +39,12 @@ public class Alimentos {
 	}
 	public void setRutaFoto(String rutaFoto) {
 		this.rutaFoto = rutaFoto;
+	}
+	public boolean isAliEnCesta() {
+		return aliEnCesta;
+	}
+	public void setAliEnCesta(boolean aliEnCesta) {
+		this.aliEnCesta = aliEnCesta;
 	}
 	
 	

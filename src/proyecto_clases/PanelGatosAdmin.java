@@ -35,11 +35,17 @@ public class PanelGatosAdmin extends JPanel {
 		JPanel panelSur = new JPanel();
 		add(panelSur, BorderLayout.SOUTH);
 		
+		JPanel panelCentro = new JPanel();
+		panelCentro.setPreferredSize(new Dimension(200, 200));
+		add(panelCentro, BorderLayout.CENTER);
+		
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BD.borrarGatos(con, g.getNombre());
+				panelCentro.removeAll();
+				BD.obtenerPerros(con);
 			}	
 		});
 		
@@ -86,9 +92,6 @@ public class PanelGatosAdmin extends JPanel {
 		lblReservado.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblReservado);
 		
-		JPanel panelCentro = new JPanel();
-		panelCentro.setPreferredSize(new Dimension(200, 200));
-		add(panelCentro, BorderLayout.CENTER);
 		
 		ImageIcon im = new ImageIcon(g.getRutaFoto());
 		im.setDescription(g.getRutaFoto());

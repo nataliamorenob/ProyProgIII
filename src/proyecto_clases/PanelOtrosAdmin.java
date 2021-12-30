@@ -30,6 +30,10 @@ public class PanelOtrosAdmin extends JPanel {
 		JPanel panelSur = new JPanel();
 		add(panelSur, BorderLayout.SOUTH);
 		
+		JPanel panelCentro = new JPanel();
+		panelCentro.setPreferredSize(new Dimension(200, 200));
+		add(panelCentro, BorderLayout.CENTER);
+		
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		btnEliminar.addActionListener(new ActionListener() {
@@ -38,6 +42,8 @@ public class PanelOtrosAdmin extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				BD.borrarOtros(con, o.getNombre());
+				panelCentro.removeAll();
+				BD.obtenerPerros(con);
 			}
 		});
 
@@ -72,9 +78,6 @@ public class PanelOtrosAdmin extends JPanel {
 		lblExt.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblExt);
 		
-		JPanel panelCentro = new JPanel();
-		panelCentro.setPreferredSize(new Dimension(200, 200));
-		add(panelCentro, BorderLayout.CENTER);
 		
 		ImageIcon im = new ImageIcon(o.getRutaFoto());
 		im.setDescription(o.getRutaFoto());
