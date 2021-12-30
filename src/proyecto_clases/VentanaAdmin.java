@@ -199,7 +199,6 @@ public class VentanaAdmin extends JFrame {
 					boolean reservado = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el animal está reservado: "));
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
 					BD.anyadirPerro(con, nombre, edad, sexo, peso, carac, tiempoAdop, localizacion, colores, reservado, rutaFoto);
-					//
 				}
 				else if(opcion.equals("Gato")) {
 					String nombre = JOptionPane.showInputDialog("Introduzca el nombre del gato que desea añadir: ");
@@ -213,7 +212,6 @@ public class VentanaAdmin extends JFrame {
 					boolean reservado = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el animal está reservado: "));
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
 					BD.anyadirGato(con, nombre, edad, sexo, peso, carac, tiempoAdop, localizacion, colores, reservado, rutaFoto);
-					//
 				}
 				else if(opcion.equals("Otro")) {
 					String nombre = JOptionPane.showInputDialog("Introduzca el nombre del animal que desea añadir: ");
@@ -224,7 +222,6 @@ public class VentanaAdmin extends JFrame {
 					boolean peligtoExt = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el animal está en el peligro de extinción: "));
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
 					BD.anyadriOtro(con, nombre, edad, sexo, peso, carac, peligtoExt, rutaFoto);
-					//
 				}
 				else if(opcion.equals("Alimentos")) {
 					String nombre = JOptionPane.showInputDialog("Introduzca el nombre del alimento que vaya a añadir: ");
@@ -232,7 +229,6 @@ public class VentanaAdmin extends JFrame {
 					String animalDirigido = JOptionPane.showInputDialog("Introduzca el animal para el que sea dirigido: ");
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
 					BD.anyadirAlimento(con, nombre, precio, animalDirigido, rutaFoto);
-					//
 				}
 				else {
 					String nombre = JOptionPane.showInputDialog("Introduzca el nombre del accesorio a añadir: ");
@@ -240,7 +236,6 @@ public class VentanaAdmin extends JFrame {
 					String animalDirigido = JOptionPane.showInputDialog("Introduzca el animal para el que sea dirigido: ");
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
 					BD.anyadirAccesorio(con, nombre, precio, animalDirigido, rutaFoto);
-					//
 				}
 			}
 		});

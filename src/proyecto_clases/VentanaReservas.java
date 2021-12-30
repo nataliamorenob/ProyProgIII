@@ -1,12 +1,15 @@
 package proyecto_clases;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.TreeSet;
 
 import javax.swing.Icon;
@@ -16,8 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
+import javax.swing.table.TableCellRenderer;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -52,6 +56,7 @@ public class VentanaReservas extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings("serial")
 	public VentanaReservas() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -95,7 +100,7 @@ public class VentanaReservas extends JFrame {
 		File fichero = null;
 	    FileReader fr = null;
 	    BufferedReader br = null;
-	    TreeSet<Animales> tsAnimales = new TreeSet();
+	    ArrayList<Animales> alAnimales = new ArrayList();
         try {
         	fichero = new File ("animalesReservados.txt");
 			fr = new FileReader (fichero);
@@ -107,9 +112,9 @@ public class VentanaReservas extends JFrame {
 				Integer edad = Integer.parseInt(datos[1]);
 				String sexo = datos[2];
 				Integer peso = Integer.parseInt(datos[3]);
-				String caracteristicas = datos[4];
+				String caracteristicas = datos[5];
 				Animales an = new Animales(nombre, edad, sexo, peso, caracteristicas);
-				tsAnimales.add(an);
+				alAnimales.add(an);
 				linea = br.readLine();
 			}
 		
@@ -139,15 +144,37 @@ public class VentanaReservas extends JFrame {
         };
         
         modeloTablaAnimales.setColumnIdentifiers(columnas);
-		
-		for(Animales a: tsAnimales) {
-			String dataRow[] = {a.getNombre(), String.valueOf(a.getEdad()), a.getSexo(), String.valueOf(a.getPeso()), a.getCaracteristicas()};
+        
+        for(Animales a: alAnimales) {
+        	String dataRow[] = {a.getNombre(), String.valueOf(a.getEdad()), a.getSexo(), String.valueOf(a.getPeso()), a.getCaracteristicas()};
 			modeloTablaAnimales.addRow(dataRow);
-		}
+        }
+ 
 		tablaAnimales = new JTable(modeloTablaAnimales);
 		JScrollPane scrollTabla = new JScrollPane(tablaAnimales);
 		panelCentro.add(scrollTabla);
 		
+		tablaAnimales.getColumnModel().getColumn(0).setPreferredWidth(60);
+		tablaAnimales.getColumnModel().getColumn(1).setPreferredWidth(50);
+		tablaAnimales.getColumnModel().getColumn(2).setPreferredWidth(50);
+		tablaAnimales.getColumnModel().getColumn(3).setPreferredWidth(50);
+		tablaAnimales.getColumnModel().getColumn(4).setPreferredWidth(100);
+		
+		tablaAnimales.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+			@Override
+			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+					int row, int column) {
+				Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+				DefaultTableCellRenderer modeloCnt = new DefaultTableCellRenderer();
+				modeloCnt.setHorizontalAlignment(CENTER);
+				tablaAnimales.getColumnModel().getColumn(0).setCellRenderer(modeloCnt);
+				tablaAnimales.getColumnModel().getColumn(1).setCellRenderer(modeloCnt);
+				tablaAnimales.getColumnModel().getColumn(2).setCellRenderer(modeloCnt);
+				tablaAnimales.getColumnModel().getColumn(3).setCellRenderer(modeloCnt);
+				tablaAnimales.getColumnModel().getColumn(4).setCellRenderer(modeloCnt);
+				return c;
+			}
+		});
 		
 		setVisible(true);
 	}
