@@ -1,6 +1,8 @@
 package proyecto_clases;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -10,18 +12,19 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.TreeSet;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 
 public class VentanaCesta extends JFrame {
@@ -51,6 +54,7 @@ public class VentanaCesta extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings("serial")
 	public VentanaCesta() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -64,12 +68,18 @@ public class VentanaCesta extends JFrame {
 		this.setIconImage(im.getImage());
 		ventanaCesta = this;
 		
+		JPanel panelNorte = new JPanel();
+		contentPane.add(panelNorte, BorderLayout.NORTH);
+		
 		JPanel panelSur = new JPanel();
 		contentPane.add(panelSur, BorderLayout.SOUTH);
 		
-		//cambio
 		JPanel panelCentro = new JPanel();
 		contentPane.add(panelCentro, BorderLayout.CENTER);
+		
+		JLabel lblCesta = new JLabel("Productos en cesta");
+		lblCesta.setFont(new Font("Baskerville Old Face", Font.PLAIN, 15));
+		panelNorte.add(lblCesta);
 		
 		JButton btnVolver = new JButton("Volver a Menu");
 		btnVolver.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
@@ -104,7 +114,6 @@ public class VentanaCesta extends JFrame {
 				
 			}
 		});
-		 //cambio
 		
 		//Leer el fichero cesta
 				File fichero = null;
@@ -114,9 +123,6 @@ public class VentanaCesta extends JFrame {
 
 		        try {
 		        	br = new BufferedReader(new FileReader("cesta.txt"));
-		        	//fichero = new File ("cesta.txt");
-					//fr = new FileReader (fichero);
-					
 					String linea = br.readLine();
 					while(linea!=null) {
 						String [] datos = linea.split(",");
@@ -144,23 +150,43 @@ public class VentanaCesta extends JFrame {
 					}
 				}
 		        
-		        
-		        
-		        
 		        String [] columnas = {"Nombre","Precio","Animal Dirigido"};  
-		        modeloTablaProductos = new DefaultTableModel();
+		        modeloTablaProductos = new DefaultTableModel() {
+		        	public boolean isCellEditable(int row, int column) {
+		    			return false;
+		    		}
+		        };
+
 		        modeloTablaProductos.setColumnIdentifiers(columnas);
 				
-		        
 				for(Productos p: tsProductos) {
-					
 					String dataRow[] = {p.getNombre(), String.valueOf(p.getPrecio()), p.getAnimal_dirigido()}; //CAMBIO FALTA LA FECHA DE CADUCIDAD
 					modeloTablaProductos.addRow(dataRow);
 				}
+				
 				tablaProductos = new JTable(modeloTablaProductos);
 				JScrollPane scrollTabla = new JScrollPane(tablaProductos);
 				panelCentro.add(scrollTabla);
 				
+				JTableHeader th;
+				th = tablaProductos.getTableHeader();
+				Font fuente = new Font("Bell MT", Font.PLAIN, 12);
+				th.setFont(fuente);
+				th.setBackground(Color.WHITE);
+				
+				tablaProductos.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+					@Override
+					public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+							int row, int column) {
+						Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+						DefaultTableCellRenderer modeloCnt = new DefaultTableCellRenderer();
+						modeloCnt.setHorizontalAlignment(CENTER);
+						tablaProductos.getColumnModel().getColumn(0).setCellRenderer(modeloCnt);
+						tablaProductos.getColumnModel().getColumn(1).setCellRenderer(modeloCnt);
+						tablaProductos.getColumnModel().getColumn(2).setCellRenderer(modeloCnt);
+						return c;
+					}
+				});
 				
 
 				

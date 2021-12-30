@@ -95,8 +95,6 @@ public class PanelPerrosAdmin extends JPanel {
 		JLabel lblReservado = new JLabel("Reservado: "+p.isReservado());
 		lblReservado.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblReservado);
-	
-		
 		
 		ImageIcon im = new ImageIcon(p.getRutaFoto());
 		im.setDescription(p.getRutaFoto());

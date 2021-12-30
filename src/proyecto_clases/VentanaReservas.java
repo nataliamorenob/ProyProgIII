@@ -1,6 +1,7 @@
 package proyecto_clases;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
 import java.io.BufferedReader;
@@ -18,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -69,9 +71,9 @@ public class VentanaReservas extends JFrame {
 		JPanel panelNorte = new JPanel();
 		contentPane.add(panelNorte, BorderLayout.NORTH);
 		
-		JLabel reservalbl = new JLabel("Animales Reservados");
-		reservalbl.setFont(new Font("Baskerville Old Face", Font.PLAIN, 11));
-		panelNorte.add(reservalbl);
+		JLabel lblReserva = new JLabel("Animales Reservados");
+		lblReserva.setFont(new Font("Baskerville Old Face", Font.PLAIN, 15));
+		panelNorte.add(lblReserva);
 		
 		JPanel panelCentro = new JPanel();
 		contentPane.add(panelCentro, BorderLayout.CENTER);
@@ -133,7 +135,7 @@ public class VentanaReservas extends JFrame {
         
         String [] columnas = {"Nombre","Edad","Sexo", "Peso", "Caracteristicas"};  
         modeloTablaAnimales = new DefaultTableModel() {
-        	//Método para que la tabla no pueda ser editada
+        	//Para que la tabla no pueda ser editada
         	public boolean isCellEditable(int row, int column) {
     			return false;
     		}
@@ -150,12 +152,20 @@ public class VentanaReservas extends JFrame {
 		JScrollPane scrollTabla = new JScrollPane(tablaAnimales);
 		panelCentro.add(scrollTabla);
 		
+		JTableHeader th;
+		th = tablaAnimales.getTableHeader();
+		Font fuente = new Font("Bell MT", Font.PLAIN, 12);
+		th.setFont(fuente);
+		th.setBackground(Color.WHITE);
+		
 		tablaAnimales.getColumnModel().getColumn(0).setPreferredWidth(60);
 		tablaAnimales.getColumnModel().getColumn(1).setPreferredWidth(50);
 		tablaAnimales.getColumnModel().getColumn(2).setPreferredWidth(50);
 		tablaAnimales.getColumnModel().getColumn(3).setPreferredWidth(50);
 		tablaAnimales.getColumnModel().getColumn(4).setPreferredWidth(100);
 		
+		
+		//Alinear las columnas poniendolas en el centro de las celdas
 		tablaAnimales.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
 			@Override
 			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
@@ -171,6 +181,7 @@ public class VentanaReservas extends JFrame {
 				return c;
 			}
 		});
+		
 		
 		setVisible(true);
 	}
