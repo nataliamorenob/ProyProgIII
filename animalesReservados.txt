@@ -1,6 +1,1 @@
-Rodolfo,5,M,3,Gris perla,Curioso y tranquilo,6,Vitoria
-Fatima,5,F,5,Gris perla,Dormilona y traviesa ,1,Vitoria
-Sissi,1,F,1,Gris perla,Juguetona y cariñosa,1,Getxo
-Fatima,5,F,5,Gris perla,Dormilona y traviesa ,1,Vitoria
-Cleo y Patra,6,F,4,Blanco y negro,Les encanta estar unidas,8,Getxo
-Sissi,1,F,1,Gris perla,Juguetona y cariñosa,1,Getxo
+
