@@ -1,6 +1,6 @@
 package proyecto_clases;
 
-public class Animales implements Comparable {
+public class Animales {
 	protected String nombre;
 	protected int edad;
 	protected String sexo;
@@ -68,15 +68,6 @@ public class Animales implements Comparable {
 	public void setRutaFoto(String rutaFoto) {
 		this.rutaFoto = rutaFoto;
 	}
-	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	
-	
-
 	
 	
 

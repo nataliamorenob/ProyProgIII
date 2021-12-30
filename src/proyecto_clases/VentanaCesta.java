@@ -31,9 +31,8 @@ public class VentanaCesta extends JFrame {
 
 	private JPanel contentPane;
 	private JFrame ventanaCesta;
-	private JTable tablaProductos; //cambio
-	private DefaultTableModel modeloTablaProductos;  //cambio
-	//private TreeSet<Productos> tsProductos; //cambio
+	private JTable tablaProductos; 
+	private DefaultTableModel modeloTablaProductos;  
 
 	/**
 	 * Launch the application.
