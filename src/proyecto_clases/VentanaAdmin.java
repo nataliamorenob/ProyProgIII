@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -237,7 +238,10 @@ public class VentanaAdmin extends JFrame {
 					String animalDirigido = JOptionPane.showInputDialog("Introduzca el animal para el que sea dirigido: ");
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
 					boolean enCesta = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el alimento está reservado: "));
-					String fechaCaducidad = JOptionPane.showInputDialog("Indique la fecha de caducidad del alimento: ");
+					long fechaCad = Long.parseLong(JOptionPane.showInputDialog("Indique la fecha de caducidad del alimento: "));
+					Date d = new Date(fechaCad);
+					String fechaCaducidad = sdf.format(d);
+					//String fechaCaducidad = JOptionPane.showInputDialog("Indique la fecha de caducidad del alimento: ");
 					BD.anyadirAlimento(con, nombre, precio, animalDirigido, rutaFoto, enCesta, fechaCaducidad);
 					panelCentro.removeAll();
 					BD.obtenerAlimentos(con);
