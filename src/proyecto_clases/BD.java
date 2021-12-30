@@ -763,7 +763,7 @@ public class BD {
 	public static void anyadirPerro(Connection con, String nombre, int edad, String sexo, int peso, String caracteristicas,int tiempoEnAdopcion, String localizacion,String colores, boolean reservado,String rutaFoto) {
 		try {
 			Statement st = con.createStatement();
-			String sent = "INSERT INTO PERROS VALUES ('"+nombre+"',"+edad+","+sexo+","+peso+","+caracteristicas+","+tiempoEnAdopcion+","+localizacion+","+colores+","+reservado+","+rutaFoto+")";
+			String sent = "INSERT INTO PERROS VALUES ('"+nombre+"','"+edad+"','"+sexo+"','"+peso+"','"+caracteristicas+"','"+tiempoEnAdopcion+"','"+localizacion+"','"+colores+"','"+reservado+"','"+rutaFoto+"')";
 			st.executeUpdate(sent);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -788,7 +788,7 @@ public class BD {
 	public static void anyadirGato(Connection con, String nombre, int edad, String sexo, int peso, String caracteristicas,int tiempoEnAdopcion, String localizacion,String colores, boolean reservado,String rutaFoto) {
 		try {
 			Statement st = con.createStatement();
-			String sent = "INSERT INTO GATOS VALUES ('"+nombre+"',"+edad+","+sexo+","+peso+","+caracteristicas+","+tiempoEnAdopcion+","+localizacion+","+colores+","+reservado+","+rutaFoto+")";
+			String sent = "INSERT INTO GATOS VALUES ('"+nombre+"','"+edad+"','"+sexo+"','"+peso+"','"+caracteristicas+"','"+tiempoEnAdopcion+"','"+localizacion+"','"+colores+"','"+reservado+"','"+rutaFoto+"')";
 			st.executeUpdate(sent);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -810,7 +810,7 @@ public class BD {
 	public static void anyadriOtro(Connection con, String nombre, int edad, String sexo, int peso, String caracteristicas, boolean peligroExtincion,String rutaFoto) {
 		try {
 			Statement st = con.createStatement();
-			String sent = "INSERT INTO OTROS VALUES ('"+nombre+"',"+edad+","+sexo+","+peso+","+caracteristicas+","+peligroExtincion+","+rutaFoto+")";
+			String sent = "INSERT INTO OTROS VALUES ('"+nombre+"','"+edad+"','"+sexo+"','"+peso+"','"+caracteristicas+"','"+peligroExtincion+"','"+rutaFoto+"')";
 			st.executeUpdate(sent);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -829,7 +829,7 @@ public class BD {
 	public static void anyadirAlimento(Connection con, String nombre, int precio, String animal_dirigido, String rutaFoto, boolean enCesta, String fechaCaducidad) { 
 		try {
 			Statement st = con.createStatement();
-			String sent = "INSERT INTO ALIMENTOS VALUES ('"+nombre+"',"+precio+","+animal_dirigido+","+rutaFoto+","+enCesta+","+fechaCaducidad+")"; 
+			String sent = "INSERT INTO ALIMENTOS VALUES ('"+nombre+"','"+precio+"','"+animal_dirigido+"','"+rutaFoto+"','"+enCesta+"','"+fechaCaducidad+"')"; 
 			st.executeUpdate(sent);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -848,7 +848,7 @@ public class BD {
 	public static void anyadirAccesorio(Connection con, String nombre, int precio, String animal_dirigido, String rutaFoto, boolean enCesta) {  
 		try {
 			Statement st = con.createStatement();
-			String sent = "INSERT INTO ACCESORIOS VALUES ('"+nombre+"',"+precio+","+animal_dirigido+","+rutaFoto+","+enCesta+")"; 
+			String sent = "INSERT INTO ACCESORIOS VALUES ('"+nombre+"','"+precio+"','"+animal_dirigido+"','"+rutaFoto+"','"+enCesta+"')"; 
 			st.executeUpdate(sent);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -63,6 +63,8 @@ public class VentanaAdmin extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
+		con = BD.initBD("BaseDatos.db");
+		
 		JPanel panelCentro = new JPanel();
 		contentPane.add(panelCentro, BorderLayout.CENTER);
 		
