@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.TreeSet;
 
 import javax.swing.ImageIcon;
@@ -93,7 +94,7 @@ public class VentanaReservas extends JFrame {
 		File fichero = null;
 	    FileReader fr = null;
 	    BufferedReader br = null;
-	    TreeSet<Animales> tsAnimales = new TreeSet();
+	    ArrayList<Animales> tsAnimales = new ArrayList<>();
         try {
         	fichero = new File ("animalesReservados.txt");
 			fr = new FileReader (fichero);

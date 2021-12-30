@@ -11,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,13 +23,14 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+
 public class VentanaCesta extends JFrame {
 
 	private JPanel contentPane;
 	private JFrame ventanaCesta;
 	private JTable tablaProductos; //cambio
 	private DefaultTableModel modeloTablaProductos;  //cambio
-	private TreeSet<Productos> tsProductos; //cambio
+	//private TreeSet<Productos> tsProductos; //cambio
 
 	/**
 	 * Launch the application.
@@ -107,7 +110,8 @@ public class VentanaCesta extends JFrame {
 				File fichero = null;
 			    FileReader fr = null;
 			    BufferedReader br = null;
-			    TreeSet<Productos> tsProductos = new TreeSet();
+			    ArrayList<Productos> tsProductos = new ArrayList();
+
 		        try {
 		        	br = new BufferedReader(new FileReader("cesta.txt"));
 		        	//fichero = new File ("cesta.txt");
@@ -121,6 +125,7 @@ public class VentanaCesta extends JFrame {
 						String animal_dirigido = datos[2];
 						Productos pr = new Productos(nombre, precio, animal_dirigido); 
 						tsProductos.add(pr);
+						//System.out.println(tsProductos);
 						linea = br.readLine();
 					}
 				} catch (FileNotFoundException e) {
@@ -139,11 +144,16 @@ public class VentanaCesta extends JFrame {
 					}
 				}
 		        
+		        
+		        
+		        
 		        String [] columnas = {"Nombre","Precio","Animal Dirigido"};  
 		        modeloTablaProductos = new DefaultTableModel();
 		        modeloTablaProductos.setColumnIdentifiers(columnas);
 				
+		        
 				for(Productos p: tsProductos) {
+					
 					String dataRow[] = {p.getNombre(), String.valueOf(p.getPrecio()), p.getAnimal_dirigido()}; //CAMBIO FALTA LA FECHA DE CADUCIDAD
 					modeloTablaProductos.addRow(dataRow);
 				}
@@ -151,6 +161,8 @@ public class VentanaCesta extends JFrame {
 				JScrollPane scrollTabla = new JScrollPane(tablaProductos);
 				panelCentro.add(scrollTabla);
 				
+				
+
 				
 		setVisible(true);
 	}
