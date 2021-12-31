@@ -1,1 +1,2 @@
 Cama ,23,Perros y gatos
+Collar con cascabel,9,Gatos

@@ -30,6 +30,9 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+
+
+
 import javax.swing.*;
 
 public class VentanaCesta extends JFrame {
@@ -87,9 +90,6 @@ public class VentanaCesta extends JFrame {
 		btnComprar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		panelSur.add(btnComprar);
 		
-		JButton btnTicket =new JButton("Generar ticket");
-		btnTicket.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
-		panelSur.add(btnTicket);
 		
 		
 		
@@ -260,8 +260,7 @@ public class VentanaCesta extends JFrame {
 								pw.println(formatter.format(date));
 								pw.println("\n nº Pedido: 1234 \n");
 								
-								ArrayList<Productos> preciosProductos = new ArrayList<>();
-								preciosProductos = null;
+								Integer total = 0;
 								
 								for(Productos c : tsProductos) {
 
@@ -270,13 +269,17 @@ public class VentanaCesta extends JFrame {
 										pw.println(nombreP +" ".repeat(50) + precio + "€");	
 										
 										//total suma del precio de productos
-										
-									
+										total += precio;	
  								}
 								
+								pw.println("TOTAL: "+ String.valueOf(total) + "€");
 								
-								pw.println("Destinatario: " + txtNom.getText()  + " " + txtApe.getText() + " " + txtDir.getText() + " " + txtCP.getText() + "\n");
-								pw.println("Su tlf de contacto: " + txtTlf.getText() + "\n");
+								
+								pw.println("-".repeat(121));
+								
+								
+								pw.println("Destinatario: " + txtNom.getText()  + " " + txtApe.getText() + ", " + txtDir.getText() + ", " + txtCP.getText() + "\n");
+								pw.println("Su tlfno de contacto: " + txtTlf.getText() + "\n");
 								String nTarjeta = txtTC.getText();// La tarjeta tiene 10 caracteres
 								pw.println("Numero de tarjeta de pago: " + "*".repeat(6) + nTarjeta.charAt(6) + nTarjeta.charAt(7) + nTarjeta.charAt(8) + nTarjeta.charAt(9) + "\n");
 								pw.print("-".repeat(121) + "\n");
