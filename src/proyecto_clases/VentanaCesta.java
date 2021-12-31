@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,9 +22,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -151,6 +154,141 @@ public class VentanaCesta extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 //						mostrarTicket(tsProductos);
+						btnComprar.addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								
+								//Edición JFrame
+								JFrame jfPreguntas = new JFrame();
+								jfPreguntas.setBackground(Color.BLUE);
+								jfPreguntas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+								jfPreguntas.setBounds(500, 100, 600, 500);
+								jfPreguntas.setVisible(true);	
+								//Edición panel base
+								JPanel base = new JPanel();
+								base.setLayout(new BorderLayout());
+								
+								//Edición panel con las preguntas
+								JPanel pPreguntas = new JPanel();
+								pPreguntas.setLayout(new GridLayout(6,1));
+								
+								//Edición panel btn de confirmación
+								JPanel pBtn = new JPanel();
+								
+								//Buttons
+								JButton btnConfirmar = new JButton("Confirmar");
+								
+								
+								//JLABELS
+								JLabel lblNom = new JLabel("Nombre:");
+								JLabel lblApe = new JLabel("Apellidos:");
+								JLabel lblDir = new JLabel("Dirección:");
+								JLabel lblCP = new JLabel("Código postal:");
+								JLabel lblTlf = new JLabel("Número de teléfono:");
+								JLabel lblTC = new JLabel("Tarjeta de crédito:");
+								
+								//JTEXTFIELDS
+								JTextField txtNom = new JTextField();
+								txtNom.setBorder(new LineBorder(Color.DARK_GRAY, 1));
+								JTextField txtApe = new JTextField();
+								txtApe.setBorder(new LineBorder(Color.DARK_GRAY, 1));
+								JTextField txtDir = new JTextField();
+								txtDir.setBorder(new LineBorder(Color.DARK_GRAY, 1));
+								JTextField txtCP = new JTextField();
+								txtCP.setBorder(new LineBorder(Color.DARK_GRAY, 1));
+								JTextField txtTlf = new JTextField();
+								txtTlf.setBorder(new LineBorder(Color.DARK_GRAY, 1));
+								JTextField txtTC = new JTextField();
+								txtTC.setBorder(new LineBorder(Color.DARK_GRAY, 1));
+								
+								//Campo de preguntas añadido al panel de preguntas
+								pPreguntas.add(lblNom);
+								pPreguntas.add(txtNom);
+								pPreguntas.add(lblApe);
+								pPreguntas.add(txtApe);
+								pPreguntas.add(lblDir);
+								pPreguntas.add(txtDir);
+								pPreguntas.add(lblCP);
+								pPreguntas.add(txtCP);
+								pPreguntas.add(lblTlf);
+								pPreguntas.add(txtTlf);
+								pPreguntas.add(lblTC);
+								pPreguntas.add(txtTC);
+								
+								//Boton añadido a su panel boton
+								pBtn.add(btnConfirmar);
+
+								//Añadir paneles a la base 
+								base.add(pPreguntas, BorderLayout.CENTER);
+								base.add(pBtn, BorderLayout.SOUTH);
+
+								jfPreguntas.add(base);	
+								
+								//Action Listener del botón confirmar
+								btnConfirmar.addActionListener(new ActionListener() {
+									
+									@Override
+									public void actionPerformed(ActionEvent e) {
+										// TODO Auto-generated method stub
+										
+										JFrame jfTicket = new JFrame();
+										jfTicket.setBounds(0, 0, 500, 500);
+										
+										
+										//JTextArea donde se mostrar el 
+										JTextArea taTicket = new JTextArea();
+										taTicket.setVisible(true);
+										jfTicket.add(taTicket);
+										
+										//Creación del fichero ticket 
+										PrintWriter pw = null;
+										
+										//Fecha en la que se realiza el pedido
+										SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy 'at' HH:mm:ss z");
+										Date date = new Date(System.currentTimeMillis());
+										if(txtNom.getText().equals("") || txtApe.getText().equals("") || txtDir.getText().equals("") ||
+											txtCP.getText().equals("") || txtTlf.getText().equals("")	) {
+											JOptionPane.showMessageDialog(null, "Tiene que rellenar todos los campos");}
+										else {
+											jfTicket.setVisible(true);
+											try {
+												
+												pw = new PrintWriter(new PrintWriter("ticket.txt"));
+												pw.println("REFUGIO \n");
+												pw.println("-".repeat(121));
+												pw.println(formatter.format(date));
+												pw.println("\n nº Pedido: 1234 \n");
+												pw.println("Destinatario:" + txtNom.getText()  + " " + txtApe.getText() + " " + txtDir.getText() + " " + txtCP.getText() + "\n");
+												pw.println("Su tlf de contacto" + txtTlf.getText() + "\n");
+												String nTarjeta = txtTC.getText();// La tarjeta tiene 10 caracteres
+												pw.println("Numero de tarjeta de pago:" + " "+ "*".repeat(6) + nTarjeta.charAt(6) + nTarjeta.charAt(7) + nTarjeta.charAt(8) + nTarjeta.charAt(9) + "\n");
+												pw.print("-".repeat(121) + "\n");
+												pw.println("GRACIAS POR SU COMPRA");
+											} catch (FileNotFoundException e1) {
+											// TODO Auto-generated catch block
+												e1.printStackTrace();
+											}finally {
+												if(pw!=null) {
+													pw.flush();
+													pw.close();
+												}	
+											}
+										
+										//Lee y muestra el fichero "Ticket" en el JTextArea
+											try {
+												taTicket.read(new BufferedReader(new FileReader("ticket.txt")), null);
+												} catch (Exception e1) {
+											// TODO: handle exception
+													e1.printStackTrace();
+												}
+									
+									}
+									}
+								});
+								
+							}		
+							
+						});
 					}
 				});
 

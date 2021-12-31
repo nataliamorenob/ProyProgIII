@@ -9,7 +9,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -21,6 +26,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
+
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -34,6 +41,7 @@ public class VentanaReservas extends JFrame {
 	private JFrame ventanaReservas;
 	private JTable tablaAnimales;
 	private DefaultTableModel modeloTablaAnimales;
+	private Iterator iterador;
 
 	/**
 	 * Launch the application.
@@ -147,7 +155,7 @@ public class VentanaReservas extends JFrame {
         	String dataRow[] = {a.getNombre(), String.valueOf(a.getEdad()), a.getSexo(), String.valueOf(a.getPeso()), a.getCaracteristicas()};
 			modeloTablaAnimales.addRow(dataRow);
         }
- 
+        
 		tablaAnimales = new JTable(modeloTablaAnimales);
 		JScrollPane scrollTabla = new JScrollPane(tablaAnimales);
 		panelCentro.add(scrollTabla);
