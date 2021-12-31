@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -281,7 +282,7 @@ public class VentanaCesta extends JFrame {
 						else {
 							jfTicket.setVisible(true);
 							try {
-								pw = new PrintWriter(new PrintWriter("ticket.txt"));
+								pw = new PrintWriter(new FileWriter("ticket.txt"));
 								pw.println("REFUGIO \n");
 								pw.println("-".repeat(121));
 								pw.println(formatter.format(date));
@@ -309,6 +310,9 @@ public class VentanaCesta extends JFrame {
 								pw.println("GRACIAS POR SU COMPRA");
 							} catch (FileNotFoundException e1) {
 							// TODO Auto-generated catch block
+								e1.printStackTrace();
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
 								e1.printStackTrace();
 							}finally {
 								if(pw!=null) {
