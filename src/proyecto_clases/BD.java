@@ -856,6 +856,7 @@ public class BD {
 			e.printStackTrace();
 		}
 	}
+
 	
 	/**
 	 * Método que cambia el valor en_cesta a 1 si el producto, en este caso el accesorio ha sido añadido a la cesta con el fin de comprarlo

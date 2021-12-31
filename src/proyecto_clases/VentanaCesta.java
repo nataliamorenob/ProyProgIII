@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -14,8 +15,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.TreeSet;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 import javax.swing.ImageIcon;
@@ -27,7 +31,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -107,7 +113,15 @@ public class VentanaCesta extends JFrame {
 				ventanaCesta.setVisible(false);
 			}
 		});
+		
+
+		
+		btnTicket.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				
+			}
+		});
 		//Leer el fichero cesta
 				File fichero = null;
 			    FileReader fr = null;
@@ -142,13 +156,6 @@ public class VentanaCesta extends JFrame {
 						}
 					}
 				}
-		        
-		        btnComprar.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						
-					}
-				});
 				
 				btnTicket.addActionListener(new ActionListener() {
 					@Override
@@ -252,8 +259,12 @@ public class VentanaCesta extends JFrame {
 										else {
 											jfTicket.setVisible(true);
 											try {
-												
 												pw = new PrintWriter(new PrintWriter("ticket.txt"));
+												for(Productos p: tsProductos) {
+													String nombre = p.getNombre();
+													Integer precio = p.getPrecio();
+													pw.println(nombre + " " + precio +"€");
+												}
 												pw.println("REFUGIO \n");
 												pw.println("-".repeat(121));
 												pw.println(formatter.format(date));

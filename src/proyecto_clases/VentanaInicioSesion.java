@@ -6,6 +6,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.regex.Pattern;
 
@@ -185,8 +188,22 @@ public class VentanaInicioSesion extends JFrame {
 				}
 				textFieldUsuario.setText("");
 				passwordFieldContrasenia.setText("");
+				
+				try {
+					PrintWriter writer=new PrintWriter("animalesReservados.txt");
+					PrintWriter writer2=new PrintWriter("cesta.txt");
+					writer.print("");
+					writer2.print("");
+					
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 			}
+			//PrintWriter pw=new PrintWriter("animalesReservados.txt");
+				
+				//pw.delete();
 				//BufferedWriter bw = new BufferedWriter(new FileWriter("cesta.txt"));
 				//bw.write("");
 				//bw.close();
