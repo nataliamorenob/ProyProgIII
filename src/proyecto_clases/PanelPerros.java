@@ -79,7 +79,7 @@ public class PanelPerros extends JPanel {
 				}
 				if(contador >= 3) {
 
-					JOptionPane.showConfirmDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idóneo para la adopcion. \n Recuerde que esta información se comprobará el día de la adoción", "Cuestionario previo a la adopción",JOptionPane.OK_OPTION);
+					//JOptionPane.showConfirmDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idóneo para la adopcion. \n Recuerde que esta información se comprobará el día de la adoción", "Cuestionario previo a la adopción",JOptionPane.OK_OPTION);
 					int existe = BD.existeUsuario(con, pregunta6);
 					if(existe == 1){
 						JOptionPane.showMessageDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idoneo para la adopcion. \n Recuerde que esta información se comprobará el día de la adoción", "Cuestionario previo a la adopción", JOptionPane.INFORMATION_MESSAGE);

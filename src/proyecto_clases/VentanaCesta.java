@@ -10,6 +10,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,9 +20,11 @@ import java.util.Iterator;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
@@ -97,6 +102,8 @@ public class VentanaCesta extends JFrame {
 				
 			}
 		});
+		
+
 		
 		btnTicket.addActionListener(new ActionListener() {
 			@Override
