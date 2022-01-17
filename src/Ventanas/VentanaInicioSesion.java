@@ -243,8 +243,8 @@ public class VentanaInicioSesion extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-				//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
+				System.exit(DISPOSE_ON_CLOSE);
 			}
 		});
 		
