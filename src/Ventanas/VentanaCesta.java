@@ -142,7 +142,6 @@ public class VentanaCesta extends JFrame {
         modeloTablaProductos.setColumnIdentifiers(columnas);
 		
 		for(Productos p: tsProductos) {
-			
 			String dataRow[] = {p.getNombre(), String.valueOf(p.getPrecio()), p.getAnimal_dirigido()}; //CAMBIO FALTA LA FECHA DE CADUCIDAD
 			modeloTablaProductos.addRow(dataRow);
 		}
