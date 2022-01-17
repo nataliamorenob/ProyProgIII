@@ -49,7 +49,7 @@ public class PanelAlimentos extends JPanel {
 				BD.alimentoReservado(con, al.getNombre());
 				PrintWriter pw = null;
 				try {
-					pw = new PrintWriter(new FileWriter("cesta.txt"));
+					pw = new PrintWriter(new FileWriter("cesta.txt", true));
 					ArrayList<Alimentos> alAlimentosEnCesta = BD.obtenerAlimentos(con);
 					for(Alimentos ali: alAlimentosEnCesta) {
 						if(ali.isEnCesta() == true) { //cambio isEnCesta
