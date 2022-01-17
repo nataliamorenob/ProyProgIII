@@ -44,9 +44,6 @@ public class PanelPerros extends JPanel {
 	 */
 	public PanelPerros(Perros p) {
 
-		setLayout(new BorderLayout(0, 0));
-		setLayout(new BorderLayout(0, 0));
-
 		Connection con;
 		con=BD.initBD("BaseDatos.db");
 		setLayout(new BorderLayout(0, 0));
@@ -65,7 +62,7 @@ public class PanelPerros extends JPanel {
 				int pregunta2 = JOptionPane.showConfirmDialog(null, "¿Se considera capaz de afrontar los gastos que conlleva tener un perro?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
 				int pregunta3 = JOptionPane.showConfirmDialog(null, "¿Su trabajo le requiere viajar constantemente?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
 				int pregunta4 = JOptionPane.showConfirmDialog(null, "¿Considera que su perro se podria adaptar a su vivienda?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
-				int pregunta5 = JOptionPane.showConfirmDialog(null, "¿Considera el perro podria adaptarse a su entorno?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
+				int pregunta5 = JOptionPane.showConfirmDialog(null, "¿Considera que el perro podria adaptarse a su entorno?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
 				//String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca su nombre de usuario:",  "Cuestionario previo a la adopción", JOptionPane.QUESTION_MESSAGE);
 
 				respuestas.add(pregunta1);

@@ -17,6 +17,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import BaseDeDatos.BD;
@@ -153,7 +155,7 @@ public class PanelLocalizacion extends JPanel {
 				panel.updateUI();
 			}
 		});*/
-		
+	
 		JPanel panelBase = new JPanel();
 		add(panelBase);
 		
@@ -161,6 +163,7 @@ public class PanelLocalizacion extends JPanel {
 		
 		JPanel panelCentro = new JPanel();
 		panelCentro.setLayout(new GridLayout(0, 3));
+		add(panelCentro, BorderLayout.CENTER);
 		
 	    JMenuBar jm1 = new JMenuBar();
 		
