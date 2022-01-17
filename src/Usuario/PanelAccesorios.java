@@ -43,6 +43,9 @@ public class PanelAccesorios extends JPanel {
 		
 		JButton btnComprar = new JButton("AÑADIR A LA CESTA");
 		btnComprar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
+		
+		
+		
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "El accesorio se ha añadido correctamente la cesta");
@@ -52,7 +55,7 @@ public class PanelAccesorios extends JPanel {
 					pw = new PrintWriter(new FileWriter("cesta.txt", true));
 					ArrayList<Accesorios> alAccesoriosEnCesta = BD.obtenerAccesorios(con);
 					for(Accesorios acc: alAccesoriosEnCesta) {
-						if(acc.isEnCesta() == true) { //cambio isEnCesta -> antes acc.isAcEnCesta
+						if(acc.isEnCesta() == true) { 
 							String nombre = acc.getNombre();
 							int precio = acc.getPrecio();
 							String animal_dirigido = acc.getAnimal_dirigido();

@@ -125,11 +125,16 @@ public class VentanaInicioSesion extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				Connection con=BD.initBD("BaseDatos.db"); 
+				BD.perrosACero(con);
+				BD.gatosACero(con);
+				BD.alimentosACero(con);
+				BD.accesoriosACero(con);
 				String usuario=textFieldUsuario.getText();
 				String contrasenia=passwordFieldContrasenia.getText();
 				
 				if(!usuario.equals("") & !contrasenia.equals("")) {
-					Connection con=BD.initBD("BaseDatos.db"); 
+					//Connection con=BD.initBD("BaseDatos.db"); 
 					int result=BD.cogerUsuario(con, usuario, contrasenia);
 					if(result==0) {
 						JOptionPane.showMessageDialog(null, "Aun no te has registrado");
