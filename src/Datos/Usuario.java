@@ -8,13 +8,8 @@ public class Usuario {
 	
 	public Usuario(String usuario, String contrasenia) {
 		this.usuario = usuario;
-		String ercontrasenia = "[A-Z][a-z]{5}[0-9]";
-		boolean correcto = Pattern.matches(ercontrasenia, contrasenia);
-		if(correcto) {
-			this.contrasenia = contrasenia;
-		}else {
-			System.out.println("La contraseña no es correcta");
-		}
+		this.contrasenia = contrasenia;
+		
 	}
 
 	public String getUsuario() {
