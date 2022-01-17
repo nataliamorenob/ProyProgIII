@@ -60,16 +60,7 @@ public class VentanaInicioSesion extends JFrame {
 
 	
 	
-	
-	/*boolean correcto=Pattern.matches(RE, passwordFieldContrasenia);
-	if(correcto) {
-		JOptionPane.showMessageDialog(null,"El nombre de usuario es correcto");
-		
-	}else {
-		JOptionPane.showMessageDialog(null,"El nombre de usuario NO es correcto");
-	}
-	return m.matches();
-	}*/
+
 	
 	
 
@@ -114,19 +105,7 @@ public class VentanaInicioSesion extends JFrame {
 		panelCentro.add(textFieldUsuario);
 		textFieldUsuario.setColumns(10);
 		
-		//String RE = "[a-z]{1,8} + \\d{1,}";
-		//String codigo="hola1";
-		/*String RE = "[a-zA-Z]{5,10}";
-		Pattern patron = Pattern.compile(RE);
 
-		Matcher m = patron.matcher(textFieldUsuario.getText());
-		boolean correcto=Pattern.matches(RE, textFieldUsuario.getText());
-		if(correcto) {
-			JOptionPane.showMessageDialog(null,"El nombre de usuario es correcto");
-			
-		}else {
-			JOptionPane.showMessageDialog(null,"El nombre de usuario NO es correcto");
-		}*/
 		
 		
 		
@@ -154,7 +133,8 @@ public class VentanaInicioSesion extends JFrame {
 			}
 			return true;
 		}*/
-	
+		
+		
 		
 		//BOTONES
 		
@@ -186,7 +166,7 @@ public class VentanaInicioSesion extends JFrame {
 							new VentanaMenu();
 							ventanaInicioSesion.setVisible(false);
 					}
-					//BD.closeBD(); //cambio
+					
 				}
 				textFieldUsuario.setText("");
 				passwordFieldContrasenia.setText("");
@@ -203,12 +183,7 @@ public class VentanaInicioSesion extends JFrame {
 				}
 			}
 			}
-			//PrintWriter pw=new PrintWriter("animalesReservados.txt");
-				
-				//pw.delete();
-				//BufferedWriter bw = new BufferedWriter(new FileWriter("cesta.txt"));
-				//bw.write("");
-				//bw.close();
+
 		});
 		
 		
@@ -219,7 +194,9 @@ public class VentanaInicioSesion extends JFrame {
 				// TODO Auto-generated method stub
 				String usuario=textFieldUsuario.getText();
 				String contrasenia=passwordFieldContrasenia.getText();
-				if(!usuario.equals("") & !contrasenia.equals("")) {
+				String patCntER = "[A-Za-z]{8,}[0-9]";
+				
+				if(!usuario.equals("") && !contrasenia.equals("") && passwordFieldContrasenia.getText().matches(patCntER)) {
 					Connection con=BD.initBD("BaseDatos.db");   
 					int result=BD.cogerUsuario(con, usuario, contrasenia);
 					if(result==0) {
@@ -231,7 +208,10 @@ public class VentanaInicioSesion extends JFrame {
 					}else {
 						JOptionPane.showMessageDialog(null, "Este nombre de usuario ya esta en uso.");
 					}
+				}else {
+					JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos, 8 carácteres incluida una letra mayúscula y un dígito");
 				}
+				
 				textFieldUsuario.setText("");
 				passwordFieldContrasenia.setText("");
 			}
@@ -278,21 +258,10 @@ public class VentanaInicioSesion extends JFrame {
 		t.start();
 		
 		
+		
 		setVisible(true);
 	}
-/*	private  comprobarUsuarioER(String textFieldUsuario) {
-		String RE = "[a-zA-Z]{5,10}";
-		Pattern patron = Pattern.compile(RE);
 
-		Matcher m = patron.matcher(textFieldUsuario.getText());
-		boolean correcto=Pattern.matches(RE, textFieldUsuario.getText());
-		if(correcto) {
-			JOptionPane.showMessageDialog(null,"El nombre de usuario es correcto");
-			
-		}else {
-			JOptionPane.showMessageDialog(null,"El nombre de usuario NO es correcto");
-		}
-	}*/
 	private void comprobarContrasenia(String usuario, String contrasenia) {
 		String ercontrasenia = "[A-Z][a-z]{5}[0-9]";
 		boolean correcto = Pattern.matches(ercontrasenia, contrasenia);
@@ -303,8 +272,11 @@ public class VentanaInicioSesion extends JFrame {
 		}
 	}
 	
+	
+	
 
 	
+
 
 
 
