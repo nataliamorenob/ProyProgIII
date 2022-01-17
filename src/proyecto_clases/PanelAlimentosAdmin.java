@@ -75,5 +75,5 @@ public class PanelAlimentosAdmin extends JPanel {
 		lbLabelFoto.setIcon(imagenConDimensiones); 
 		panelCentro.add(lbLabelFoto);
 	}
-
+	
 }
