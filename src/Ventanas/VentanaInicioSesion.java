@@ -60,16 +60,7 @@ public class VentanaInicioSesion extends JFrame {
 
 	
 	
-	
-	/*boolean correcto=Pattern.matches(RE, passwordFieldContrasenia);
-	if(correcto) {
-		JOptionPane.showMessageDialog(null,"El nombre de usuario es correcto");
-		
-	}else {
-		JOptionPane.showMessageDialog(null,"El nombre de usuario NO es correcto");
-	}
-	return m.matches();
-	}*/
+
 	
 	
 
@@ -114,19 +105,7 @@ public class VentanaInicioSesion extends JFrame {
 		panelCentro.add(textFieldUsuario);
 		textFieldUsuario.setColumns(10);
 		
-		//String RE = "[a-z]{1,8} + \\d{1,}";
-		//String codigo="hola1";
-		/*String RE = "[a-zA-Z]{5,10}";
-		Pattern patron = Pattern.compile(RE);
 
-		Matcher m = patron.matcher(textFieldUsuario.getText());
-		boolean correcto=Pattern.matches(RE, textFieldUsuario.getText());
-		if(correcto) {
-			JOptionPane.showMessageDialog(null,"El nombre de usuario es correcto");
-			
-		}else {
-			JOptionPane.showMessageDialog(null,"El nombre de usuario NO es correcto");
-		}*/
 		
 		
 		
@@ -186,7 +165,7 @@ public class VentanaInicioSesion extends JFrame {
 							new VentanaMenu();
 							ventanaInicioSesion.setVisible(false);
 					}
-					//BD.closeBD(); //cambio
+					
 				}
 				textFieldUsuario.setText("");
 				passwordFieldContrasenia.setText("");
@@ -203,12 +182,7 @@ public class VentanaInicioSesion extends JFrame {
 				}
 			}
 			}
-			//PrintWriter pw=new PrintWriter("animalesReservados.txt");
-				
-				//pw.delete();
-				//BufferedWriter bw = new BufferedWriter(new FileWriter("cesta.txt"));
-				//bw.write("");
-				//bw.close();
+
 		});
 		
 		
@@ -302,6 +276,8 @@ public class VentanaInicioSesion extends JFrame {
 			System.out.println("La contraseña no es correcta");
 		}
 	}
+	
+	
 	
 
 	
