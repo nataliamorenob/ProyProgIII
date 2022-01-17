@@ -46,7 +46,7 @@ public class PanelAccesorios extends JPanel {
 				BD.accesorioReservado(con, a.getNombre());
 				PrintWriter pw = null;
 				try {
-					pw = new PrintWriter(new PrintWriter("cesta.txt"));
+					pw = new PrintWriter(new FileWriter("cesta.txt"));
 					ArrayList<Accesorios> alAccesoriosEnCesta = BD.obtenerAccesorios(con);
 					for(Accesorios acc: alAccesoriosEnCesta) {
 						if(acc.isEnCesta() == true) { //cambio isEnCesta -> antes acc.isAcEnCesta

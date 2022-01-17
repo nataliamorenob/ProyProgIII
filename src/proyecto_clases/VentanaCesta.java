@@ -12,23 +12,35 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.TreeSet;
+
 import java.time.format.DateTimeFormatter;
 import java.util.TreeSet;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -39,9 +51,8 @@ public class VentanaCesta extends JFrame {
 
 	private JPanel contentPane;
 	private JFrame ventanaCesta;
-	private JTable tablaProductos; //cambio
-	private DefaultTableModel modeloTablaProductos;  //cambio
-	//private TreeSet<Productos> tsProductos; //cambio
+	private JTable tablaProductos;
+	private DefaultTableModel modeloTablaProductos;  
 
 	/**
 	 * Launch the application.
@@ -90,21 +101,13 @@ public class VentanaCesta extends JFrame {
 		btnComprar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		panelSur.add(btnComprar);
 		
-		
-		
-		
 		//Leer el fichero cesta
-
 		File fichero = null;
 	    FileReader fr = null;
 	    BufferedReader br = null;
 	    ArrayList<Productos> tsProductos = new ArrayList();
-
         try {
         	br = new BufferedReader(new FileReader("cesta.txt"));
-        	//fichero = new File ("cesta.txt");
-			//fr = new FileReader (fichero);
-			
 			String linea = br.readLine();
 			while(linea!=null) {
 				String [] datos = linea.split(",");
@@ -137,7 +140,6 @@ public class VentanaCesta extends JFrame {
         modeloTablaProductos = new DefaultTableModel();
         modeloTablaProductos.setColumnIdentifiers(columnas);
 		
-        
 		for(Productos p: tsProductos) {
 			
 			String dataRow[] = {p.getNombre(), String.valueOf(p.getPrecio()), p.getAnimal_dirigido()}; //CAMBIO FALTA LA FECHA DE CADUCIDAD
@@ -153,9 +155,9 @@ public class VentanaCesta extends JFrame {
 				ventanaCesta.setVisible(false);
 			}
 		});
-		
-		//BOTONES--------------------------------------------------------------------------------------------------------------
-		
+
+			    
+		//BOTONES
 		btnComprar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -179,7 +181,6 @@ public class VentanaCesta extends JFrame {
 				
 				//Buttons
 				JButton btnConfirmar = new JButton("Confirmar");
-				
 				
 				//JLABELS
 				JLabel lblNom = new JLabel("Nombre:");
@@ -219,6 +220,35 @@ public class VentanaCesta extends JFrame {
 				
 				//Boton añadido a su panel boton
 				pBtn.add(btnConfirmar);
+				BufferedReader br = null;
+		        try {
+		        	br = new BufferedReader(new FileReader("cesta.txt"));
+					String linea = br.readLine();
+					while(linea!=null) {
+						String [] datos = linea.split(",");
+						String nombre = datos[0];
+						Integer precio = Integer.parseInt(datos[1]);
+						String animal_dirigido = datos[2];
+						Productos pr = new Productos(nombre, precio, animal_dirigido); 
+						tsProductos.add(pr);
+						//System.out.println(tsProductos);
+						linea = br.readLine();
+					}
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} finally {
+					if(br!=null) {
+						try {
+							br.close();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}
 
 				//Añadir paneles a la base 
 				base.add(pPreguntas, BorderLayout.CENTER);
@@ -232,10 +262,8 @@ public class VentanaCesta extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
-						
 						JFrame jfTicket = new JFrame();
 						jfTicket.setBounds(0, 0, 500, 500);
-						
 						
 						//JTextArea donde se mostrar el 
 						JTextArea taTicket = new JTextArea();
@@ -254,7 +282,7 @@ public class VentanaCesta extends JFrame {
 						else {
 							jfTicket.setVisible(true);
 							try {
-								pw = new PrintWriter(new PrintWriter("ticket.txt"));
+								pw = new PrintWriter(new FileWriter("ticket.txt"));
 								pw.println("REFUGIO \n");
 								pw.println("-".repeat(121));
 								pw.println(formatter.format(date));
@@ -263,20 +291,16 @@ public class VentanaCesta extends JFrame {
 								Integer total = 0;
 								
 								for(Productos c : tsProductos) {
-
 										Integer precio = c.getPrecio();
 										String nombreP = c.getNombre();
 										pw.println(nombreP +" ".repeat(50) + precio + "€");	
-										
 										//total suma del precio de productos
 										total += precio;	
  								}
 								
 								pw.println("TOTAL: "+ String.valueOf(total) + "€");
 								
-								
 								pw.println("-".repeat(121));
-								
 								
 								pw.println("Destinatario: " + txtNom.getText()  + " " + txtApe.getText() + ", " + txtDir.getText() + ", " + txtCP.getText() + "\n");
 								pw.println("Su tlfno de contacto: " + txtTlf.getText() + "\n");
@@ -286,6 +310,9 @@ public class VentanaCesta extends JFrame {
 								pw.println("GRACIAS POR SU COMPRA");
 							} catch (FileNotFoundException e1) {
 							// TODO Auto-generated catch block
+								e1.printStackTrace();
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
 								e1.printStackTrace();
 							}finally {
 								if(pw!=null) {
@@ -301,7 +328,6 @@ public class VentanaCesta extends JFrame {
 							// TODO: handle exception
 									e1.printStackTrace();
 								}
-					
 					}
 					}
 				});
@@ -309,11 +335,7 @@ public class VentanaCesta extends JFrame {
 			}		
 			
 		});
-		
-		
-				
-
-				
+					
 		setVisible(true);
 	}
 

@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 Ultima Esterilizado,20,Gato
 Gourmet Gold,18,Gato
+=======
+Ultima Esterilizado,20,Gato
+>>>>>>> branch 'master' of https://github.com/nataliamorenob/ProyProgIII.git

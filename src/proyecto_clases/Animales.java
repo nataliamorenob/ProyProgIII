@@ -1,6 +1,6 @@
 package proyecto_clases;
 
-public class Animales {
+public class Animales{
 	protected String nombre;
 	protected int edad;
 	protected String sexo;
