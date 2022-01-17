@@ -305,9 +305,8 @@ public class VentanaInicioSesion extends JFrame {
 	
 
 	
-	//private void activacionBotones() {
-	//	btn
-	//}
+
+
 
 
 
