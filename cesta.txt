@@ -1,2 +1,2 @@
-Cama ,23,Perros y gatos
-Collar con cascabel,9,Gatos
+Ultima Esterilizado,20,Gato
+Gourmet Gold,18,Gato
