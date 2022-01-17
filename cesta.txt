@@ -1,3 +1,2 @@
-Ultima Esterilizado,20,Gato
-Ultima Esterilizado,20,Gato
 Hueso de juguete,6,Perros
+Cama ,23,Perros y gatos

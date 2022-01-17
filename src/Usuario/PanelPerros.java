@@ -86,7 +86,6 @@ public class PanelPerros extends JPanel {
 					String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca su nombre de usuario:",  "Cuestionario previo a la adopción", JOptionPane.QUESTION_MESSAGE);
 					int existe = BD.existeUsuario(con, pregunta6);
 					if(existe == 1){
-						
 						BD.perroReservado(con, p.getNombre());
 						//FileWriter fw = null;
 				        PrintWriter pw = null;

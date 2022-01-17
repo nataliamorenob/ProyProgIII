@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -159,7 +160,7 @@ public class PanelLocalizacion extends JPanel {
 		panelBase.setLayout(new BorderLayout());
 		
 		JPanel panelCentro = new JPanel();
-		panelCentro.setLayout(new GridLayout(0, 2));
+		panelCentro.setLayout(new GridLayout(0, 3));
 		
 	    JMenuBar jm1 = new JMenuBar();
 		
@@ -171,7 +172,6 @@ public class PanelLocalizacion extends JPanel {
 		jmiGetxoP.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		JMenuItem jmiVitoriaP = new JMenuItem("VITORIA");
 		jmiVitoriaP.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		
 		
 		JMenu gatos = new JMenu("GATOS");
 		gatos.setFont(new Font("Bell MT", Font.PLAIN, 12));
