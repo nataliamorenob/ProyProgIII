@@ -208,10 +208,10 @@ public class VentanaAdmin extends JFrame {
 					String nombre = JOptionPane.showInputDialog("Introduzca el nombre del perro que desea añadir: ");
 					int edad = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la edad del perro: "));
 					String sexo = JOptionPane.showInputDialog("Introduzca el sexo correspondiente: ");
-					int peso = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la peso del perro: "));
+					int peso = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el peso del perro: "));
 					String carac = JOptionPane.showInputDialog("Determine las caracterisitcas del animal: ");
 					int tiempoAdop = Integer.parseInt(JOptionPane.showInputDialog("Añada el tiempo que lleva en adopción dicho animal: "));
-					String localizacion = JOptionPane.showInputDialog("Introduzca lo localización en la que se encuentre el animal: ");
+					String localizacion = JOptionPane.showInputDialog("Introduzca la localización en la que se encuentre el animal: ");
 					String colores = JOptionPane.showInputDialog("Determine los colores del perro: ");
 					boolean reservado = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el animal está reservado: "));
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
@@ -223,10 +223,10 @@ public class VentanaAdmin extends JFrame {
 					String nombre = JOptionPane.showInputDialog("Introduzca el nombre del gato que desea añadir: ");
 					int edad = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la edad del gato: "));
 					String sexo = JOptionPane.showInputDialog("Introduzca el sexo correspondiente: ");
-					int peso = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la peso del gato: "));
+					int peso = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el peso del gato: "));
 					String carac = JOptionPane.showInputDialog("Determine las caracterisitcas del animal: ");
 					int tiempoAdop = Integer.parseInt(JOptionPane.showInputDialog("Añada el tiempo que lleva en adopción dicho animal: "));
-					String localizacion = JOptionPane.showInputDialog("Introduzca lo localización en la que se encuentre el animal: ");
+					String localizacion = JOptionPane.showInputDialog("Introduzca la localización en la que se encuentre el animal: ");
 					String colores = JOptionPane.showInputDialog("Determine los colores del gato: ");
 					boolean reservado = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el animal está reservado: "));
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
@@ -238,7 +238,7 @@ public class VentanaAdmin extends JFrame {
 					String nombre = JOptionPane.showInputDialog("Introduzca el nombre del animal que desea añadir: ");
 					int edad = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la edad del gato: "));
 					String sexo = JOptionPane.showInputDialog("Introduzca el sexo correspondiente: ");
-					int peso = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la peso del gato: "));
+					int peso = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el peso del gato: "));
 					String carac = JOptionPane.showInputDialog("Determine las caracterisitcas del animal: ");
 					boolean peligtoExt = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el animal está en el peligro de extinción: "));
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
@@ -251,7 +251,7 @@ public class VentanaAdmin extends JFrame {
 					int precio = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el precio del producto: "));
 					String animalDirigido = JOptionPane.showInputDialog("Introduzca el animal para el que sea dirigido: ");
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
-					boolean enCesta = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el alimento está reservado: "));
+					boolean enCesta = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el alimento está en cesta: "));
 					long fechaCad = Long.parseLong(JOptionPane.showInputDialog("Indique la fecha de caducidad del alimento: "));
 					Date d = new Date(fechaCad);
 					String fechaCaducidad = sdf.format(d);
@@ -265,7 +265,7 @@ public class VentanaAdmin extends JFrame {
 					int precio = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el precio del producto: "));
 					String animalDirigido = JOptionPane.showInputDialog("Introduzca el animal para el que sea dirigido: ");
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
-					boolean enCesta = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el accesorio está reservado: "));
+					boolean enCesta = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el accesorio está en cesta: "));
 					BD.anyadirAccesorio(con, nombre, precio, animalDirigido, rutaFoto, enCesta);
 					panelCentro.removeAll();
 					BD.obtenerAccesorios(con);
