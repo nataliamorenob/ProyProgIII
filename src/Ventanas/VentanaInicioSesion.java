@@ -56,13 +56,8 @@ public class VentanaInicioSesion extends JFrame {
 			}
 		});
 	}
-	//EXPRESION REGULAR NATALIA TENGO QUE MEJORARLO PORQUE ME DA MAL
 
-	
-	
 
-	
-	
 
 	/**
 	 * Create the frame.
@@ -119,20 +114,7 @@ public class VentanaInicioSesion extends JFrame {
 		panelCentro.add(passwordFieldContrasenia);
 		
 		
-	/*	private boolean comprobarUsuarioER(String passwordFieldContrasenia) {
-			String RE = "[a-zA-Z]{5,10}";
-			Pattern patron = Pattern.compile(RE);
-			Matcher m=Pattern.matcher(passwordFieldContrasenia.getText()); 
-		
-			if(passwordFieldContrasenia.isEmpty() || passwordFieldContrasenia=="" ) {
-				JOptionPane.showMessageDialog(null, "El campo no puede estar vacío");
-				return false;
-			}else if(!m.matches()) {
-				JOptionPane.showMessageDialog(null, "Contraseña no valida");
-				return false;
-			}
-			return true;
-		}*/
+
 		
 		
 		
@@ -158,7 +140,7 @@ public class VentanaInicioSesion extends JFrame {
 						
 					}else {
 						JOptionPane.showMessageDialog(null, "Bienvenido");
-						if(usuario.equals("admin") && contrasenia.equals("admin")) {
+						if(usuario.equals("admin") && contrasenia.equals("adminadmin1")) {
 							VentanaAdmin frame = new VentanaAdmin();
 							frame.setVisible(true);
 						}else {
@@ -261,16 +243,8 @@ public class VentanaInicioSesion extends JFrame {
 		
 		setVisible(true);
 	}
+	
 
-	private void comprobarContrasenia(String usuario, String contrasenia) {
-		String ercontrasenia = "[A-Z][a-z]{5}[0-9]";
-		boolean correcto = Pattern.matches(ercontrasenia, contrasenia);
-		if(correcto) {
-			System.out.println("te has logeado bn");
-		}else {
-			System.out.println("La contraseña no es correcta");
-		}
-	}
 	
 	
 	
