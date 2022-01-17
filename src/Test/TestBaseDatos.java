@@ -38,7 +38,6 @@ public class TestBaseDatos {
 	
 	
 	@Test
-	//NO SÉ SI ESTA BIEN???OSEA DA BIEN PERO NO SE SI TIENE SENTIDO
 	//Comprueba que se haya abierto la conexión
 	public void testAbrirConexion() {
 		assertNotNull(BD.initBD("BaseDatos.db"));
@@ -46,14 +45,7 @@ public class TestBaseDatos {
 	
 
 		
-	/***
-	* Test que comprueba si el método obtenerPerros de la BD es igual a 15.
-	*/
-	/*@Test
-	public void testObtenerPerros() {
-		ArrayList<Perros> alPerros=BD.obtenerPerros(Connection con);
-		assertTrue(alPerros.size()==15);
-	}*/
+
 	
 	@Test
 	public void testObtenerPerros(){
