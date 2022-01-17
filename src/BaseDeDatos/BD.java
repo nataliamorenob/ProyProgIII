@@ -896,6 +896,54 @@ public class BD {
 		}
 	}
 	
+	public static void perrosACero(Connection con) {
+		try {
+			Statement st=con.createStatement();
+			String sent="UPDATE PERROS SET reservado = 0";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void gatosACero(Connection con) {
+		try {
+			Statement st=con.createStatement();
+			String sent="UPDATE GATOS SET reservado = 0";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void alimentosACero(Connection con) {
+		try {
+			Statement st=con.createStatement();
+			String sent="UPDATE ALIMENTOS SET en_cesta = 0";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void accesoriosACero(Connection con) {
+		try {
+			Statement st=con.createStatement();
+			String sent="UPDATE ACCESORIOS SET en_cesta = 0";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 }
 

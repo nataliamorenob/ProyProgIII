@@ -1,6 +1,6 @@
 package Datos;
 
-public class Productos implements Comparable{
+public class Productos{
 	protected String nombre;
 	protected int precio;
 	protected String animal_dirigido; //para qué animal es ese accesorio
@@ -68,12 +68,5 @@ public class Productos implements Comparable{
 		this.enCesta = enCesta;
 	}
 
-	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	
 
 }
