@@ -43,6 +43,8 @@ public class PanelAlimentos extends JPanel {
 		
 		JButton btnComprar = new JButton("AÑADIR A LA CESTA");
 		btnComprar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
+		
+		
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "El alimento se ha añadido correctamente la cesta");
@@ -52,7 +54,7 @@ public class PanelAlimentos extends JPanel {
 					pw = new PrintWriter(new FileWriter("cesta.txt"));
 					ArrayList<Alimentos> alAlimentosEnCesta = BD.obtenerAlimentos(con);
 					for(Alimentos ali: alAlimentosEnCesta) {
-						if(ali.isEnCesta() == true) { //cambio isEnCesta
+						if(ali.isEnCesta() == true) { 
 							String nombre = ali.getNombre();
 							int precio = ali.getPrecio();
 							String animal_dirigido = ali.getAnimal_dirigido();
