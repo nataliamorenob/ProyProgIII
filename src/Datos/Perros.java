@@ -5,6 +5,7 @@ public class Perros extends Animales implements Adoptable{
 	private String localizacion;
 	private String colores;
 	private boolean reservado;
+//	private String usuario; //El nick del usuario que haga la reserva
 	
 	
 	public Perros() {
@@ -13,18 +14,22 @@ public class Perros extends Animales implements Adoptable{
 	}
 	
 	
-	
-	public Perros(String nombre, int edad, String sexo, int peso, String caracteristicas,int tiempoEnAdopcion, String localizacion,String colores, boolean reservado,String rutaFoto){
+	public Perros(String nombre, int edad, String sexo, int peso, String caracteristicas,int tiempoEnAdopcion, String localizacion, String colores, boolean reservado, String rutaFoto){
 		super(nombre, edad, sexo, peso, caracteristicas,rutaFoto);
-
 		this.tiempoEnAdopcion = tiempoEnAdopcion;
 		this.localizacion = localizacion;
 		this.colores=colores;
-		this.reservado = reservado;
-		
+		this.reservado = reservado;	
 	}
-
-
+	
+//	public Perros(String nombre, int edad, String sexo, int peso, String caracteristicas,int tiempoEnAdopcion, String localizacion, String colores, boolean reservado, String rutaFoto, String usuario){
+//		super(nombre, edad, sexo, peso, caracteristicas,rutaFoto);
+//		this.tiempoEnAdopcion = tiempoEnAdopcion;
+//		this.localizacion = localizacion;
+//		this.colores=colores;
+//		this.reservado = reservado;
+//		this.usuario = usuario;
+//	}
 
 	private Perros(int tiempoEnAdopcion, String localizacion,String colores, boolean reservado) {
 		super();
@@ -77,6 +82,18 @@ public class Perros extends Animales implements Adoptable{
 	public void setReservado(boolean reservado) {
 		this.reservado = reservado;
 	}
-		
+
+
+
+//	public String getUsuario() {
+//		return usuario;
+//	}
+//
+//
+//
+//	public void setUsuario(String usuario) {
+//		this.usuario = usuario;
+//	}
+//	
 	
 }

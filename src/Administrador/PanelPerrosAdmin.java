@@ -48,11 +48,9 @@ public class PanelPerrosAdmin extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				BD.borrarPerros(con, p.getNombre());
 				panelCentro.removeAll();
 				BD.obtenerPerros(con);
-				
 			}
 		});
 
