@@ -34,7 +34,6 @@ public class Statistics {
 			
 			
 		}
-		System.out.println(countM);
 		perrosSexo.add(countM);
 		perrosSexo.add(countH);
 		return perrosSexo;

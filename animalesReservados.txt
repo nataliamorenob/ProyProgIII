@@ -1,1 +1,3 @@
-
+Nat,Panda,5,M,7,Blanco y negro,Enérgico y sensible,3,Vitoria
+Nat,Panda,5,M,7,Blanco y negro,Enérgico y sensible,3,Vitoria
+Nat,Boira,14,F,19,Marrón y negro,Docil y curiosa,7,Vitoria

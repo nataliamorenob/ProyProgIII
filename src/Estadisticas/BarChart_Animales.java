@@ -17,9 +17,6 @@ import BaseDeDatos.BD;
 
 public class BarChart_Animales extends ApplicationFrame {
 	private Statistics statistics;
-
-	
-	
 	
 	public BarChart_Animales( String applicationTitle , String chartTitle ) {
 	      super( applicationTitle );        

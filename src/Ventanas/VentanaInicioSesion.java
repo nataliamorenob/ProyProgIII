@@ -3,6 +3,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
@@ -28,6 +29,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import java.awt.Toolkit;
+import java.awt.Panel;
 
 public class VentanaInicioSesion extends JFrame {
 	
@@ -56,7 +58,6 @@ public class VentanaInicioSesion extends JFrame {
 			}
 		});
 	}
-
 
 
 	/**
@@ -89,6 +90,7 @@ public class VentanaInicioSesion extends JFrame {
 		JButton btnRegistrarse = new JButton("Crear cuenta");
 		panelSur.add(btnRegistrarse);
 		
+		
 		JPanel panelCentro = new JPanel();
 		contentPane.add(panelCentro, BorderLayout.CENTER);
 		panelCentro.setLayout(new GridLayout(0, 2, 0, 0));
@@ -98,11 +100,6 @@ public class VentanaInicioSesion extends JFrame {
 		
 		textFieldUsuario = new JTextField();
 		panelCentro.add(textFieldUsuario);
-		textFieldUsuario.setColumns(10);
-		
-
-		
-		
 		
 		
 		JLabel lblContrasenia = new JLabel("Contraseña:");
@@ -110,11 +107,8 @@ public class VentanaInicioSesion extends JFrame {
 		
 		passwordFieldContrasenia = new JPasswordField();
 		passwordFieldContrasenia.setText("");
-		passwordFieldContrasenia.setColumns(10);
 		panelCentro.add(passwordFieldContrasenia);
 		
-		
-
 		
 		
 		
@@ -248,17 +242,6 @@ public class VentanaInicioSesion extends JFrame {
 		
 		setVisible(true);
 	}
-	
-
-	
-	
-	
-
-	
-
-
-
-
 
 
 }
