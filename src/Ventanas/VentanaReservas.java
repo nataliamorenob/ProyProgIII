@@ -113,11 +113,11 @@ public class VentanaReservas extends JFrame {
 			String linea = br.readLine();
 			while(linea!=null) {
 				String [] datos = linea.split(",");
-				String nombre = datos[1];
-				Integer edad = Integer.parseInt(datos[2]);
-				String sexo = datos[3];
-				Integer peso = Integer.parseInt(datos[4]);
-				String caracteristicas = datos[6];
+				String nombre = datos[0];
+				Integer edad = Integer.parseInt(datos[1]);
+				String sexo = datos[2];
+				Integer peso = Integer.parseInt(datos[3]);
+				String caracteristicas = datos[5];
 				Animales an = new Animales(nombre, edad, sexo, peso, caracteristicas);
 				alAnimales.add(an);
 				linea = br.readLine();

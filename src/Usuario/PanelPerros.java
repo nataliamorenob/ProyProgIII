@@ -92,7 +92,6 @@ public class PanelPerros extends JPanel {
 							ArrayList<Perros> alPerrosReservados = BD.obtenerPerros(con);
 							for(Perros p: alPerrosReservados) {
 								if(p.isReservado() == true) {
-									String usuario = pregunta6;
 									String nombre = p.getNombre();
 									Integer edad = p.getEdad();
 									String sexo = p.getSexo();
@@ -102,7 +101,7 @@ public class PanelPerros extends JPanel {
 									String localizacion = p.getLocalizacion();
 									String colores = p.getColores();
 									String rutaFoto = p.getRutaFoto();
-									pw.println(usuario + "," + nombre + ","+ edad + ","+ sexo + ","+ peso + ","+ colores + ","+ caracteristicas + ","+ tiempoEnAdopcion + ","+ localizacion); 							
+									pw.println(nombre + ","+ edad + ","+ sexo + ","+ peso + ","+ colores + ","+ caracteristicas + ","+ tiempoEnAdopcion + ","+ localizacion); 							
 								}
 							}
 						} catch (IOException e1) {
