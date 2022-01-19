@@ -196,7 +196,7 @@ public class VentanaInicioSesion extends JFrame {
 						JOptionPane.showMessageDialog(null, "Este nombre de usuario ya esta en uso.");
 					}
 				}else {
-					JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos, 8 carácteres incluida una letra mayúscula y un dígito");
+					JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos, 8 carácteres y un dígito");
 				}
 				
 				textFieldUsuario.setText("");
