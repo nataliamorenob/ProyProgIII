@@ -1,2 +1,3 @@
-Ultima Esterilizado,20,Gato
+Hueso de juguete,6,Perros
+Royal Canin Kitten,15,Gato
 Hueso de juguete,6,Perros

@@ -50,9 +50,9 @@ public class PanelQuienesSomos extends JPanel {
 		
 		JLabel text = new JLabel("<html>Somos una pequeña asociación sin ánimo de lucro fromada por voluntarios y socios, <br/> "
 								+ "cuyo único objetivo es poder beneficiar a todos aquellos animales que no tienen hogar. <br/ "
-								+ "A parte de buscar una famialia a todos aquellos perro y gatos de Bizkaia, también contamos <br/>"
-								+ "con un programa de protección y santuario de toda la fauna autoctona que por algún motivo <br/>"
-								+ "se ha quedado desplazada de su habitat se recupera en nuestras instalaciones hasta su posible <br/>"
+								+ "A parte de buscar una familia a todos aquellos perros y gatos de Bizkaia, también contamos <br/>"
+								+ "con un programa de protección y santuario de toda la fauna autóctona que por algún motivo <br/>"
+								+ "se ha quedado desplazada de su hábitat se recupera en nuestras instalaciones hasta su posible <br/>"
 								+ "reinsercción."
 								+ "<br/> <br/> En nuestra web podrás encontrar contribuir mediante la compra de alimentos y accesorios <br/>"
 								+"para tu mascota o, sencillamente, encontar al compañero que estabas buscando. <br/>"

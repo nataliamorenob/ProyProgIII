@@ -51,7 +51,7 @@ public class PanelGatos extends JPanel {
 				int pregunta3 = JOptionPane.showConfirmDialog(null, "¿Su trabajo le requiere viajar constantemente?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
 				int pregunta4 = JOptionPane.showConfirmDialog(null, "¿Considera que su gato se podría adaptar a su vivienda?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
 				int pregunta5 = JOptionPane.showConfirmDialog(null, "¿Considera que podría proporcionar a su gato un entorno seguro?", "Cuestionario previo a la adopción", JOptionPane.YES_NO_OPTION);
-				String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca su nombre de usuario:",  "Cuestionario previo a la adopción", JOptionPane.QUESTION_MESSAGE);
+				//String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca su nombre de usuario:",  "Cuestionario previo a la adopción", JOptionPane.QUESTION_MESSAGE);
 				respuestas.add(pregunta1);
 				respuestas.add(pregunta2);
 				respuestas.add(pregunta3);
@@ -65,9 +65,11 @@ public class PanelGatos extends JPanel {
 					}
 				}
 				if(contador >= 3) {
-					int existe = BD.existeUsuario(con, pregunta6);
+					JOptionPane.showMessageDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idoneo para la adopción. \n Recuerde que esta información se comprobará el día de la adopción", "Cuestionario previo a la adopción",JOptionPane.INFORMATION_MESSAGE);
+					String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca su nombre de usuario:",  "Cuestionario previo a la adopción", JOptionPane.QUESTION_MESSAGE);
+					int existe=BD.existeUsuario(con, pregunta6);
 					if(existe == 1) {
-						JOptionPane.showMessageDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idoneo para la adopción. \n Recuerde que esta información se comprobará el día de la adopción", "Cuestionario previo a la adopción",JOptionPane.INFORMATION_MESSAGE);	
+						
 						BD.gatoReservado(con, g.getNombre());
 
 						//Lo del fichero no funciona en PanelGatos//
