@@ -814,7 +814,7 @@ public class BD {
 	 * @param peligroExtincion
 	 * @param rutaFoto
 	 */
-	public static void anyadriOtro(Connection con, String nombre, int edad, String sexo, int peso, String caracteristicas, boolean peligroExtincion,String rutaFoto) {
+	public static void anyadirOtro(Connection con, String nombre, int edad, String sexo, int peso, String caracteristicas, boolean peligroExtincion,String rutaFoto) {
 		try {
 			Statement st = con.createStatement();
 			String sent = "INSERT INTO OTROS VALUES ('"+nombre+"',"+edad+",'"+sexo+"',"+peso+",'"+caracteristicas+"',"+peligroExtincion+",'"+rutaFoto+"')";

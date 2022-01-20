@@ -236,13 +236,13 @@ public class VentanaAdmin extends JFrame {
 				}
 				else if(opcion.equals("Otro")) {
 					String nombre = JOptionPane.showInputDialog("Introduzca el nombre del animal que desea añadir: ");
-					int edad = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la edad del gato: "));
+					int edad = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la edad del animal: "));
 					String sexo = JOptionPane.showInputDialog("Introduzca el sexo correspondiente: ");
-					int peso = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el peso del gato: "));
+					int peso = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el peso del animal: "));
 					String carac = JOptionPane.showInputDialog("Determine las caracterisitcas del animal: ");
 					boolean peligtoExt = Boolean.parseBoolean(JOptionPane.showInputDialog("Indique si el animal está en el peligro de extinción: "));
 					String rutaFoto = JOptionPane.showInputDialog("Introduzca la ruta de la foto:");
-					BD.anyadriOtro(con, nombre, edad, sexo, peso, carac, peligtoExt, rutaFoto);
+					BD.anyadirOtro(con, nombre, edad, sexo, peso, carac, peligtoExt, rutaFoto);
 					panelCentro.removeAll();
 					BD.obtenerOtros(con);
 				}

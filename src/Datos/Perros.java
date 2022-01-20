@@ -94,6 +94,6 @@ public class Perros extends Animales implements Adoptable{
 //	public void setUsuario(String usuario) {
 //		this.usuario = usuario;
 //	}
-//	
+	
 	
 }
