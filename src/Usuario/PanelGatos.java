@@ -72,15 +72,14 @@ public class PanelGatos extends JPanel {
 						
 						BD.gatoReservado(con, g.getNombre());
 
-						//Lo del fichero no funciona en PanelGatos//
-
-						//FileWriter fw = null;
+						
 				        PrintWriter pw = null;
 				        try {
-							//fw = new FileWriter("animalesReservados.txt");
+							
 				        	pw = new PrintWriter(new FileWriter("animalesReservados.txt", true));
 							ArrayList<Gatos> alGatosReservados = BD.obtenerGatos(con);
 							for(Gatos g: alGatosReservados) {
+								
 								if(g.isReservado() == true) {
 									String nombre = g.getNombre();
 									Integer edad = g.getEdad();
@@ -91,12 +90,8 @@ public class PanelGatos extends JPanel {
 									String localizacion = g.getLocalizacion();
 									String colores = g.getColores();
 									String rutaFoto = g.getRutaFoto();
-									//pw.println("\n- El usuario que ha hecho la reserva es: " + pregunta6 + "\n"); //CAMBIO
-									//pw.println("El perro reservado ha sido: " + nombre + "\nDatos: " + "\nEdad: " + edad + ", Sexo: " +
-									//		sexo + ", Peso: " + peso + ", Colores: " + colores + "\nCaracteristicas: " + caracteristicas +
-									//		"\nTiempo en adopcion: "+ tiempoEnAdopcion + "\nLocalizacion: " + localizacion + "\n");
-									
 									pw.println(nombre + ","+ edad + ","+ sexo + ","+ peso + ","+ colores + ","+ caracteristicas + ","+ tiempoEnAdopcion + ","+ localizacion); 
+									BD.gatosACero(con);
 								}
 							}
 						}catch (IOException e1) {
@@ -111,7 +106,7 @@ public class PanelGatos extends JPanel {
 						}
 					}else {
 						JOptionPane.showMessageDialog(null, "El nombre de usuario es incorrecto",  "Cuestionario previo a la adopción", JOptionPane.ERROR_MESSAGE);
-						//new VentanaInicioSesion(); //cambio -> si no está registrado te lleva a la ventana inicio sesion
+						
 					}
 				}
 				else {

@@ -61,6 +61,7 @@ public class PanelAccesorios extends JPanel {
 							String animal_dirigido = acc.getAnimal_dirigido();
 							
 							pw.println(nombre + ","+ precio + ","+ animal_dirigido); 
+							BD.accesoriosACero(con);
 						}
 					}} catch (IOException e1) {
 					// TODO Auto-generated catch block
