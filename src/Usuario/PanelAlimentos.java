@@ -54,12 +54,14 @@ public class PanelAlimentos extends JPanel {
 					pw = new PrintWriter(new FileWriter("cesta.txt", true));
 					ArrayList<Alimentos> alAlimentosEnCesta = BD.obtenerAlimentos(con);
 					for(Alimentos ali: alAlimentosEnCesta) {
+						
 						if(ali.isEnCesta() == true) { 
 							String nombre = ali.getNombre();
 							int precio = ali.getPrecio();
 							String animal_dirigido = ali.getAnimal_dirigido();
 							
 							pw.println(nombre + ","+ precio + ","+ animal_dirigido); 
+							BD.alimentosACero(con);
 						}
 					}} catch (IOException e1) {
 					// TODO Auto-generated catch block
