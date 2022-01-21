@@ -204,6 +204,7 @@ public class BD {
 				String colores = rs.getString("COLORES");
 				Boolean reservado = rs.getBoolean("RESERVADO");
 				String rutaFoto = rs.getString("rutaFoto");
+				
 				p = new Perros(nombre,edad,sexo,peso,caracteristicas,tiempoEnAdopcion,localizacion,colores,reservado,rutaFoto);
 				alPerros.add(p);
 			}
@@ -572,6 +573,7 @@ public class BD {
 				String colores = rs.getString("COLORES");
 				Boolean reservado = rs.getBoolean("RESERVADO");
 				String rutaFoto = rs.getString("rutaFoto");
+				
 				p = new Perros(nombre, edad, sexo, peso, caracteristicas, tiempoEnAdopcion, localizacion, colores, reservado, rutaFoto);
 				perrosBeasain.add(p);
 			}
@@ -615,6 +617,7 @@ public class BD {
 				String colores = rs.getString("COLORES");
 				Boolean reservado = rs.getBoolean("RESERVADO");
 				String rutaFoto = rs.getString("rutaFoto");
+				
 				p = new Perros(nombre, edad, sexo, peso, caracteristicas, tiempoEnAdopcion, localizacion, colores, reservado, rutaFoto);
 				perrosVitoria.add(p);
 			}
@@ -658,6 +661,7 @@ public class BD {
 				String colores = rs.getString("COLORES");
 				Boolean reservado = rs.getBoolean("RESERVADO");
 				String rutaFoto = rs.getString("rutaFoto");
+				
 				p = new Perros(nombre, edad, sexo, peso, caracteristicas, tiempoEnAdopcion, localizacion, colores, reservado, rutaFoto);
 				perrosGetxo.add(p);
 			}
@@ -898,7 +902,10 @@ public class BD {
 		}
 	}
 	
-	
+	/*** Método que cambia el valor de reservado a 0 en perros
+	 * 
+	 * @param con<- Conexion con la base
+	 */
 	public static void perrosACero(Connection con) {
 		try {
 			Statement st=con.createStatement();
@@ -911,6 +918,10 @@ public class BD {
 		
 	}
 	
+	/*** Método que cambia el valor de reservado a 0 en gatos
+	 * 
+	 * @param con<- Conexion con la base
+	 */
 	public static void gatosACero(Connection con) {
 		try {
 			Statement st=con.createStatement();
@@ -923,6 +934,10 @@ public class BD {
 		
 	}
 	
+	/*** Método  que cambia el valor de en_cesta a 0 en alimentos
+	 * 
+	 * @param con<- Conexion con la base
+	 */
 	public static void alimentosACero(Connection con) {
 		try {
 			Statement st=con.createStatement();
@@ -935,6 +950,10 @@ public class BD {
 		
 	}
 	
+	/*** Método que cambia el valor de en_cesta a 0 en accesorios
+	 * 
+	 * @param con<- Conexion con la base
+	 */
 	public static void accesoriosACero(Connection con) {
 		try {
 			Statement st=con.createStatement();
@@ -947,7 +966,12 @@ public class BD {
 		
 	}
 	
-	
+	/*** Método que actualiza en la base de datos las unidades que quedan de alimentos
+	 * 
+	 * @param con<- Conexion con la base
+	 * @param nombre<- El nombre del alimento
+	 * @param unidadesUsuario<- unidades totales del producto menos las unidades que desea el usuario
+	 */
 	public static void alimentosUnidades(Connection con, String nombre, int unidadesUsuario) {
 		try {
 			Statement st=con.createStatement();
@@ -959,6 +983,13 @@ public class BD {
 		}
 	}
 	
+	/***
+	 * 
+	 * @param con<- Conexion con la base
+	 * @param nombre<- El nombre del alimento
+	 * @param unidadesUsuario<- unidades totales del producto menos las unidades que desea el usuario
+	 */
+	
 	public static void accesoriosUnidades(Connection con, String nombre, int unidadesUsuario) {
 		try {
 			Statement st=con.createStatement();
@@ -969,6 +1000,18 @@ public class BD {
 			e.printStackTrace();
 		}
 	}
+	
+	/*public static void actualizarUsuario(Connection con, String usuario) {
+		try {
+			Statement st=con.createStatement();
+			String sent="UPDATE PERROS set usuario= '"+usuario+"'";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}*/
 	
 }
 

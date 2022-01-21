@@ -90,9 +90,7 @@ public class PanelAlimentos extends JPanel {
 					BD.alimentoReservado(con, al.getNombre());
 					BD.alimentosUnidades(con, al.getNombre(), unidades);
 					
-					/*BD.borrarAlimentos(con, al.getNombre());
-					panelCentro.removeAll();
-					BD.obtenerAlimentos(con);*/
+
 					PrintWriter pw = null;
 					try {
 						pw = new PrintWriter(new FileWriter("cesta.txt", true));
