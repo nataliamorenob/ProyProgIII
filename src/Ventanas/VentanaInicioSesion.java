@@ -242,6 +242,5 @@ public class VentanaInicioSesion extends JFrame {
 		
 		setVisible(true);
 	}
-
-
+	
 }

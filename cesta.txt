@@ -1,5 +1,2 @@
 Hueso de juguete,6,Perros
-Cama,19,Perros y gatos
-Ultima Esterilizado,20,Gato
-Ultima Yorkshire,20,Perro
-Transportín,40,Perros y gatos
+Royal Canin Kitten,15,Gato
