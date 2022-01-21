@@ -288,6 +288,7 @@ public class VentanaMenu extends JFrame {
 				new VentanaReservas();
 				ventanaMenu.setVisible(false);
 				
+				
 			}
 		});
 		

@@ -24,6 +24,7 @@ import javax.swing.JPanel;
 
 import BaseDeDatos.BD;
 import Datos.Accesorios;
+import Datos.Alimentos;
 
 public class PanelAccesorios extends JPanel {
 
@@ -44,38 +45,6 @@ public class PanelAccesorios extends JPanel {
 		JButton btnComprar = new JButton("AÑADIR A LA CESTA");
 		btnComprar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		
-		
-		
-		btnComprar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "El accesorio se ha añadido correctamente la cesta");
-				BD.accesorioReservado(con, a.getNombre());
-				PrintWriter pw = null;
-				try {
-					pw = new PrintWriter(new FileWriter("cesta.txt", true));
-					ArrayList<Accesorios> alAccesoriosEnCesta = BD.obtenerAccesorios(con);
-					for(Accesorios acc: alAccesoriosEnCesta) {
-						if(acc.isEnCesta() == true) { 
-							String nombre = acc.getNombre();
-							int precio = acc.getPrecio();
-							String animal_dirigido = acc.getAnimal_dirigido();
-							
-							pw.println(nombre + ","+ precio + ","+ animal_dirigido); 
-							BD.accesoriosACero(con);
-						}
-					}} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}finally { 
-					if(pw!=null) {
-						pw.flush();
-						pw.close();
-					}
-				}
-				
-			}
-		});
-		panelSur.add(btnComprar);
 		JPanel panelDerecha = new JPanel();
 		add(panelDerecha, BorderLayout.EAST);
 		panelDerecha.setLayout(new GridLayout(5, 0, 0, 0));
@@ -106,9 +75,91 @@ public class PanelAccesorios extends JPanel {
 		lbLabelFoto.setIcon(imagenConDimensiones); 
 		panelCentro.add(lbLabelFoto);
 		
-		//JLabel lblNewLabel = new JLabel("ACCESORIOS PARA NUESTRAS MASCOTAS");
-		//lblNewLabel.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		//add(lblNewLabel);	
+		
+		
+		btnComprar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int unidadesUsuario = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el numero de unidades que desea:"));
+				int unidades=a.getUnidades()-unidadesUsuario;
+				
+				
+				if(unidades==0) { //SI YA NO QUEDAN UNIDADES EN LA BBDD, ELIMINAMOS EL ACCESORIO
+					JOptionPane.showMessageDialog(null, "El accesorio se ha añadido correctamente la cesta");
+					BD.accesorioReservado(con, a.getNombre());
+					BD.accesoriosUnidades(con, a.getNombre(), unidades);
+					
+
+					PrintWriter pw = null;
+					try {
+						pw = new PrintWriter(new FileWriter("cesta.txt", true));
+						ArrayList<Accesorios> alAccesoriosEnCesta = BD.obtenerAccesorios(con);
+						for(Accesorios acc: alAccesoriosEnCesta) {
+							if(acc.isEnCesta() == true) { 
+								String nombre = acc.getNombre();
+								int precio = acc.getPrecio();
+								String animal_dirigido = acc.getAnimal_dirigido();
+								
+								pw.println(nombre + ","+ precio + ","+ animal_dirigido); 
+								BD.accesoriosACero(con);
+		
+							}
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}finally {
+						if(pw!=null) {
+							pw.flush();
+							pw.close();
+						}
+					}
+					BD.borrarAccesorios(con, a.getNombre());
+					panelCentro.removeAll();
+					BD.obtenerAccesorios(con);
+					
+				}
+				else if(unidades<0) {
+					JOptionPane.showMessageDialog(null, "No quedan tantas unidades disponsibles, porfavor introduzca otro número de unidades:");
+	
+				}else {
+					BD.accesorioReservado(con, a.getNombre());
+					BD.accesoriosUnidades(con, a.getNombre(), unidades);
+					PrintWriter pw=null;
+					try {
+						pw = new PrintWriter(new FileWriter("cesta.txt", true));
+						ArrayList<Accesorios> alAccesoriosEnCesta = BD.obtenerAccesorios(con);
+						for(Accesorios acc: alAccesoriosEnCesta) {
+							if(acc.isEnCesta() == true) { 
+								String nombre = acc.getNombre();
+								int precio = acc.getPrecio();
+								String animal_dirigido = acc.getAnimal_dirigido();
+								
+								pw.println(nombre + ","+ precio + ","+ animal_dirigido); 
+								BD.accesoriosACero(con);
+								
+								
+								
+
+							}
+						}
+						
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}finally {
+						if(pw!=null) {
+							pw.flush();
+							pw.close();
+						}
+					}
+					
+				}
+
+
+			}
+		});
+		panelSur.add(btnComprar);
+
 	}
   
 }
