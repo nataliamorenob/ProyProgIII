@@ -97,6 +97,7 @@ public class PanelAccesorios extends JPanel {
 							if(acc.isEnCesta() == true) { 
 								String nombre = acc.getNombre();
 								int precio = acc.getPrecio();
+								System.out.println(precio);
 								String animal_dirigido = acc.getAnimal_dirigido();
 								pw.println(nombre + ","+ precio + ","+ animal_dirigido + "," + unidadesUsuario); 
 								BD.accesoriosACero(con);

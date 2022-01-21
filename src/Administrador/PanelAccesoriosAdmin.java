@@ -64,7 +64,10 @@ public class PanelAccesoriosAdmin extends JPanel {
 		JLabel lblAnimalDirigido = new JLabel("Animal dirigido: "+a.getAnimal_dirigido());
 		lblAnimalDirigido.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblAnimalDirigido);
-	
+		
+		JLabel lblStock = new JLabel("Stock: " + a.getUnidades());
+		lblStock.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblStock);
 		
 		ImageIcon im = new ImageIcon(a.getRutaFoto());
 		im.setDescription(a.getRutaFoto());

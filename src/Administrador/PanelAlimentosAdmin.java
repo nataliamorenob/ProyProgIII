@@ -66,6 +66,10 @@ public class PanelAlimentosAdmin extends JPanel {
 		lblAnimalDirigido.setFont(new Font("Bell MT", Font.PLAIN, 11));
 		panelDerecha.add(lblAnimalDirigido);
 		
+		JLabel lblStock = new JLabel("Stock: " + a.getUnidades());
+		lblStock.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblStock);
+		
 		//CAMBIO NUEVO LABEL
 		JLabel lblFechaCaducidad = new JLabel("Fecha de caducidad: "+a.getFechaCaducidad());
 		lblFechaCaducidad.setFont(new Font("Bell MT", Font.PLAIN, 11));

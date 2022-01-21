@@ -970,6 +970,33 @@ public class BD {
 		}
 	}
 	
+//	public static void precioTotalAccesorios(Connection con, String nombre, int unidadesUsuario) {
+//		try {
+//			Statement st = con.createStatement();
+//			String sent = "UPDATE ACCESORIOS SET precio = precio * "+unidadesUsuario+" WHERE nombre= '"+nombre+"'";
+//			st.executeUpdate(sent);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//	
+//	public static int precioAccesorio(Connection con, String nombre) {
+//		int precio = 0;
+//		try {
+//			Statement st = con.createStatement();
+//			String sent = "SELECT precio FROM ACCESORIOS WHERE nombre = '"+nombre+"'";
+//			ResultSet rs = st.executeQuery(sent);
+//			while(rs.next()) {
+//				precio = rs.getInt("PRECIO");
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return precio;
+//	}
+	
 }
 
 

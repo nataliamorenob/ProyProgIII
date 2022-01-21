@@ -1,2 +1,3 @@
-Transportín rígido,30,Perros y gatos,1
-Ultima Esterilizado,20,Gato,2
+Transportín rígido,30,Perros y gatos,2
+Cama acolchada,23,Perros y gatos,2
+Transportín,40,Perros y gatos,2
