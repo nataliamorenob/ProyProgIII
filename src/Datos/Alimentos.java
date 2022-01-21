@@ -13,15 +13,15 @@ public class Alimentos extends Productos{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Alimentos(String nombre, int precio, String animal_dirigido, String rutaFoto, boolean enCesta) {
-		super(nombre, precio, animal_dirigido, rutaFoto, enCesta);
+	public Alimentos(String nombre, int precio, String animal_dirigido, String rutaFoto, boolean enCesta, int unidades) {
+		super(nombre, precio, animal_dirigido, rutaFoto, enCesta, unidades);
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-	public Alimentos(String nombre, int precio, String animal_dirigido, String rutaFoto, boolean enCesta,
+	public Alimentos(String nombre, int precio, String animal_dirigido, String rutaFoto, boolean enCesta, int unidades,
 			String fechaCaducidad) {
-		super(nombre, precio, animal_dirigido, rutaFoto, enCesta);
+		super(nombre, precio, animal_dirigido, rutaFoto, enCesta, unidades);
 		this.fechaCaducidad = fechaCaducidad;
 	}
 
@@ -38,7 +38,7 @@ public class Alimentos extends Productos{
 		this.fechaCaducidad = fechaCaducidad;
 	}
 	
-	//private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	
 	
 		
 

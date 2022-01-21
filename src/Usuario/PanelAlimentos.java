@@ -44,38 +44,6 @@ public class PanelAlimentos extends JPanel {
 		JButton btnComprar = new JButton("AÑADIR A LA CESTA");
 		btnComprar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		
-		
-		btnComprar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "El alimento se ha añadido correctamente la cesta");
-				BD.alimentoReservado(con, al.getNombre());
-				PrintWriter pw = null;
-				try {
-					pw = new PrintWriter(new FileWriter("cesta.txt", true));
-					ArrayList<Alimentos> alAlimentosEnCesta = BD.obtenerAlimentos(con);
-					for(Alimentos ali: alAlimentosEnCesta) {
-						
-						if(ali.isEnCesta() == true) { 
-							String nombre = ali.getNombre();
-							int precio = ali.getPrecio();
-							String animal_dirigido = ali.getAnimal_dirigido();
-							
-							pw.println(nombre + ","+ precio + ","+ animal_dirigido); 
-							BD.alimentosACero(con);
-						}
-					}} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}finally { 
-					if(pw!=null) {
-						pw.flush();
-						pw.close();
-					}
-				}
-				
-			}
-		});
-		panelSur.add(btnComprar);
 		JPanel panelDerecha = new JPanel();
 		add(panelDerecha, BorderLayout.EAST);
 		panelDerecha.setLayout(new GridLayout(5, 0, 0, 0));
@@ -108,6 +76,88 @@ public class PanelAlimentos extends JPanel {
 		ImageIcon imagenConDimensiones = new ImageIcon(im.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT));
 		lbLabelFoto.setIcon(imagenConDimensiones); 
 		panelCentro.add(lbLabelFoto);
+		
+		
+		btnComprar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int unidadesUsuario = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el numero de unidades que desea:"));
+				int unidades=al.getUnidades()-unidadesUsuario;
+				
+				
+				if(unidades==0) { //SI YA NO QUEDAN UNIDADES EN LA BBDD, ELIMINAMOS EL ALIMENTO
+					JOptionPane.showMessageDialog(null, "El alimento se ha añadido correctamente la cesta");
+					BD.alimentoReservado(con, al.getNombre());
+					BD.alimentosUnidades(con, al.getNombre(), unidades);
+					
+					/*BD.borrarAlimentos(con, al.getNombre());
+					panelCentro.removeAll();
+					BD.obtenerAlimentos(con);*/
+					PrintWriter pw = null;
+					try {
+						pw = new PrintWriter(new FileWriter("cesta.txt", true));
+						ArrayList<Alimentos> alAlimentosEnCesta = BD.obtenerAlimentos(con);
+						for(Alimentos ali: alAlimentosEnCesta) {
+							
+							if(ali.isEnCesta() == true) { 
+								String nombre = ali.getNombre();
+								int precio = ali.getPrecio();
+								String animal_dirigido = ali.getAnimal_dirigido();
+								pw.println(nombre + ","+ precio + ","+ animal_dirigido + "," + unidadesUsuario); 
+								BD.alimentosACero(con);
+							}
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}finally {
+						if(pw!=null) {
+							pw.flush();
+							pw.close();
+						}
+					}
+					BD.borrarAlimentos(con, al.getNombre());
+					panelCentro.removeAll();
+					BD.obtenerAlimentos(con);
+					
+				}
+				else if(unidades<0) {
+					JOptionPane.showMessageDialog(null, "No quedan tantas unidades disponsibles, porfavor introduzca otro número de unidades:");
+	
+				}else {
+					BD.alimentoReservado(con, al.getNombre());
+					BD.alimentosUnidades(con, al.getNombre(), unidades);
+					PrintWriter pw=null;
+					try {
+						pw = new PrintWriter(new FileWriter("cesta.txt", true));
+						ArrayList<Alimentos> alAlimentosEnCesta = BD.obtenerAlimentos(con);
+						for(Alimentos ali: alAlimentosEnCesta) {
+							
+							if(ali.isEnCesta() == true) { 
+								String nombre = ali.getNombre();
+								int precio = ali.getPrecio();
+								String animal_dirigido = ali.getAnimal_dirigido();
+								pw.println(nombre + ","+ precio + ","+ animal_dirigido + "," + unidadesUsuario); 
+								BD.alimentosACero(con);
+							}
+						}
+						
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}finally {
+						if(pw!=null) {
+							pw.flush();
+							pw.close();
+						}
+					}
+					
+				}
+
+
+			}
+		});
+		panelSur.add(btnComprar);
 	}
 
 }

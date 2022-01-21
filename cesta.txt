@@ -1,2 +1,2 @@
-Hueso de juguete,6,Perros
-Royal Canin Kitten,15,Gato
+Transportín rígido,30,Perros y gatos,1
+Ultima Esterilizado,20,Gato,2

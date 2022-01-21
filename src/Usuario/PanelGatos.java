@@ -41,6 +41,54 @@ public class PanelGatos extends JPanel {
 		JPanel panelSur = new JPanel();
 		add(panelSur, BorderLayout.SOUTH);
 		
+		JPanel panelDerecha = new JPanel();
+		add(panelDerecha, BorderLayout.EAST);
+		panelDerecha.setLayout(new GridLayout(8, 0, 0, 0));
+		panelDerecha.setPreferredSize(new Dimension(200, 200));
+		
+		JLabel lblNombre = new JLabel("Nombre: "+g.getNombre());
+		lblNombre.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblNombre);
+		
+		JLabel lblEdad = new JLabel("Edad: "+g.getEdad());
+		lblEdad.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblEdad);
+		
+		JLabel lblSexo = new JLabel("Sexo: "+g.getSexo());
+		lblSexo.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblSexo);
+		
+		JLabel lblPeso = new JLabel("Peso: "+g.getPeso());
+		lblPeso.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblPeso);
+		
+		JLabel lblCaracteristica = new JLabel("Carac: "+g.getCaracteristicas());
+		lblCaracteristica.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblCaracteristica);
+		
+		JLabel lblTiempoAdopcion = new JLabel("Tiempo: "+g.getTiempoEnAdopcion());
+		lblTiempoAdopcion.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblTiempoAdopcion);
+		
+		JLabel lblLocalizacion = new JLabel("Localización: "+g.getLocalizacion());
+		lblLocalizacion.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblLocalizacion);
+		
+		JLabel lblColores = new JLabel("Colores: "+g.getColores());
+		lblColores.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblColores);
+		
+		JPanel panelCentro = new JPanel();
+		panelCentro.setPreferredSize(new Dimension(200, 200));
+		add(panelCentro, BorderLayout.CENTER);
+		
+		ImageIcon im = new ImageIcon(g.getRutaFoto());
+		im.setDescription(g.getRutaFoto());
+		JLabel lbLabelFoto = new JLabel(im);
+		ImageIcon imagenConDimensiones = new ImageIcon(im.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT));
+		lbLabelFoto.setIcon(imagenConDimensiones); 
+		panelCentro.add(lbLabelFoto);
+		
 		JButton btnReservar = new JButton("RESERVAR");
 		btnReservar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		btnReservar.addActionListener(new ActionListener() {
@@ -92,6 +140,10 @@ public class PanelGatos extends JPanel {
 									String rutaFoto = g.getRutaFoto();
 									pw.println(nombre + ","+ edad + ","+ sexo + ","+ peso + ","+ colores + ","+ caracteristicas + ","+ tiempoEnAdopcion + ","+ localizacion); 
 									BD.gatosACero(con);
+									
+									BD.borrarGatos(con, g.getNombre());
+									panelCentro.removeAll();
+									BD.obtenerGatos(con);
 								}
 							}
 						}catch (IOException e1) {
@@ -117,53 +169,7 @@ public class PanelGatos extends JPanel {
 		
 		panelSur.add(btnReservar);
 		
-		JPanel panelDerecha = new JPanel();
-		add(panelDerecha, BorderLayout.EAST);
-		panelDerecha.setLayout(new GridLayout(8, 0, 0, 0));
-		panelDerecha.setPreferredSize(new Dimension(200, 200));
 		
-		JLabel lblNombre = new JLabel("Nombre: "+g.getNombre());
-		lblNombre.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblNombre);
-		
-		JLabel lblEdad = new JLabel("Edad: "+g.getEdad());
-		lblEdad.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblEdad);
-		
-		JLabel lblSexo = new JLabel("Sexo: "+g.getSexo());
-		lblSexo.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblSexo);
-		
-		JLabel lblPeso = new JLabel("Peso: "+g.getPeso());
-		lblPeso.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblPeso);
-		
-		JLabel lblCaracteristica = new JLabel("Carac: "+g.getCaracteristicas());
-		lblCaracteristica.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblCaracteristica);
-		
-		JLabel lblTiempoAdopcion = new JLabel("Tiempo: "+g.getTiempoEnAdopcion());
-		lblTiempoAdopcion.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblTiempoAdopcion);
-		
-		JLabel lblLocalizacion = new JLabel("Localización: "+g.getLocalizacion());
-		lblLocalizacion.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblLocalizacion);
-		
-		JLabel lblColores = new JLabel("Colores: "+g.getColores());
-		lblColores.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblColores);
-		
-		JPanel panelCentro = new JPanel();
-		panelCentro.setPreferredSize(new Dimension(200, 200));
-		add(panelCentro, BorderLayout.CENTER);
-		
-		ImageIcon im = new ImageIcon(g.getRutaFoto());
-		im.setDescription(g.getRutaFoto());
-		JLabel lbLabelFoto = new JLabel(im);
-		ImageIcon imagenConDimensiones = new ImageIcon(im.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT));
-		lbLabelFoto.setIcon(imagenConDimensiones); 
-		panelCentro.add(lbLabelFoto);
 
 
 	}

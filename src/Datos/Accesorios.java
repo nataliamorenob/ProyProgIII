@@ -8,10 +8,12 @@ public class Accesorios extends Productos{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Accesorios(String nombre, int precio, String animal_dirigido, String rutaFoto, boolean enCesta) {
-		super(nombre, precio, animal_dirigido, rutaFoto, enCesta);
+	public Accesorios(String nombre, int precio, String animal_dirigido, String rutaFoto, boolean enCesta, int unidades) {
+		super(nombre, precio, animal_dirigido, rutaFoto, enCesta, unidades);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 	
 	
 		

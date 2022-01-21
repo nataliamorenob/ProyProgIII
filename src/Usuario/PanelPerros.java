@@ -52,6 +52,58 @@ public class PanelPerros extends JPanel {
 		JPanel panelSur = new JPanel();
 		add(panelSur, BorderLayout.SOUTH);
 		
+		
+		
+		
+		JPanel panelDerecha = new JPanel();
+		add(panelDerecha, BorderLayout.EAST);
+		panelDerecha.setLayout(new GridLayout(8, 0, 0, 0));
+		panelDerecha.setPreferredSize(new Dimension(200, 200));
+		
+		JLabel lblNombre = new JLabel("Nombre: "+p.getNombre());
+		lblNombre.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblNombre);
+		
+		JLabel lblEdad = new JLabel("Edad: "+p.getEdad());
+		lblEdad.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblEdad);
+		
+		JLabel lblSexo = new JLabel("Sexo: "+p.getSexo());
+		lblSexo.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblSexo);
+		
+		JLabel lblPeso = new JLabel("Peso: "+p.getPeso());
+		lblPeso.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblPeso);
+		
+		JLabel lblCaracteristica = new JLabel("Carac: "+p.getCaracteristicas());
+		lblCaracteristica.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblCaracteristica);
+		
+		JLabel lblTiempoAdopcion = new JLabel("Tiempo: "+p.getTiempoEnAdopcion());
+		lblTiempoAdopcion.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblTiempoAdopcion);
+		
+
+		JLabel lblLocalizacion = new JLabel("Localizacion: "+p.getLocalizacion());
+		lblLocalizacion.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblLocalizacion);
+		
+		JLabel lblColores = new JLabel("Colores: "+p.getColores());
+		lblColores.setFont(new Font("Bell MT", Font.PLAIN, 11));
+		panelDerecha.add(lblColores);
+		
+		JPanel panelCentro = new JPanel();
+		panelCentro.setPreferredSize(new Dimension(200, 200));
+		add(panelCentro, BorderLayout.CENTER);
+		
+		ImageIcon im = new ImageIcon(p.getRutaFoto());
+		im.setDescription(p.getRutaFoto());
+		JLabel lbLabelFoto = new JLabel(im);
+		ImageIcon imagenConDimensiones = new ImageIcon(im.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT));
+		lbLabelFoto.setIcon(imagenConDimensiones); 
+		panelCentro.add(lbLabelFoto);
+		
 		JButton btnReservar = new JButton("RESERVAR");
 		btnReservar.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		btnReservar.addActionListener(new ActionListener() {
@@ -104,6 +156,10 @@ public class PanelPerros extends JPanel {
 									String rutaFoto = p.getRutaFoto();
 									pw.println(nombre + ","+ edad + ","+ sexo + ","+ peso + ","+ colores + ","+ caracteristicas + ","+ tiempoEnAdopcion + ","+ localizacion); 		
 									BD.perrosACero(con);
+									
+									BD.borrarPerros(con, p.getNombre());
+									panelCentro.removeAll();
+									BD.obtenerPerros(con);
 								}
 							}
 						} catch (IOException e1) {
@@ -124,60 +180,15 @@ public class PanelPerros extends JPanel {
 					JOptionPane.showMessageDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopción. \n Para más información contacte con nosotros. \n Gracias.", "Cuestionario previo a la adopción", JOptionPane.INFORMATION_MESSAGE);
 
 				}
-
+				
 			}
+			
+			
 		});
 		
 		panelSur.add(btnReservar);
 		
-		JPanel panelDerecha = new JPanel();
-		add(panelDerecha, BorderLayout.EAST);
-		panelDerecha.setLayout(new GridLayout(8, 0, 0, 0));
-		panelDerecha.setPreferredSize(new Dimension(200, 200));
-		
-		JLabel lblNombre = new JLabel("Nombre: "+p.getNombre());
-		lblNombre.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblNombre);
-		
-		JLabel lblEdad = new JLabel("Edad: "+p.getEdad());
-		lblEdad.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblEdad);
-		
-		JLabel lblSexo = new JLabel("Sexo: "+p.getSexo());
-		lblSexo.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblSexo);
-		
-		JLabel lblPeso = new JLabel("Peso: "+p.getPeso());
-		lblPeso.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblPeso);
-		
-		JLabel lblCaracteristica = new JLabel("Carac: "+p.getCaracteristicas());
-		lblCaracteristica.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblCaracteristica);
-		
-		JLabel lblTiempoAdopcion = new JLabel("Tiempo: "+p.getTiempoEnAdopcion());
-		lblTiempoAdopcion.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblTiempoAdopcion);
-		
 
-		JLabel lblLocalizacion = new JLabel("Localizacion: "+p.getLocalizacion());
-		lblLocalizacion.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblLocalizacion);
-		
-		JLabel lblColores = new JLabel("Colores: "+p.getColores());
-		lblColores.setFont(new Font("Bell MT", Font.PLAIN, 11));
-		panelDerecha.add(lblColores);
-		
-		JPanel panelCentro = new JPanel();
-		panelCentro.setPreferredSize(new Dimension(200, 200));
-		add(panelCentro, BorderLayout.CENTER);
-		
-		ImageIcon im = new ImageIcon(p.getRutaFoto());
-		im.setDescription(p.getRutaFoto());
-		JLabel lbLabelFoto = new JLabel(im);
-		ImageIcon imagenConDimensiones = new ImageIcon(im.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT));
-		lbLabelFoto.setIcon(imagenConDimensiones); 
-		panelCentro.add(lbLabelFoto);
 		}
 
 

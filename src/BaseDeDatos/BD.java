@@ -56,8 +56,8 @@ public class BD {
  		String sent1 = "CREATE TABLE IF NOT EXISTS Perros(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, tiempoEnAdopcion Integer, localizacion String, colores String, rutaFoto String, reservado boolean)";
 		String sent2 = "CREATE TABLE IF NOT EXISTS Gatos(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, tiempoEnAdopcion Integer, localizacion String, colores String,rutaFoto String, reservado boolean)";
 		String sent3 = "CREATE TABLE IF NOT EXISTS Otros(nombre String, edad Integer, sexo String, peso Integer, caracteristicas String, peligroExtincion boolean, rutaFoto String)";
-		String sent4 = "CREATE TABLE IF NOT EXISTS Alimentos(nombre String, precio Integer, animal_dirigido String, rutaFoto String, enCesta boolean, fechaCaducidad String)"; //CAMBIO fechaCaducidad
-		String sent5 = "CREATE TABLE IF NOT EXISTS Accesorios(nombre String, precio Integer, animal_dirigido String, rutaFoto String, enCesta boolean)"; //cambio encesta
+		String sent4 = "CREATE TABLE IF NOT EXISTS Alimentos(nombre String, precio Integer, animal_dirigido String, rutaFoto String, enCesta boolean, unidades Integer, fechaCaducidad String)"; 
+		String sent5 = "CREATE TABLE IF NOT EXISTS Accesorios(nombre String, precio Integer, animal_dirigido String, rutaFoto String, enCesta boolean, unidades Integer)"; 
 		String sent6 = "CREATE TABLE IF NOT EXISTS Usuario(usuario String, contrasenia String)";
 		Statement st = null;
 		
@@ -358,8 +358,9 @@ public class BD {
 				String animalDirigido = rs.getString("ANIMAL_DIRIGIDO");
 				String rutaFoto = rs.getString("rutaFoto");
 				boolean enCesta = rs.getBoolean("EN_CESTA"); 
+				int unidades=rs.getInt("unidades");
 				String fechaCaducidad = rs.getString("FECHA_CADUCIDAD");
-				amt = new Alimentos(nombre, precio, animalDirigido, rutaFoto, enCesta, fechaCaducidad); 
+				amt = new Alimentos(nombre, precio, animalDirigido, rutaFoto, enCesta, unidades, fechaCaducidad); 
 				alAlimentos.add(amt);
 			}
 		} catch (SQLException e) {
@@ -396,8 +397,9 @@ public class BD {
 				Integer precio = rs.getInt("PRECIO");
 				String animalDirigido = rs.getString("ANIMAL_DIRIGIDO");
 				String rutaFoto = rs.getString("rutaFoto");
-				boolean enCesta = rs.getBoolean("EN_CESTA");  //cambio
-				acs = new Accesorios(nombre, precio, animalDirigido, rutaFoto, enCesta); //cambio
+				boolean enCesta = rs.getBoolean("EN_CESTA");  
+				int unidades=rs.getInt("unidades");
+				acs = new Accesorios(nombre, precio, animalDirigido, rutaFoto, enCesta, unidades); 
 				alAccesorios.add(acs);
 			}
 		} catch (SQLException e) {
@@ -896,6 +898,7 @@ public class BD {
 		}
 	}
 	
+	
 	public static void perrosACero(Connection con) {
 		try {
 			Statement st=con.createStatement();
@@ -944,6 +947,28 @@ public class BD {
 		
 	}
 	
+	
+	public static void alimentosUnidades(Connection con, String nombre, int unidadesUsuario) {
+		try {
+			Statement st=con.createStatement();
+			String sent="UPDATE ALIMENTOS set unidades = "+unidadesUsuario+" WHERE nombre= '"+nombre+"'";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void accesoriosUnidades(Connection con, String nombre, int unidadesUsuario) {
+		try {
+			Statement st=con.createStatement();
+			String sent="UPDATE ACCESORIOS set unidades = "+unidadesUsuario+" WHERE nombre= '"+nombre+"'";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 }
 

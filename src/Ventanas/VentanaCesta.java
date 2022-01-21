@@ -115,7 +115,8 @@ public class VentanaCesta extends JFrame {
 				String nombre = datos[0];
 				Integer precio = Integer.parseInt(datos[1]);
 				String animal_dirigido = datos[2];
-				Productos pr = new Productos(nombre, precio, animal_dirigido); 
+				Integer stock = Integer.parseInt(datos[3]);
+				Productos pr = new Productos(nombre, precio, animal_dirigido, stock); 
 				tsProductos.add(pr);
 				//System.out.println(tsProductos);
 				linea = br.readLine();
@@ -137,12 +138,12 @@ public class VentanaCesta extends JFrame {
 		}
         
         //TABLA LISTADO DE PRODUCTOS EN LA CESTA
-        String [] columnas = {"Nombre","Precio","Animal Dirigido"};  
+        String [] columnas = {"Nombre","Precio","Animal Dirigido", "Cantidad"};  
         modeloTablaProductos = new DefaultTableModel();
         modeloTablaProductos.setColumnIdentifiers(columnas);
 		
 		for(Productos p: tsProductos) {
-			String dataRow[] = {p.getNombre(), String.valueOf(p.getPrecio()), p.getAnimal_dirigido()}; //CAMBIO FALTA LA FECHA DE CADUCIDAD
+			String dataRow[] = {p.getNombre(), String.valueOf(p.getPrecio()), p.getAnimal_dirigido(), String.valueOf(p.getUnidades())}; //CAMBIO FALTA LA FECHA DE CADUCIDAD
 			modeloTablaProductos.addRow(dataRow);
 		}
 		tablaProductos = new JTable(modeloTablaProductos);

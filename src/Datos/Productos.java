@@ -6,18 +6,19 @@ public class Productos{
 	protected String animal_dirigido; //para qué animal es ese accesorio
 	protected String rutaFoto;
 	protected boolean enCesta; //cuando un accesorio o alimento se ha añadido a la cesta se pone a 1 
-	
+	protected int unidades;
 	
 	public Productos() {
 		super();
 	}
-	public Productos(String nombre, int precio, String animal_dirigido, String rutaFoto, boolean enCesta) {
+	public Productos(String nombre, int precio, String animal_dirigido, String rutaFoto, boolean enCesta, int unidades) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
 		this.animal_dirigido = animal_dirigido;
 		this.rutaFoto = rutaFoto;
 		this.enCesta = enCesta;
+		this.unidades = unidades;
 	}
 	
 	public Productos(String nombre, int precio, String animal_dirigido) {
@@ -26,6 +27,14 @@ public class Productos{
 		this.precio = precio;
 		this.animal_dirigido = animal_dirigido;
 		
+	}
+	
+	public Productos(String nombre, int precio, String animal_dirigido, int unidades) {
+		super();
+		this.nombre = nombre;
+		this.precio = precio;
+		this.animal_dirigido = animal_dirigido;
+		this.unidades = unidades;
 	}
 	
 	public String getNombre() {
@@ -64,6 +73,12 @@ public class Productos{
 		return enCesta;
 	}
 
+	public int getUnidades() {
+		return unidades;
+	}
+	public void setUnidades(int unidades) {
+		this.unidades = unidades;
+	}
 	public void setEnCesta(boolean enCesta) {
 		this.enCesta = enCesta;
 	}
