@@ -35,7 +35,7 @@ public class PanelComprasAdmin extends JPanel {
 		alCompras = BD.obtenerCompras(con);
 		BD.closeBD();
 		
-		String [] titulos = {"NombreUsuario","TipoAnimal","NombreAnimal"};  
+		String [] titulos = {"NombreUsuario", "NombreProducto", "UnidadesCompradas"};  
 	       modeloTablaCompras = new DefaultTableModel() {
 	       	//Para que la tabla no pueda ser editada
 	       	public boolean isCellEditable(int row, int column) {

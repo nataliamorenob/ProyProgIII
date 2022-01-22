@@ -37,7 +37,7 @@ public class PanelReservasAdmin extends JPanel {
 		alReservas = BD.obtenerReservas(con);
 		BD.closeBD();
 		
-		String [] titulos = {"NombreUsuario","TipoAnimal","NombreAnimal"};  
+		String [] titulos = {"NombreUsuario", "TipoAnimal", "NombreAnimal"};  
 	       modeloTablaReservas = new DefaultTableModel() {
 	       	//Para que la tabla no pueda ser editada
 	       	public boolean isCellEditable(int row, int column) {
