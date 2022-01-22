@@ -155,8 +155,8 @@ public class PanelPerros extends JPanel {
 									String localizacion = p.getLocalizacion();
 									String colores = p.getColores();
 									String rutaFoto = p.getRutaFoto();
-//									String nombreU = VentanaInicioSesion.usu;
 									pw.println(nombre + ","+ edad + ","+ sexo + ","+ peso + ","+ colores + ","+ caracteristicas + ","+ tiempoEnAdopcion + ","+ localizacion); 		
+									BD.anyadirReserva(con, VentanaInicioSesion.usu, nombre);
 									BD.perrosACero(con);
 									
 									BD.borrarPerros(con, p.getNombre());

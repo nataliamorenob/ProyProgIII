@@ -24,6 +24,7 @@ import javax.swing.JPanel;
 
 import BaseDeDatos.BD;
 import Datos.Alimentos;
+import Ventanas.VentanaInicioSesion;
 
 public class PanelAlimentos extends JPanel {
 
@@ -90,7 +91,6 @@ public class PanelAlimentos extends JPanel {
 					BD.alimentoReservado(con, al.getNombre());
 					BD.alimentosUnidades(con, al.getNombre(), unidades);
 					
-
 					PrintWriter pw = null;
 					try {
 						pw = new PrintWriter(new FileWriter("cesta.txt", true));
@@ -102,6 +102,7 @@ public class PanelAlimentos extends JPanel {
 								int precio = ali.getPrecio();
 								String animal_dirigido = ali.getAnimal_dirigido();
 								pw.println(nombre + ","+ precio + ","+ animal_dirigido + "," + unidadesUsuario); 
+								BD.anyadirCompra(con, VentanaInicioSesion.usu, nombre, unidadesUsuario);
 								BD.alimentosACero(con);
 							}
 						}
@@ -136,6 +137,7 @@ public class PanelAlimentos extends JPanel {
 								int precio = ali.getPrecio();
 								String animal_dirigido = ali.getAnimal_dirigido();
 								pw.println(nombre + ","+ precio + ","+ animal_dirigido + "," + unidadesUsuario); 
+								BD.anyadirCompra(con, VentanaInicioSesion.usu, nombre, unidadesUsuario);
 								BD.alimentosACero(con);
 							}
 						}

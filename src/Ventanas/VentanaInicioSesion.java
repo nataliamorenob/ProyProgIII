@@ -43,7 +43,7 @@ public class VentanaInicioSesion extends JFrame {
 	private JFrame ventanaInicioSesion;
 	private Connection con;
 	public static String uCon; //este atributo es la contraseña del usuario, que la coje en btnIncioSesion
-//	public static String usu;//este atributo es el usuario
+	public static String usu;//este atributo es el usuario
 	
 	/**
 	 * Launch the application.
@@ -141,7 +141,7 @@ public class VentanaInicioSesion extends JFrame {
 						
 					}else {
 						uCon = passwordFieldContrasenia.getText();
-//						usu = textFieldUsuario.getText();
+						usu = textFieldUsuario.getText();
 						JOptionPane.showMessageDialog(null, "Bienvenido");
 						
 						if(usuario.equals("admin") && contrasenia.equals("adminadmin1")) {

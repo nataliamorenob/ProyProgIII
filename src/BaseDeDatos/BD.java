@@ -59,6 +59,7 @@ public class BD {
 		String sent4 = "CREATE TABLE IF NOT EXISTS Alimentos(nombre String, precio Integer, animal_dirigido String, rutaFoto String, enCesta boolean, unidades Integer, fechaCaducidad String)"; 
 		String sent5 = "CREATE TABLE IF NOT EXISTS Accesorios(nombre String, precio Integer, animal_dirigido String, rutaFoto String, enCesta boolean, unidades Integer)"; 
 		String sent6 = "CREATE TABLE IF NOT EXISTS Usuario(usuario String, contrasenia String)";
+		String sent7 = "CREATE TABLE IF NOT EXISTS Compra(usuario String, nombreAnimal String, nombreProducto String, unidadP Integer)";
 		Statement st = null;
 		
 		try {
@@ -69,6 +70,7 @@ public class BD {
 			st.executeUpdate(sent4);
 			st.executeUpdate(sent5);
 			st.executeUpdate(sent6);
+			st.executeUpdate(sent7);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1039,6 +1041,27 @@ public class BD {
 		}
 		
 	}*/
+	
+	public static void anyadirReserva(Connection con, String usuario, String nombreAnimal) {
+		try {
+			Statement st = con.createStatement();
+			String sent = "INSERT INTO compra (usuario, nombreAnimal) VALUES ('"+usuario+"', '"+nombreAnimal+"')";
+			st.executeUpdate(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void anyadirCompra(Connection con, String usuario, String nombreProducto, int unidades) {
+		try {
+			Statement st = con.createStatement();
+			String sent = "INSERT INTO compra (usuario, nombreProducto, unidadP) VALUES ('"+usuario+"', '"+nombreProducto+"', "+unidades+")";
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 }
 

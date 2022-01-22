@@ -25,6 +25,7 @@ import javax.swing.JPanel;
 import BaseDeDatos.BD;
 import Datos.Accesorios;
 import Datos.Alimentos;
+import Ventanas.VentanaInicioSesion;
 
 public class PanelAccesorios extends JPanel {
 
@@ -100,6 +101,7 @@ public class PanelAccesorios extends JPanel {
 								System.out.println(precio);
 								String animal_dirigido = acc.getAnimal_dirigido();
 								pw.println(nombre + ","+ precio + ","+ animal_dirigido + "," + unidadesUsuario); 
+								BD.anyadirCompra(con, VentanaInicioSesion.usu, nombre, unidadesUsuario);
 								BD.accesoriosACero(con);
 		
 							}
@@ -134,8 +136,8 @@ public class PanelAccesorios extends JPanel {
 								int precio = acc.getPrecio();
 								String animal_dirigido = acc.getAnimal_dirigido();
 								pw.println(nombre + ","+ precio + ","+ animal_dirigido + "," + unidadesUsuario); 
+								BD.anyadirCompra(con, VentanaInicioSesion.usu, nombre, unidadesUsuario);
 								BD.accesoriosACero(con);
-
 							}
 						}
 						
