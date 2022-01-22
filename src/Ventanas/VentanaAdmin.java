@@ -27,9 +27,11 @@ import javax.swing.border.EmptyBorder;
 
 import Administrador.PanelAccesoriosAdmin;
 import Administrador.PanelAlimentosAdmin;
+import Administrador.PanelComprasAdmin;
 import Administrador.PanelGatosAdmin;
 import Administrador.PanelOtrosAdmin;
 import Administrador.PanelPerrosAdmin;
+import Administrador.PanelReservasAdmin;
 import BaseDeDatos.BD;
 import Datos.Accesorios;
 import Datos.Alimentos;
@@ -77,22 +79,25 @@ public class VentanaAdmin extends JFrame {
 		
 		con = BD.initBD("BaseDatos.db");
 		
+		//Creación Paneles
 		JPanel panelCentro = new JPanel();
 		contentPane.add(panelCentro, BorderLayout.CENTER);
-		
-		
 		JPanel panelMenu = new JPanel();
 		panelCentro.setLayout(new GridLayout(0, 2));
 		JScrollPane scrollPanelCentro = new JScrollPane(panelCentro);
 		JPanel panelAbajo = new JPanel();
 		
-		JMenuBar menuBar = new JMenuBar();
-
+		//Creación Botones
 		JButton btnAnyadir = new JButton("Añadir");
-		JButton btnVerReservas =new JButton("Ver reservas");
+		JButton btnVerReservas = new JButton("Ver reservas");
+		JButton btnVerCompras = new JButton("Ver compras");
 
 		btnAnyadir.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		btnVerReservas.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
+		btnVerCompras.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
+		
+		//Creación Menú
+		JMenuBar menuBar = new JMenuBar();
 		
 		JMenu mnAnimales = new JMenu("Animales");
 		mnAnimales.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
@@ -113,7 +118,7 @@ public class VentanaAdmin extends JFrame {
 		mnAlimentos.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
 		
 		
-		//AñADIR LOS COMPONENTES A LOS PANELES
+		//AÑADIR LOS COMPONENTES A LOS PANELES
 		contentPane.add(panelMenu, BorderLayout.NORTH);
 		contentPane.add(scrollPanelCentro, BorderLayout.CENTER);
 		contentPane.add(panelAbajo, BorderLayout.SOUTH);
@@ -127,9 +132,12 @@ public class VentanaAdmin extends JFrame {
 		mnAnimales.add(mntmGato);
 		mnAnimales.add(mntmOtro);
 		
-		panelAbajo.add(btnAnyadir);
 		panelAbajo.add(btnVerReservas);
+		panelAbajo.add(btnAnyadir);
+		panelAbajo.add(btnVerCompras);
 		
+		
+		//ACTIONLISTENTER Y MOUSELISTENER DEL MENÚ 
 		mntmPerro.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -199,6 +207,7 @@ public class VentanaAdmin extends JFrame {
 			}
 		});
 		
+		//ACTIONLISTENER DE LOS BOTONES
 		btnAnyadir.addActionListener(new ActionListener() {
 			
 			@Override
@@ -278,8 +287,19 @@ public class VentanaAdmin extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				panelCentro.removeAll(); 
+				panelCentro.add(new PanelReservasAdmin());
+				panelCentro.updateUI();
+			}
+		});
+		
+		btnVerCompras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelCentro.removeAll(); 
+				panelCentro.add(new PanelComprasAdmin());
+				panelCentro.updateUI();
 			}
 		});
 	

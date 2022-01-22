@@ -136,7 +136,7 @@ public class PanelGatos extends JPanel {
 									String colores = g.getColores();
 									String rutaFoto = g.getRutaFoto();
 									pw.println(nombre + ","+ edad + ","+ sexo + ","+ peso + ","+ colores + ","+ caracteristicas + ","+ tiempoEnAdopcion + ","+ localizacion); 
-									BD.anyadirReserva(con, VentanaInicioSesion.usu, nombre);
+									BD.anyadirReserva(con, VentanaInicioSesion.usu, "Gato", nombre);
 									BD.gatosACero(con);
 				
 									BD.borrarGatos(con, g.getNombre());

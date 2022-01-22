@@ -10,9 +10,11 @@ import java.util.TreeMap;
 
 import Datos.Accesorios;
 import Datos.Alimentos;
+import Datos.Compra;
 import Datos.Gatos;
 import Datos.Otros;
 import Datos.Perros;
+import Datos.Reserva;
 
 
 public class BD {
@@ -59,7 +61,8 @@ public class BD {
 		String sent4 = "CREATE TABLE IF NOT EXISTS Alimentos(nombre String, precio Integer, animal_dirigido String, rutaFoto String, enCesta boolean, unidades Integer, fechaCaducidad String)"; 
 		String sent5 = "CREATE TABLE IF NOT EXISTS Accesorios(nombre String, precio Integer, animal_dirigido String, rutaFoto String, enCesta boolean, unidades Integer)"; 
 		String sent6 = "CREATE TABLE IF NOT EXISTS Usuario(usuario String, contrasenia String)";
-		String sent7 = "CREATE TABLE IF NOT EXISTS Compra(usuario String, nombreAnimal String, nombreProducto String, unidadP Integer)";
+		String sent7 = "CREATE TABLE IF NOT EXISTS Compra(usuario String, nombreProducto String, unidadP Integer)";
+		String sent8 = "CREATE TABLE IF NOT EXISTS Reserva(usuario String, animal String, nombreAnimal String)";
 		Statement st = null;
 		
 		try {
@@ -71,6 +74,7 @@ public class BD {
 			st.executeUpdate(sent5);
 			st.executeUpdate(sent6);
 			st.executeUpdate(sent7);
+			st.executeUpdate(sent8);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1042,10 +1046,17 @@ public class BD {
 		
 	}*/
 	
-	public static void anyadirReserva(Connection con, String usuario, String nombreAnimal) {
+	/**
+	 * Método que inserta los siguientes valores al hacer una reserva en la tabla correspondiente
+	 * @param con <- Conexion con la BBDD
+	 * @param usuario <- Nick del usuario que se registra
+	 * @param animal <- El tipo de animal (si es un gato o un perro)
+	 * @param nombreAnimal <- El nombre del animal
+	 */
+	public static void anyadirReserva(Connection con, String usuario, String animal, String nombreAnimal) {
 		try {
 			Statement st = con.createStatement();
-			String sent = "INSERT INTO compra (usuario, nombreAnimal) VALUES ('"+usuario+"', '"+nombreAnimal+"')";
+			String sent = "INSERT INTO reserva VALUES ('"+usuario+"', '"+animal+"', '"+nombreAnimal+"')";
 			st.executeUpdate(sent);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -1053,14 +1064,94 @@ public class BD {
 		}
 	}
 	
+	/**
+	 * Método que inserta los siguientes valores en la tabla compra tras el usuario realizar una compra
+	 * @param con <- Conexion con la BBDD
+	 * @param usuario <- Nick del usuario que hace la compra
+	 * @param nombreProducto <- El nombre del producto
+	 * @param unidades <- Las unidades que compra el usuario
+	 */
 	public static void anyadirCompra(Connection con, String usuario, String nombreProducto, int unidades) {
 		try {
 			Statement st = con.createStatement();
-			String sent = "INSERT INTO compra (usuario, nombreProducto, unidadP) VALUES ('"+usuario+"', '"+nombreProducto+"', "+unidades+")";
+			String sent = "INSERT INTO compra VALUES ('"+usuario+"', '"+nombreProducto+"', "+unidades+")";
+			st.executeUpdate(sent);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Metodo que devuelve un ArrayList con todas las reservas que hay en la BBDD
+	 * @param con <- La conexion con la BBDD
+	 * @return alReservas <- El ArrayList que contiene las reservas
+	 */
+	public static ArrayList<Reserva> obtenerReservas(Connection con){
+		ArrayList<Reserva> alReservas = new ArrayList<>();
+		Reserva r = null;
+		Statement st = null;
+		try {
+			st = con.createStatement();
+			String sent = "SELECT * FROM reserva";
+			ResultSet rs = st.executeQuery(sent);
+			while(rs.next()) {
+				String usuario = rs.getString("usuario");
+				String animal = rs.getString("animal");
+				String nombreAnimal = rs.getString("nombreAnimal");
+				r = new Reserva(usuario, animal, nombreAnimal);
+				alReservas.add(r);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return alReservas;
+	}
+	
+	/**
+	 * Metodo que devuelve un ArrayList con todas las compras que hay en la BBDD
+	 * @param con <- La conexion con la BBDD
+	 * @return alCompras <- El ArrayList que contiene las compras
+	 */
+	public static ArrayList<Compra> obtenerCompras(Connection con){
+		ArrayList<Compra> alCompras = new ArrayList<>();
+		Compra c = null;
+		Statement st = null;
+		try {
+			st = con.createStatement();
+			String sent = "SELECT * FROM compra";
+			ResultSet rs = st.executeQuery(sent);
+			while(rs.next()) {
+				String usuario = rs.getString("usuario");
+				String nomProd = rs.getString("nombreProducto");
+				int unidad = rs.getInt("unidadP");
+				c = new Compra(usuario, nomProd, unidad);
+				alCompras.add(c);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(st!=null) {
+				try {
+					st.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return alCompras;
 	}
 	
 }

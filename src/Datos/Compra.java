@@ -3,14 +3,12 @@ package Datos;
 public class Compra {
 	
 	private String nombreUsuario;
-	private String nombreAnimal;
 	private String nombreProducto;
 	private int unidadProducto;
 	
-	public Compra(String nombreUsuario, String nombreAnimal, String nombreProducto, int unidadProducto) {
+	public Compra(String nombreUsuario, String nombreProducto, int unidadProducto) {
 		super();
 		this.nombreUsuario = nombreUsuario;
-		this.nombreAnimal = nombreAnimal;
 		this.nombreProducto = nombreProducto;
 		this.unidadProducto = unidadProducto;
 	}
@@ -21,14 +19,6 @@ public class Compra {
 
 	public void setNombreUsuario(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
-	}
-
-	public String getNombreAnimal() {
-		return nombreAnimal;
-	}
-
-	public void setNombreAnimal(String nombreAnimal) {
-		this.nombreAnimal = nombreAnimal;
 	}
 
 	public String getNombreProducto() {
