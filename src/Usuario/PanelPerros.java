@@ -54,8 +54,6 @@ public class PanelPerros extends JPanel {
 		add(panelSur, BorderLayout.SOUTH);
 		
 		
-		
-		
 		JPanel panelDerecha = new JPanel();
 		add(panelDerecha, BorderLayout.EAST);
 		panelDerecha.setLayout(new GridLayout(8, 0, 0, 0));
@@ -135,7 +133,7 @@ public class PanelPerros extends JPanel {
 					JOptionPane.showMessageDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idoneo para la adopcion. \n Recuerde que esta información se comprobará el día de la adoción", "Cuestionario previo a la adopción", JOptionPane.INFORMATION_MESSAGE);
 					String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca contraseña:",  "Cuestionario previo a la adopción", JOptionPane.QUESTION_MESSAGE);
 					
-					if(pregunta6.equals(VentanaInicioSesion.u)) {
+					if(pregunta6.equals(VentanaInicioSesion.uCon)) {
 						
 						//cogemos en iniciosesion el usuario
 						//llamariamos a metodo en BD perro poner el usuario
@@ -157,6 +155,7 @@ public class PanelPerros extends JPanel {
 									String localizacion = p.getLocalizacion();
 									String colores = p.getColores();
 									String rutaFoto = p.getRutaFoto();
+//									String nombreU = VentanaInicioSesion.usu;
 									pw.println(nombre + ","+ edad + ","+ sexo + ","+ peso + ","+ colores + ","+ caracteristicas + ","+ tiempoEnAdopcion + ","+ localizacion); 		
 									BD.perrosACero(con);
 									

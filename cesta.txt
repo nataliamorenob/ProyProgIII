@@ -1,3 +1,0 @@
-Transportín rígido,30,Perros y gatos,2
-Cama acolchada,23,Perros y gatos,2
-Transportín,40,Perros y gatos,2
