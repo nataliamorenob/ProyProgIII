@@ -89,10 +89,10 @@ public class VentanaAdmin extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 
 		JButton btnAnyadir = new JButton("Añadir");
-
+		JButton btnVerReservas =new JButton("Ver reservas");
 
 		btnAnyadir.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
-
+		btnVerReservas.setFont(new Font("Bodoni MT", Font.PLAIN, 11));
 		
 		JMenu mnAnimales = new JMenu("Animales");
 		mnAnimales.setFont(new Font("Baskerville Old Face", Font.PLAIN, 12));
@@ -128,6 +128,7 @@ public class VentanaAdmin extends JFrame {
 		mnAnimales.add(mntmOtro);
 		
 		panelAbajo.add(btnAnyadir);
+		panelAbajo.add(btnVerReservas);
 		
 		mntmPerro.addActionListener(new ActionListener() {
 			@Override
@@ -270,6 +271,15 @@ public class VentanaAdmin extends JFrame {
 					panelCentro.removeAll();
 					BD.obtenerAccesorios(con);
 				}
+			}
+		});
+		
+		btnVerReservas.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
 			}
 		});
 	

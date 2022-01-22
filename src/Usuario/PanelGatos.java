@@ -22,6 +22,7 @@ import javax.swing.SwingConstants;
 
 import BaseDeDatos.BD;
 import Datos.Gatos;
+import Ventanas.VentanaInicioSesion;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -115,12 +116,8 @@ public class PanelGatos extends JPanel {
 				if(contador >= 3) {
 					JOptionPane.showMessageDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idoneo para la adopción. \n Recuerde que esta información se comprobará el día de la adopción", "Cuestionario previo a la adopción",JOptionPane.INFORMATION_MESSAGE);
 					String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca su nombre de usuario:",  "Cuestionario previo a la adopción", JOptionPane.QUESTION_MESSAGE);
-					int existe=BD.existeUsuario(con, pregunta6);
-					if(existe == 1) {
-						
+					if(pregunta6.equals(VentanaInicioSesion.u)) {
 						BD.gatoReservado(con, g.getNombre());
-
-						
 				        PrintWriter pw = null;
 				        try {
 							

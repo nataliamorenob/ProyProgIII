@@ -36,12 +36,14 @@ public class VentanaInicioSesion extends JFrame {
 	
 
 	private JPanel contentPane, panelCentro, panelSur;
-	private JTextField textFieldUsuario;
+	public static JTextField textFieldUsuario;
 	private JButton btnExit, btnIniciarSesion, btnRegistrarse;
-	private JLabel lblContrasenia, lblUsuario;
+	public static JLabel lblContrasenia, lblUsuario;
 	private JPasswordField passwordFieldContrasenia;
 	private JFrame ventanaInicioSesion;
 	private Connection con;
+	public static String u; //este atributo es la contraseña del usuario, que la coje en btnIncioSesion
+	//public static String usu;//este atributo es el usuario
 	
 	/**
 	 * Launch the application.
@@ -138,7 +140,10 @@ public class VentanaInicioSesion extends JFrame {
 						JOptionPane.showMessageDialog(null, "La contraseña es incorrecta");
 						
 					}else {
+						u = passwordFieldContrasenia.getText();
+						//usu=textFieldUsuario.getText();
 						JOptionPane.showMessageDialog(null, "Bienvenido");
+						
 						if(usuario.equals("admin") && contrasenia.equals("adminadmin1")) {
 							VentanaAdmin frame = new VentanaAdmin();
 							frame.setVisible(true);
@@ -242,5 +247,5 @@ public class VentanaInicioSesion extends JFrame {
 		
 		setVisible(true);
 	}
-	
+
 }

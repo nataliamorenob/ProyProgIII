@@ -4,6 +4,7 @@ import javax.swing.border.Border;
 
 import BaseDeDatos.BD;
 import Datos.Perros;
+import Ventanas.VentanaInicioSesion;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -132,12 +133,14 @@ public class PanelPerros extends JPanel {
 				}
 				if(contador >= 3) {
 					JOptionPane.showMessageDialog(null, "¡Enhorabuena! Consideramos que usted es un candidato idoneo para la adopcion. \n Recuerde que esta información se comprobará el día de la adoción", "Cuestionario previo a la adopción", JOptionPane.INFORMATION_MESSAGE);
-					String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca su nombre de usuario:",  "Cuestionario previo a la adopción", JOptionPane.QUESTION_MESSAGE);
-					int existe = BD.existeUsuario(con, pregunta6);
-					if(existe == 1){
+					String pregunta6 = JOptionPane.showInputDialog(null, "Introduzca contraseña:",  "Cuestionario previo a la adopción", JOptionPane.QUESTION_MESSAGE);
+					
+					if(pregunta6.equals(VentanaInicioSesion.u)) {
+						
+						//cogemos en iniciosesion el usuario
+						//llamariamos a metodo en BD perro poner el usuario
 						BD.perroReservado(con, p.getNombre());
-						//FileWriter fw = null;
-				        PrintWriter pw = null;
+						PrintWriter pw = null;
 						try {
 							//fw = new FileWriter("animalesReservados.txt");
 							pw = new PrintWriter(new FileWriter("animalesReservados.txt", true)); 
@@ -171,8 +174,10 @@ public class PanelPerros extends JPanel {
 								pw.close();
 							}
 						}
+						
+						
 					}else {
-						JOptionPane.showMessageDialog(null, "El nombre de usuario es incorrecto",  "Cuestionario previo a la adopción", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "La contraseña es incorrecta",  "Cuestionario previo a la adopción", JOptionPane.ERROR_MESSAGE);
 						//new VentanaInicioSesion();
 					}
 				}
@@ -180,8 +185,12 @@ public class PanelPerros extends JPanel {
 					JOptionPane.showMessageDialog(null,  "Lo lamentamos pero no consideramos que sea apto para la adopción. \n Para más información contacte con nosotros. \n Gracias.", "Cuestionario previo a la adopción", JOptionPane.INFORMATION_MESSAGE);
 
 				}
+						
+						
+					}
+
+			
 				
-			}
 			
 			
 		});
